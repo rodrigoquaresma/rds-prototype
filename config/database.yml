@@ -51,10 +51,10 @@ development:
 #   username: rds-prototype
 #   password:
 #
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: rds-prototype_production
-  pool: 5
-  username: rds-prototype
-  password:
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: rds-prototype_production
+#   pool: 5
+#   username: rds-prototype
+#   password:
