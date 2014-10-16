@@ -1,0 +1,27 @@
+	<meta charset="utf-8" />
+	<title>RD Station</title>
+
+	<link rel="assets" href="<%= ActionController::Base.asset_host %>">
+	<link rel="prefetch" href="<%= asset_path 'application.js' %>">
+	<%= render :partial => 'layouts/favicons' %>
+
+	<%= csrf_meta_tags %>
+
+	<!-- order matters -->
+	<%= stylesheet_link_tag 'application' %>
+	<%= yield :header %>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!--[if lt IE 8]>
+	<%= javascript_include_tag 'brand-font/ie7/ie7.js'%>
+	<%= javascript_include_tag 'icons-font/ie7/ie7.js'%>
+	<%= stylesheet_link_tag 'brand-font/ie7/ie7.css'%>
+	<%= stylesheet_link_tag 'icons-font/ie7/ie7.css'%>
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<%= stylesheet_link_tag 'ie' %>
+	<![endif]-->

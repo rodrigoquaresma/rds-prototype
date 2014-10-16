@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RdsPrototype</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<%= render :partial => 'layouts/header' %>
+	<%= yield :head %>
 </head>
 <body>
-
-<%= yield %>
-
+	<%= render :partial => 'layouts/navbar' %>
+	<section id="content">
+		<%= render :partial => 'layouts/page_header' %>
+		<%= content_for?(:content) ? yield(:content) : yield  %>
+	</section>
+	<%= render :partial => 'layouts/footer' %>
+	<div id="flash">
+		<%= render :partial => 'layouts/flash', :locals => { :flash => flash } %>
+	</div>
 </body>
 </html>
