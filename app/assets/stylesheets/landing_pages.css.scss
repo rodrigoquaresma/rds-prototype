@@ -1,0 +1,170 @@
+@import "components/mixins";
+@import "components/variables";
+@import "jquery-colorpicker";
+@import "components/breadcrumbs";
+@import "components/social_media_post";
+
+@import "data-tables/jquery.dataTables";
+@import "data-tables/dataTables";
+
+@import "compass";
+@import "landing-page-thumbnails/*.png";
+@include all-landing-page-thumbnails-sprites;
+
+#sidebar {
+  width: 323px;
+  text-align: center;
+  #hidden_input-landing_page-container { display: none; }
+}
+
+#form-builder-dialog {
+  form { margin: 0; }
+  section ul {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    li {
+      padding: 8px;
+      border: 1px solid #FFF;
+      position: relative;
+      width: 395px;
+      @include border-radius(4px);
+      margin: 10px 0;
+      border: 1px solid $gray-lighter;
+      float: left;
+      clear: both;
+      a.remove-field-link {
+        position: absolute;
+        display: block;
+        float: right;
+        visibility: hidden;
+        margin:0;
+        border-bottom: none;
+        top: 0px;
+        right: 0px;
+      }
+      &:hover {
+        background-color: lighten($link-color, 50%);
+        border: 1px dashed lighten($link-color, 15%);
+        cursor: move;
+        a, a.remove-field-link { visibility: visible; }
+      }
+      &.selected {
+        background-color: $gray-lighter;
+        border: 1px solid lighten($link-color, 30%);
+        &:hover { border: 1px dashed $gray-lighter; }
+      }
+      &.ui-sortable-helper {
+        border: 1px dashed lighten($link-color, 25%);
+        opacity: 0.7;
+        background-image: none;
+        a.remove-field-link { visibility: hidden; }
+      }
+      &.required {
+        > label:after {
+          content: ' *';
+          color: $brand-danger;
+        }
+      }
+      &[data-id='email_lead'],
+      &.email {
+        a.btn.btn-link.xicon-remove { visibility: hidden; }
+      }
+      .checkbox {
+        margin: 0;
+        padding: 0 0 0 20px;
+      }
+    }
+    label { cursor: move; }
+    input[disabled],
+    select[disabled],
+    textarea[disabled],
+    input[readonly],
+    select[readonly],
+    textarea[readonly] {
+      cursor: default;
+    }
+  }
+
+  aside {
+    #edit-field-tab {
+      margin: .5em 0 1em 0;
+      .field-options .form-group { margin: 0 0 .5em; }
+    }
+  }
+}
+
+.color_select {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 5px 5px 0 0;
+  border: 2px solid #ddd;
+  & > div {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #666 image-url( 'jquery-colorpicker/select.png' ) center;
+  }
+}
+
+#field-list,
+#field-sugestions-list {
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+  li {
+    margin: 0 5px 5px 0;
+    float: left;
+    a {
+      display: block;
+      background-color: lighten($link-color, 40%);
+      border-bottom: none;
+      width: auto;
+      text-align: center;
+      font-weight: normal;
+      padding: 6px 8px;
+      @include border-radius(4px);
+      &:hover {
+        background-color: $link-color;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.btn-group .publish-landing_page-link,
+.publish-landing_page-link {
+  span {
+    &.publish-text { display: inline; }
+    &.published-text { display: none; }
+    &.unpublish-text { display: none; }
+  }
+  &.published {
+    span {
+      &.publish-text { display: none; }
+      &.published-text { display: inline; }
+      &.unpublish-text { display: none; }
+    }
+    &[data-hover="on"]:hover {
+      color: white;
+      background-color: $btn-danger-bg;
+      border-color: $btn-danger-border;
+      @include box-shadow(none);
+      span {
+        &.publish-text { display: none; }
+        &.published-text { display: none; }
+        &.unpublish-text { display: inline; }
+      }
+      + .dropdown-toggle {
+        color: white;
+        background-color: $btn-danger-bg;
+        border-color: $btn-danger-border;
+      }
+    }
+  }
+}
+
+.field-html { height: 362px; }

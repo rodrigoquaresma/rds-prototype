@@ -1,0 +1,57 @@
+window.App = {}
+
+class App.CompanyTypeaheadHelper
+  typeaheadObj: (input_selector) ->
+    {
+      name: "es-companies",
+      minLength: 2,
+      remote: {
+        url: "<%= ENV['ELASTICSEARCH_URL'] %>/companies/company/_search?pretty=%QUERY#{name}",
+        beforeSend: (jqXhr, settings) ->
+          settings.type = 'POST'
+          settings.hasContent = true
+
+          query = $(input_selector).val()
+
+          words = query.split(" ");
+          if(words.length > 2 || query.indexOf("=") != -1 || query.indexOf(":") != -1 || query.indexOf(" AND ") != -1 || query.indexOf(" OR ") != -1)
+            jqXhr.abort();
+
+          settings.data =  "{\"query\":{\"query_string\":{ \"query\":\"name.autocomplete: " + query + "\"}},\"filter\":{\"term\":{\"lm_uuid\":\"#{$("#leads_manager").val()}\"}}, \"size\":10}"
+          settings.contentType = 'application/json; charset=utf-8';
+
+          return true
+        ,
+        filter: (data) ->
+          #console.log data
+          results = []
+          for hit in data.hits.hits
+            results.push({
+                          value: hit._source.company.name,
+                          id: hit._id,
+                          unique_key: hit._id,
+                          address: hit._source.company.address,
+                          email: hit._source.company.email,
+                          facebook: hit._source.company.facebook,
+                          phone: hit._source.company.phone,
+                          site: hit._source.company.site,
+                          size: hit._source.company.size,
+                          twitter: hit._source.company.twitter
+                          linkedin: hit._source.company.linkedin
+                          sector: if hit._source.company.company_sector then hit._source.company.company_sector.name else ""
+                        })
+
+          return results
+      }
+    }
+
+  fillInfoCard: (datum) ->
+    $('#change_company #company_site').html(datum.site)
+    $('#change_company #company_twitter').html(datum.twitter)
+    $('#change_company #company_facebook').html(datum.facebook)
+    $('#change_company #company_linkedin').html(datum.linkedin)
+    $('#change_company #company_phone').html(datum.phone)
+    $('#change_company #company_sector').html(datum.sector)
+    $('#change_company #company_size').html(datum.size)
+    $('#change_company #company_address').html(datum.address)
+    $('#change_company').data('company_id', datum.id)

@@ -1,0 +1,19 @@
+@import "components/mixins";
+@import "components/variables";
+@import "datepicker/datepicker3";
+
+
+#adwords-table {
+  .terms-visibility-link {
+    color:$gray;
+    cursor:text;
+    text-decoration:none;
+    font-weight:bold;
+  }
+  .accordion-pointer {
+    display:none !important;
+  }
+  .arrow {
+    margin-right:6px;
+  }
+}

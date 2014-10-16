@@ -1,0 +1,37 @@
+@import "components/mixins";
+@import "components/variables";
+
+.pagination-content {
+  text-align: center;
+}
+
+.pagination {
+  > a,
+  > span,
+  > em {
+    font-style: normal;
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1em;
+    padding: 6px 8px;
+    text-decoration: none;
+    color: $link-color;
+    border: none;
+    background-color: lighten($link-color, 48%);
+    @include border-radius(4px);
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: $link-color;
+    }
+    &.gap,
+    &.disabled {
+      background-color: $panel-default-heading-bg;
+      color: $gray-light;
+    }
+    &.current {
+      color: #fff;
+      background: $link-color;
+    }
+  }
+}

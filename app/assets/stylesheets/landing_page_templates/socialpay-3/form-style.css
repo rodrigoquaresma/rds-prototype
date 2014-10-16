@@ -1,0 +1,26 @@
+#thumb-landing_page-image { width: 300px; height: 330px; background: url(form-sprite-thumb-2.png) no-repeat; }
+#thumb-landing_page-image.offer-title { background-position: 0px -330px; }
+#thumb-landing_page-image.offer-subtitle { background-position: 0px -660px; }
+#thumb-landing_page-image.bullet-title-1 { background-position: 0px -990px; }
+#thumb-landing_page-image.bullet-subtitle-1 { background-position: 0px -1320px; }
+#thumb-landing_page-image.bullet-title-2 { background-position: 0px -1650px; }
+#thumb-landing_page-image.bullet-subtitle-2 { background-position: 0px -1980px; }
+#thumb-landing_page-image.bullet-title-3 { background-position: 0px -2310px; }
+#thumb-landing_page-image.bullet-subtitle-3 { background-position: 0px -2640px; }
+#thumb-landing_page-image.bullet-title-4 { background-position: 0px -2970px; }
+#thumb-landing_page-image.bullet-subtitle-4 { background-position: 0px -3300px; }
+#thumb-landing_page-image.form-title { background-position: 0px -3630px; }
+#thumb-landing_page-image.form-subtitle { background-position: 0px -3960px; }
+
+#thumb-landing_page-image.company-logo { background-position: 0px -4290px; }
+#thumb-landing_page-image.header-background-color { background-position: 0px -4620px; }
+#thumb-landing_page-image.header-text-color{ background-position: 0px -4950px; }
+#thumb-landing_page-image.offer-logo{ background-position: 0px -5280px; }
+#thumb-landing_page-image.bullet-background-color{ background-position: 0px -5610px; }
+#thumb-landing_page-image.bullet-text-color{ background-position: 0px -5940px; }
+#thumb-landing_page-image.form-header-background-color { background-position: 0px -6270px; }
+#thumb-landing_page-image.form-header-text-color { background-position: 0px -6600px; }
+#thumb-landing_page-image.form-background-color { background-position: 0px -6930px; }
+#thumb-landing_page-image.form-text-color { background-position: 0px -7260px; }
+#thumb-landing_page-image.form-button-background-color { background-position: 0px -7590px; }
+#thumb-landing_page-image.form-button-text-color { background-position: 0px -7920px; }

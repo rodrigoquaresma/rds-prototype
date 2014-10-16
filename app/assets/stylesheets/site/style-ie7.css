@@ -1,0 +1,26 @@
+.navbar-inner { filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+#logo { float: left; }
+
+footer { margin-top: 80px; }
+footer #redes-sociais img { margin-top: -40px; }
+#footer-main { margin-top: -40px; }
+#volta-topo { zoom: 1; }
+
+#link-plano-personalizado { width: 172px; }
+#link-plano-personalizado p { margin-left: 40px; }
+
+div#pricing section.step1 div.container [class*="span"].boxshadow p.price span.currency { font-size: 12px; font-weight: normal;vertical-align: 0; }
+div#pricing section.step1 div.container [class*="span"].boxshadow p.price span.amount { font-size: 24px; font-weight: normal; }
+div#pricing section.step1 div.container [class*="span"].boxshadow p.price span.occurrence { font-size: 12px; font-weight: normal; }
+
+div#pricing section.step2 div.container [class*="span"].boxshadow p.price span.currency { font-size: 12px; font-weight: normal; vertical-align: 0; }
+div#pricing section.step2 div.container [class*="span"].boxshadow p.price span.amount { font-size: 12px; font-weight: normal; }
+div#pricing section.step2 div.container [class*="span"].boxshadow p.price span.occurrence { font-size: 12px; font-weight: normal; }
+
+div#pricing section.step2 div.container [class*="span"].boxshadow p.limit span.label { font-size: 12px; font-weight: normal; vertical-align: 0; }
+div#pricing section.step2 div.container [class*="span"].boxshadow p.limit span.number { font-size: 12px; font-weight: normal; }
+
+#funcionalidades-lista { overflow: hidden; }
+#funcionalidades-lista li { padding: 10px 0px; }
+
+#faq { margin: 20px 0 50px -20px; }

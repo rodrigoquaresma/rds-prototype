@@ -1,0 +1,29 @@
+@import "components/mixins";
+@import "components/variables";
+@import "bootstrap/progress-bars";
+
+
+.progress-group {
+  .progress-group-value {
+    display: block;
+    font-size: $font-size-medium;
+    line-height: $headings-line-height;
+  }
+  .progress {
+    box-shadow: none;
+    .progress-bar {
+      box-shadow: none;
+    }
+    @include border-radius(0);
+    border: none;
+    height: 4px;
+    margin: 0;
+  }
+  .progress-group-value + .progress {
+    margin-top:10px;
+  }
+  &.progress-group-right {
+    .progress-group-value { text-align: right; }
+    .progress-bar { float: right; }
+  }
+}

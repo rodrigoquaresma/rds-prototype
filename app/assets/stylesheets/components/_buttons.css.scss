@@ -1,0 +1,35 @@
+@import "components/variables";
+@import "components/mixins";
+
+
+@import "bootstrap/buttons";
+
+.btn[class^="xicon-"],
+.btn[class*=" xicon-"] { line-height: 1.428571429; }
+.btn-group.btn-header {
+  margin-top: 22px;
+  margin-bottom: 11px;
+  width: 100%;
+  > a {
+    color: $link-color;
+    font-size: 34px;
+    font-weight: 500;
+    border: none;
+    &:hover {
+      background: transparent;
+      border: none;
+      text-decoration: none;
+    }
+    &:first-child {
+      background-color: $gray-lighter;
+      border-radius: 4px;
+      margin: 0 .25em 0 0;
+      padding: 0;
+      font-size: 1.2142857em;
+      line-height: 1.428571429;
+      width: 1.428571429em;
+      height: 1.428571429em;
+      text-align: center;
+    }
+  }
+}

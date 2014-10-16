@@ -1,0 +1,152 @@
+@import "components/mixins";
+@import "components/variables";
+@import "components/brand";
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+
+.navbar-default {
+  .navbar-nav {
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-default-link-hover-bg;
+      }
+    }
+  }
+}
+.navbar-default .nav>li>a { font-size: $font-size-small; }
+
+.dropdown-menu {
+  > li > a {
+    padding: 10px 20px;
+    font-size: $font-size-small;
+  }
+}
+
+// logo
+.navbar-default {
+  .navbar-brand {
+    font-size: 28px;
+    cursor: pointer;
+    padding-top: 12px;
+    opacity: 0.75;
+    & > span {
+      display: inline-block;
+    }
+    &.active,
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
+
+.navbar-account {
+  .navbar-account-link {
+    padding-top: 16px;
+    padding-bottom: 12px;
+    .navbar-account-name {
+      text-align: right;
+      max-width: 254px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      line-height: 1em;
+    }
+    .caret {
+      display: inline-block;
+      line-height: 1em;
+      margin-top: -2px;
+    }
+  }
+}
+.navbar-nav>li>a.btn-change-account {
+  padding-bottom: 13px;
+  // border-left: 1px solid $navbar-default-border;
+}
+
+
+.navbar-btn {
+  margin-bottom: 6px;
+}
+
+.nav-tabs { margin: 0 0 22px 0; }
+
+.container-nav-pills {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 0 22px;
+  .nav.nav-pills {
+    > li > a { padding: 7px 12px; }
+    & > li.active > a,
+    & > li.active > a:hover,
+    & > li.active > a:focus {
+      color: $link-color;
+      background-color: lighten($link-color, 50.0%);
+    }
+  }
+  .nav-pills-form {
+    margin-top: 0;
+    margin-bottom: 0;
+    .form-group { margin: 0; }
+  }
+}
+
+#change_account {
+  .modal-header p { margin: 0; }
+  .modal-body {
+    padding: 0 0 1em;
+    @include border-radius(0 0 6px 6px);
+  }
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #E5E5E5;
+    li {
+      margin: 0;
+      button {
+        padding: 1.1em;
+        display: block;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: 0;
+        cursor: pointer;
+        text-align: left;
+        text-overflow: ellipsis;
+        border-bottom: 1px solid $panel-default-border;
+        position: relative;
+        background: none;
+        &:hover { background: $gray-lighter; }
+        span {
+          color: $gray-light;
+          display: block;
+          max-width: 470px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &.account-name {
+            font-size: 1.25em;
+            color: $link-color;
+            margin-bottom: .25em;
+          }
+          &.account-url {
+            font-size: .85em;
+            color: $gray-light;
+          }
+          &[class^="xicon-"] {
+            position: absolute;
+            right: 10px;
+            top: 30px;
+          }
+        }
+      }
+      &.active button { background-color:lighten($link-color, 50%); }
+    }
+  }
+}

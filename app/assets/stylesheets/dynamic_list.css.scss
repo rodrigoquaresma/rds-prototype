@@ -1,0 +1,89 @@
+@import "components/mixins";
+@import "components/variables";
+
+@import "components/datepicker";
+
+@import "data-tables/jquery.dataTables";
+@import "data-tables/dataTables";
+
+.conditions-group {
+  margin: 2em 0 0;
+  .field_with_errors { display: inline-block; }
+  & > .fields {
+    &:after {
+      color: $gray-light;
+      content: "ou";
+      @include border-radius(6px 6px 0px 0px);
+      font-weight: bold;
+      display: block;
+      margin: 0 0 0 32px;
+      text-align: left;
+      padding: .5em 1em;
+      line-height: 1em;
+      border-style: solid;
+      border-width: 1px 2px 0 1px;
+      border-color: $panel-default-border;
+    }
+    .dynamic-list {
+      margin: 0;
+      & > header {
+        line-height: 1.25em;
+        padding: 11px;
+        border-style: solid;
+        border-width: 1px 2px 3px 1px;
+        border-color: $panel-default-border;
+        @include border-radius(6px 0 0 6px);
+        h4 {
+          display: inline-block;
+          line-height: 1.428571429;
+          padding: 4px 0;
+          vertical-align: middle;
+          color: #555;
+          margin: 0;
+        }
+      }
+      & > .conditions-wrapper {
+        & > .fields {
+          border-style: solid;
+          border-width: 0 2px 0 1px;
+          border-color: $panel-default-border;
+          margin-left: 2em;
+          &:after {
+            content: "e";
+            background-color: $panel-default-heading-bg;
+            color: $gray-light;
+            display: block;
+            padding: 0.2em 1em;
+            line-height: 1em;
+          }
+          & > .condition-section {
+            padding: 11px;
+            .form-group {
+              width: 22%;
+              .form-control { width: 100%; }
+            }
+          }
+        }
+      }
+      & > .add-condition {
+        padding: 11px 0;
+        border-style: solid;
+        border-width: 0px 2px 3px 1px;
+        border-color: $panel-default-border;
+        margin: 0 0 1em 2em;
+        @include border-radius(0 0 6px 6px);
+      }
+    }
+  }
+}
+
+.add-group {
+  padding: 11px 0;
+  border-style: solid;
+  border-width: 1px 2px 3px 1px;
+  border-color: $panel-default-border;
+  @include border-radius(6px 0 6px 6px);
+  margin: 0 0 2em 0;
+}
+
+.marked_for_destruction { display: none; }

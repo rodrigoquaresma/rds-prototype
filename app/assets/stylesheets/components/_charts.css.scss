@@ -1,0 +1,118 @@
+@import "components/variables";
+@import "components/mixins";
+
+.percent-variation { display: inline-block; text-indent: 15px; }
+.percent-variation.up { background: image-url( 'sprite.png' ) -493px -128px no-repeat; }
+tr:hover .percent-variation.up { background: image-url( 'sprite.png' ) -493px -178px no-repeat; }
+.percent-variation.down { background: image-url( 'sprite.png' ) -493px -103px no-repeat; }
+tr:hover .percent-variation.down { background: image-url( 'sprite.png' ) -493px -153px no-repeat; }
+
+.chart-wrapper {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+.chart-legend {
+  ul {
+    margin: 0;
+    li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: .85em;
+      & > span {
+        font-size: 1.25em;
+        display: inline-block;
+        height: 1em;
+        margin-right: 0.33em;
+        padding: 0;
+        text-indent: -3000px;
+        width: 1em;
+        line-height: 1em;
+        @include border-radius(3px);
+        &.graph-item-one { background: #d07c2a; }
+        &.graph-item-two { background: #e4d17a; }
+        &.graph-item-three { background: #87a579; }
+        &.graph-item-four { background: #718f99; }
+        &.graph-item-fifth { background: #DB8989; }
+        &.graph-item-sixth { background: #A58AC0; }
+      }
+    }
+  }
+}
+
+// analytics advanced
+.chart-legend-group {
+  margin:0;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #DDD #F5F5F5 #F5F5F5 #DDD;
+  @include border-radius($border-radius-base);
+  padding: 10px;
+  background-color: transparent;
+  margin-top:1em;
+  & > .row {
+    margin:0 -5px;
+    & > [class^="col-xs-"] {
+      padding:5px;
+    }
+  }
+  .subchannel-group {
+    margin-bottom:0;
+    .subchannel-group-item {
+      // padding:0;
+    }
+  }
+  .subchannel-name {
+    max-width:816px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.btn-chart-1,
+.btn-chart-2,
+.btn-chart-3,
+.btn-chart-4,
+.btn-chart-5,
+.btn-chart-6,
+.btn-chart-7,
+.btn-chart-8,
+.btn-chart-9,
+.btn-chart-10,
+.btn-chart-11,
+.btn-chart-12 {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+  &:hover {
+    transition: 300ms box-shadow;
+  }
+  .checkbox {
+    margin:0;
+  }
+}
+
+$btn-chart-types:
+    ( 'btn-chart-1' $btn-chart-1-color $btn-chart-1-bg $btn-chart-1-border
+    , 'btn-chart-2' $btn-chart-2-color $btn-chart-2-bg $btn-chart-2-border
+    , 'btn-chart-3' $btn-chart-3-color $btn-chart-3-bg $btn-chart-3-border
+    , 'btn-chart-4' $btn-chart-4-color $btn-chart-4-bg $btn-chart-4-border
+    , 'btn-chart-5' $btn-chart-5-color $btn-chart-5-bg $btn-chart-5-border
+    , 'btn-chart-6' $btn-chart-6-color $btn-chart-6-bg $btn-chart-6-border
+    , 'btn-chart-7' $btn-chart-7-color $btn-chart-7-bg $btn-chart-7-border
+    , 'btn-chart-8' $btn-chart-8-color $btn-chart-8-bg $btn-chart-8-border
+    , 'btn-chart-9' $btn-chart-9-color $btn-chart-9-bg $btn-chart-9-border
+    , 'btn-chart-10' $btn-chart-10-color $btn-chart-10-bg $btn-chart-10-border
+    , 'btn-chart-11' $btn-chart-11-color $btn-chart-11-bg $btn-chart-11-border
+    , 'btn-chart-12' $btn-chart-12-color $btn-chart-12-bg $btn-chart-12-border
+    );
+
+@each $type in $btn-chart-types {
+  .#{nth($type, 1)} {
+    &.active {
+      @include button-variant(nth($type, 2), nth($type, 3), nth($type, 4));
+      box-shadow: inset 0px -6px 0px -3px nth($type, 3);
+    }
+    &:hover {
+      box-shadow: inset 0px -6px 0px -3px nth($type, 3);
+    }
+  }
+}

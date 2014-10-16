@@ -1,0 +1,73 @@
+html, body, h1, h2, h3, h4, p, span, input, textarea, * { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+html, body {
+  font-size: 1.2em;
+  line-height: 120%;
+  background: #FFF;
+  color: #888;
+}
+#container { background: #FFF; }
+#header, #footer { color: #888; }
+h1, h2, h3, h4, p { margin: 0.7em 0 0.3em 0; line-height: 120%; }
+h1, h2, h3, h4 { font-weight: bold; color: #b86443; }
+h1 { font-size: 1.4em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.1em; }
+p, form, label, input, textarea, table, td, li { font-size: 0.85em; }
+small { font-size: 0.6em; }
+strong { color: #b86443; }
+a, a:visited { color: #000; text-decoration: none; border-bottom: 1px dashed #000; }
+a:hover { background-color: #FFF; color: #b86443; }
+
+html, body, #container, #header, #container > section > div, #footer { position: relative; }
+html, body { text-align: center; margin: 0; padding: 0; }
+#container { width: 900px; padding: 15px; margin: 0 auto; text-align: left; }
+#container > #header, #container > #footer, #container > section, #center { clear: both; }
+#center { width: 66%; margin: 0 auto; }
+.menu-horizontal li { display: inline; }
+hr { border: 0; }
+.hr { width: 50%; margin: 1em auto; border-bottom: 0.1em dashed #888; }
+.txtaligncenter { text-align: center; }
+
+/* Layout */
+#header { text-align:center; }
+#header #title { 
+  background-color:#666;
+  color:#FFF;
+  display:inline-block;
+  text-transform:uppercase;
+  font-size:1em;
+  padding:0.4em 0.7em;
+  margin:0.3em 0 0.5em 0;
+}
+#header #title a { background-color:#666; color:#FFF; border:0; }
+#header #desc { width:70%; margin:0.3em auto; font-size:1em; }
+#header #desc strong { font-weight:normal; }
+
+#home #header #title { font-size:1.4em; }
+#home #header #desc { color:#888; font-size:1.3em; }
+#home #header #desc strong { color:#b86443; }
+
+#left, #right { xtext-align:justify; }
+#left { width:59%; float:left; }
+#right { width:39%; float:right; }
+#left { width:48%; float:left; }
+#right { width:48%; float:right; }
+#home #center { padding:1em; }
+
+form .field { margin:0 0 0.6em 0; }
+form .field small { display:inline; }
+textarea { width:100%;  }
+
+#footer { font-size:0.6em; text-align:center; color:#AAA; margin-top:3em; }
+#footer a { border:0; }
+#footer img { vertical-align:text-bottom; }
+
+.message { width:80%; font-size:0.7em; text-align:center; margin:0 auto; padding:0.2em 0.2em; color:#FFF; }
+.error, .alert { background-color:#b8716a; }
+.success, .notice { background-color:#99b379; }
+.warning { background-color:#fffedd; color:#888; }
+input.disabled { background-color:#f1f1f1; }
+
+#center { width:90%; }
+h1 { color:#333; }

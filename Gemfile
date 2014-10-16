@@ -25,9 +25,9 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
   # gem "asset_sync"
-  # gem 'i18n-js'
-  # gem "js-routes"
-  # gem "mousetrap-rails"
+  gem 'i18n-js'
+  gem "js-routes"
+  gem "mousetrap-rails"
 
 end
 

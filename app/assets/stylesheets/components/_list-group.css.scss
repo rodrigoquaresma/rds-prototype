@@ -1,0 +1,61 @@
+@import "components/variables";
+@import "components/mixins";
+
+@import "bootstrap/list-group";
+
+.list-group {
+  .list-group-header {
+    background-color: $panel-default-heading-bg;
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 18px;
+      color: inherit;
+    }
+  }
+}
+.list-actions {
+  & > li {
+    & > a {
+      display: inline-block;
+      margin: 0 0 5px;
+    }
+    & > p {
+      font-size: 14px;
+      color: $gray-light;
+      margin: 0 0 11px 1.4285em;
+    }
+  }
+}
+.list-group-info {
+  word-break: break-word;
+  small { color: $gray-light; }
+  small,
+  p,
+  address,
+  .form-group {
+    margin-bottom: 0;
+  }
+  p.help-block { margin-top: 0; }
+}
+.list-group-mail-data {
+  background-image: image-url( 'bg-mail-letter.png' );
+  background-size: 60px;
+  word-break: break-word;
+}
+.list-group-leads {
+  & > a {
+    h4, p { margin: 0; }
+    h4 {
+      color: $link-color;
+      text-decoration: underline;
+      line-height: 1em;
+      margin-bottom: .25em;
+      word-break: break-word;
+    }
+    p {
+      font-size: .75em;
+      color: $gray-light;
+    }
+  }
+}

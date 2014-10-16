@@ -1,0 +1,258 @@
+@import "components/variables";
+@import "components/mixins";
+
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+h1, .h1 { color: $brand-secundary; font-weight: 200; }
+h2, .h2 { color: lighten($gray, 25%); font-weight: 200; }
+h3, .h3 { color: lighten($gray, 20%); font-weight: 300; }
+h4, .h4 { color: lighten($gray, 15%); font-weight: 300; }
+h5, .h5 { color: lighten($gray, 10%); font-weight: 400; }
+h6, .h6 { color: lighten($gray, 05%); font-weight: 400; }
+
+h1 time, .h1 time,
+h2 time, .h2 time,
+h3 time, .h3 time,
+h4 time, .h4 time,
+h5 time, .h5 time,
+h6 time, .h6 time {
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 1.5em;
+  background-color: #e5e5e5;
+  padding: .25em .5em;
+  @include border-radius(4px);
+}
+.text-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+h1 small, .h1 small,
+h2 small, .h2 small,
+h3 small, .h3 small,
+h4 small, .h4 small,
+h5 small, .h5 small,
+h6 small, .h6 small {
+  // opacity:0.7;
+}
+
+@import "bootstrap/code";
+@import "bootstrap/grid";
+.row-nogutter,
+.form-horizontal .form-group.row-nogutter {
+  margin-right: 0;
+  margin-left: 0;
+  > [class^='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.row-gutter-xs,
+.form-horizontal .form-group.row-gutter-xs {
+  margin-right: -5px;
+  margin-left: -5px;
+  > [class^='col-'] {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+.row-gutter-sm,
+.form-horizontal .form-group.row-gutter-sm {
+  margin-right: -10px;
+  margin-left: -10px;
+  > [class^='col-'] {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+
+@import "bootstrap/forms";
+.header-form .form-group { margin: 32px 0 0 0; }
+.field_with_errors input,
+.field_with_errors textarea,
+input.error,
+textarea.error {
+  background: $state-danger-bg !important;
+  border: 1px solid $state-danger-border !important;
+}
+
+@import "components/buttons";
+
+@import "bootstrap/component-animations";
+@import "bootstrap/glyphicons";
+@import "bootstrap/dropdowns";
+@import "bootstrap/button-groups";
+@import "bootstrap/input-groups";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
+@import "bootstrap/badges";
+@import "bootstrap/jumbotron";
+@import "bootstrap/thumbnails";
+@import "bootstrap/alerts";
+@import "bootstrap/media";
+@import "bootstrap/wells";
+@import "bootstrap/close";
+@import "bootstrap/modals";
+.modal-content {
+  .modal-body {
+    background-color: #fff;
+    padding-bottom: 10px;
+  }
+  .modal-footer { margin-top:0; }
+}
+@import "bootstrap/tooltip";
+@import "bootstrap/popovers";
+.popover-content { word-break: break-word; font-weight: normal; }
+@import "bootstrap/carousel";
+@import "bootstrap/utilities";
+@import "bootstrap/responsive-utilities";
+
+//Refactoring
+@import "components/progress-bars";
+@import "components/navs";
+@import "components/breadcrumbs";
+@import "components/labels";
+@import "components/panels";
+@import "components/tables";
+@import "components/list-group";
+
+//Exclusive
+@import "components/icons";
+@import "components/typeahead";
+@import "components/cards";
+@import "components/timeline";
+@import "components/charts";
+@import "components/pagination";
+@import "components/slats";
+@import "components/data-group";
+
+body { padding-top: 51px; }
+
+// header
+#page-header {
+  position: relative;
+  margin-bottom: 22px;
+  h1 {
+    display: inline-block;
+    margin-top: 35px;
+    margin-bottom: 11px;
+  }
+  h2 {
+    font-size: 33px;
+    margin-top: 0;
+    .popover-info { font-size: 0.45em; }
+  }
+  .page-helper {
+    display: inline-block;
+    margin-top: 35px;
+    margin-bottom: 0;
+    margin-left: 11px;
+  }
+  .page-action {
+    position: absolute;
+    margin: 0;
+    top: 44px;
+    right: 15px;
+  }
+  h2 + .page-action {
+    top: 91px;
+  }
+}
+
+// rodape com botoes
+.actions-footer {
+  color: $navbar-default-color;
+  background-color: $navbar-default-bg;
+  border-top: 1px solid $navbar-default-border;
+  padding: 30px;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  position: fixed;
+  z-index: 4;
+}
+
+// new helpers
+.clickable { display: block; }
+.word-break-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+.word-break-word {
+  display: inline-block;
+  word-break: break-word;
+}
+.help-inline {
+  display: inline-block;
+  line-height: 1.428571429;
+  padding: 6px 0 7px;
+  vertical-align: middle;
+  color: $gray;
+  margin: 0;
+}
+hr.invisible { margin-bottom:11px; }
+hr.spacer-xs { margin-top: 5px; margin-bottom: 5px; }
+hr.spacer-sm { margin-top: 10px; margin-bottom: 10px; }
+hr.spacer-md { margin-top: 15px; margin-bottom: 15px; }
+
+.btn-height-xs,
+.btn-height-sm,
+.btn-height,
+.btn-height-lg  { margin: 0 ; padding: 0; }
+
+.btn-height-xs  { line-height: 25px; }
+.btn-height-sm  { line-height: 33px; }
+.btn-height     { line-height: 36px; }
+.btn-height-lg  { line-height: 48px; }
+
+
+.option-login { text-align: center; margin-bottom: 20px; }
+.option-txt { background-color: #fff; line-height: 1.42em; padding: 0 20px; }
+hr.option-login-line { margin-top: -0.71em; }
+
+// TODO thumbnails for mail and lps
+ul.thumbnails {
+  .thumbnail {
+    @include border-radius($template-thumbnail-border-radius);
+    background-color: $template-thumbnail-bg;
+    overflow: hidden;
+    border: 1px solid $template-thumbnail-border;
+    padding: $template-thumbnail-padding;
+    .template-name {
+      font-size: $font-size-small;
+      margin: 0 0 11px;
+      padding-bottom: 0;
+      height: 1.466666em;
+      overflow: hidden;
+      font-weight: bold;
+      text-align: center;
+    }
+    .thumbnail-image {
+      margin: 0 auto;
+      text-align: center;
+      height: 190px;
+      width: 160px;
+    }
+  }
+  &#lp-templates {
+    cursor: pointer;
+    input { display: none; }
+    .thumbnail {
+      &:hover {
+        background-color: $template-thumbnail-hover-bg;
+      }
+      &.active {
+        border: 1px solid $template-thumbnail-active-border;
+        background-color: $template-thumbnail-active-bg;
+      }
+    }
+  }
+}

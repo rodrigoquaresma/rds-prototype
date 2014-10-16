@@ -1,0 +1,108 @@
+@import "components/variables";
+@import "components/mixins";
+@import "bootstrap/breadcrumbs";
+
+.steps-wrapper {
+  margin: 0 0 22px 0;
+  &:before,
+  &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+  ul.steps {
+    @include border-radius(6px);
+    list-style: none;
+    position: relative;
+    left: 0;
+    display: block;
+    float: left;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    li {
+      float: left;
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i})  {
+          z-index: (10-$i);
+        }
+      }
+      position: relative;
+      span {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        display: block;
+        float: none;
+        padding: 0.5em 0 0.5em 2em;
+        color: #cccccc;
+        text-decoration: none;
+        margin-right: 0;
+        background: #f7f7f7;
+        &:before {
+          z-index: -1;
+          content: "";
+          display: block;
+          position: absolute;
+          top: -0.4em;
+          width: 3em;
+          height: 3em;
+          background: #f7f7f7;
+          @include border-radius(12px);
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          left: auto;
+          right: -1em;
+          border: 4px solid #ffffff;
+          border-bottom: none;
+          border-left: none;
+        }
+      }
+      &:first-child span {
+        @include border-left-radius(6px);
+        padding: 0.5em 0 0.5em 1em;
+      }
+      &:last-child span {
+        @include border-right-radius(6px);
+        padding: 0.5em 1em 0.5em 2em;
+      }
+      &.past {
+        span {
+          font-weight: normal;
+          color: #9c9c9c ;
+          text-decoration: none;
+          background-color: #f7f7f7;
+          &:before {
+            background-color: #f7f7f7;
+          }
+          a {
+            font-weight: normal;
+          }
+        }
+      }
+      &.active {
+        span {
+          font-weight: bold;
+          text-decoration: none;
+          background-color: lighten($link-color, 50%);
+          &:before {
+            background-color: lighten($link-color, 50%);
+          }
+          a {
+            color: $link-color;
+          }
+        }
+      }
+      &.disabled {
+        a {
+          color: #cccccc;
+        }
+      }
+    }
+  }
+}

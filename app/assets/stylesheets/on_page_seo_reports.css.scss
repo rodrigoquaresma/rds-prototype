@@ -1,0 +1,73 @@
+@import "components/mixins";
+@import "components/variables";
+
+div.grade-report {
+  table tr {
+    .progress {
+      float: right;
+      width: 150px;
+      height: 1em;
+      margin: 0;
+    }
+    &.good-sign td .progress-bar { background: #74b45a; }
+    &.average-sign td .progress-bar { background: #e4a12c; }
+    &.bad-sign td .progress-bar { background: #b13939; }
+  }
+
+  .grade {
+    text-align: center;
+    span {
+      font-size: .9em;
+      color: #6B6B6B;
+      display: block;
+    }
+    strong {
+      color: #6b7376;
+      font-size: 3em;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 #484d4f, 0 1px 0 #f2f5f6;
+      margin-left: 5px;
+    }
+  }
+}
+
+div.checklist-panel dl {
+  margin-bottom: 0;
+  dt {
+    a {
+      border-bottom: none;
+      color: #463a33;
+      display: block;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      text-indent: 10px;
+      &:before {
+        font-family: 'xicons';
+        margin-right: 10px;
+      }
+      &:after {
+        content:'';
+        display: block;
+        height: 40px;
+        margin: 0 10px 0 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 7px;
+      }
+    }
+    &.correct-sign a:before { content: '\e61b'; color: #74b45a; }
+    &.problem-sign a { color: #b83636; }
+    &.problem-sign a:before { content: '\e661'; color: #b83636; }
+    &.failed-sign a:before { content: '\e61b'; color: #74b45a; }
+  }
+  dd {
+    border-top: 1px solid #ccc;
+    display: none;
+    padding: 20px 35px 10px 35px;
+    br { margin: 0 0 10px 0; }
+    &+dt { border-top: 1px solid #ccc; }
+  }
+}

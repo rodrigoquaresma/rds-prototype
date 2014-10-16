@@ -1,0 +1,130 @@
+// This is a manifest file that'll be compiled into including all the files listed below.
+// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
+// be included in the compiled file accessible from http://example.com/assets/application.js
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+//= require jquery
+//= require bootstrap
+//= require flexslider/jquery.flexslider-min
+
+(function($){
+
+	$(document).ready(function (){
+		App.init();
+
+		$('.compare').click(function(){
+			// $(this).removeClass('up').addClass('down');
+			$('#features tbody').slideToggle();
+			$('#features tfoot').slideToggle();
+		});
+
+		$('.plan1').mouseover(function(){ $('.plan1,.plan0').addClass('hover'); });
+		$('.plan2').mouseover(function(){ $('.plan2,.plan0').addClass('hover'); });
+		$('.plan3').mouseover(function(){ $('.plan3,.plan0').addClass('hover'); });
+		$('.plan4').mouseover(function(){ $('.plan4').addClass('hover'); });
+
+		$('.plan1').mouseout(function(){ $('.plan1,.plan0').removeClass('hover'); });
+		$('.plan2').mouseout(function(){ $('.plan2,.plan0').removeClass('hover'); });
+		$('.plan3').mouseout(function(){ $('.plan3,.plan0').removeClass('hover'); });
+		$('.plan4').mouseout(function(){ $('.plan4').removeClass('hover'); });
+
+		$('.plan1').click(function(){
+			$('[class*="plan"],[class*="package"]').removeClass('selected');
+			$('#plan2-xaxis,#plan3-xaxis,.step-callus,#features-summary .plan2,#features-summary .plan3').hide();
+			$('.plan1,.plan0,.package5').addClass('selected');
+			$('#plan-summary .plan span').html($('#plan1-xaxis .package5').attr('data-plan'));
+			$('#plan-summary .number-leads span').html($('#plan1-xaxis .package5').find('.limit').html());
+			$('#plan-summary .price').html($('#plan1-xaxis .package5').find('.price').html());
+			$('#plan1-xaxis,.step2,.step3').show();
+			$('#bt-signup').attr('href', "/assinar/"+($('#plan1-xaxis .selected').attr('data-plan-code')));
+		});
+		$('.plan2').click(function(){
+			$('[class*="plan"],[class*="package"]').removeClass('selected');
+			$('#plan1-xaxis,#plan3-xaxis,.step-callus,#features-summary .plan3').hide();
+			$('.plan2,.plan0,.package5').addClass('selected');
+			$('#plan-summary .plan span').html($('#plan2-xaxis .package5').attr('data-plan'));
+			$('#plan-summary .number-leads span').html($('#plan2-xaxis .package5').find('.limit').html());
+			$('#plan-summary .price').html($('#plan2-xaxis .package5').find('.price').html());
+			$('#plan2-xaxis,.step2,.step3,#features-summary .plan2').show();
+			$('#bt-signup').attr('href', "/assinar/"+($('#plan2-xaxis .selected').attr('data-plan-code')));
+		});
+		$('.plan3').click(function(){
+			$('[class*="plan"],[class*="package"]').removeClass('selected');
+			$('#plan1-xaxis,#plan2-xaxis,.step-callus').hide();
+			$('.plan3,.plan0,.package5').addClass('selected');
+			$('#plan-summary .plan span').html($('#plan3-xaxis .package5').attr('data-plan'));
+			$('#plan-summary .number-leads span').html($('#plan3-xaxis .package5').find('.limit').html());
+			$('#plan-summary .price').html($('#plan3-xaxis .package5').find('.price').html());
+			$('#plan3-xaxis,.step2,.step3,#features-summary .plan2,#features-summary .plan3').show();
+			$('#bt-signup').attr('href', "/assinar/"+($('#plan3-xaxis .selected').attr('data-plan-code')));
+		});
+		$('.plan4').click(function(){
+			$('[class*="plan"],[class*="package"]').removeClass('selected');
+			$('.step2,.step3').hide();
+			$('.plan4').addClass('selected');
+			$('.step-callus').show();
+		});
+
+		$('[class*="package"]').click(function(){
+			$('[class*="package"]').removeClass('selected');
+			$(this).addClass('selected');
+
+			if ($(this).attr('class').indexOf('packageover') != -1) {
+				$('.step3').hide();
+				$('.step-callus').show();
+			} else {
+				$('.step-callus').hide();
+				$('.step3').show();
+			}
+
+			$('#plan-summary .number-leads span').html($(this).find('.limit').html());
+			$('#plan-summary .price').html($(this).find('.price').html());
+			$('#bt-signup').attr('href', "/assinar/"+($(this).attr('data-plan-code')));
+		});
+
+		$('.reasons ul a').click(function(){
+			$('.reasons ul a').removeClass('selected');
+			$('.reasons .boxreasons').hide();
+			$(this).addClass('selected');
+			$($(this).attr('href')).show();
+			return false;
+		})
+
+	});
+
+	var App = {
+		init : function(){
+			$('.flexslider').flexslider({
+				slideshow: true,
+				slideshowSpeed: 5000,
+				animationDuration: 600,
+				directionNav: false
+			});
+			$('#twitter, #facebook, #googleplus, #rss, .tooltip-link').tooltip();
+			$('.lista-planos div[rel=tooltip]').tooltip({ placement: "bottom" });
+			App.handleEvents();
+		},
+
+		handleEvents : function(){
+			$('#volta-topo').bind('click', App.scrollSection);
+			$('.back-top').bind('click', App.scrollFeature);
+			$('[class^="feature-"]').bind('click', App.scrollFeature);
+			$('.show-content').bind('click', App.showContent);
+		},
+		scrollSection : function(){
+			$('html, body').animate({ scrollTop:0 }, 'slow');
+			return false;
+		},
+		scrollFeature : function(){
+			var jqThis = $(this).attr('href');
+			var offset = $(jqThis).offset().top;
+			$('html, body').animate({ scrollTop:offset }, 'slow');
+			return false;
+		},
+		showContent : function(){
+			$('.hidden-content').slideToggle('fast');
+			return false;
+		}
+	};
+})(jQuery);

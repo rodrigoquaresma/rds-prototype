@@ -1,0 +1,33 @@
+@import "components/mixins";
+@import "components/variables";
+@import "social_media_post";
+
+form#add-item-form { display: none; }
+
+#socialmedia_monitor {
+  p.mention { word-break: break-word; }
+  .list-terms .list-terms-item {
+    .xicon-twitter, 
+    .xicon-facebook {
+      font-size: 1.2em;
+    }
+    .xicon-twitter { color: $brand-twitter; }
+    .xicon-facebook { color: $brand-facebook; }
+    &:hover {
+      background-color: $gray-lighter;
+      .options { visibility: visible; }
+    }
+    .options {
+      visibility: hidden;
+      text-align: right;
+      margin-bottom: 0;
+    }
+    .title {
+      margin-bottom: 0;
+      margin-top: 0px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

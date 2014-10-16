@@ -1,0 +1,78 @@
+@import "components/mixins";
+@import "components/variables";
+
+@import "select2";
+@import "select2-bootstrap";
+@import "select2/style-select2";
+
+#add-user-form {
+  display: none;
+  margin: 0;
+  .form-actions { margin-top: 0; }
+}
+
+#config .text { *display:inline; zoom:1; }
+
+#account-users-list {
+  list-style: none;
+  margin: 24px 0 10px 0;
+  > li {
+    background: #f3f2eb;
+    border: 1px solid #f3f2eb;
+    border-radius: 3px;
+    display: block;
+    margin: 10px 0 0 0;
+    overflow: hidden;
+    padding: 5px 10px;
+    &:hover { border: 1px solid #d4d4d4; }
+    &:hover > a { visibility: visible; }
+    > strong { float: left; margin: 0 10px 0 0; }
+    > time { display: inline; font-size: 11px; }
+  }
+  > li > a.delete-user-link {
+    background: image-url( 'sprite.png' ) -1px -95px;
+    border-bottom: none;
+    display: block;
+    float: right;
+    height: 11px;
+    margin: 5px 0 0 0;
+    text-indent: -3000px;
+    visibility: hidden;
+    width: 11px;
+    &:hover { background: image-url( 'sprite.png' ) -1px -106px; }
+  }
+}
+
+span.status-subdomain {
+  margin: 0 10px 0px 0;
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+span.status-subdomain.working {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+span.status-subdomain.not-working {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+}
+
+.alert-block {
+  color: #c09853;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 19px 19px 14px 19px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

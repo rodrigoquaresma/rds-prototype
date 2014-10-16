@@ -1,0 +1,145 @@
+#= require typeahead.rd-custom
+
+jQuery ->
+
+  typeaheadObj = (name, header, autocomplete_field, query_string, filter_function, view_template) ->
+    {
+      name: "es-#{name}-#{query_string}".replace(".","-").replace('#', ''),
+      template: view_template,
+      header: "<h4 class=\"tt-header\">#{header}</h4>",
+      minLength: 2,
+      remote: {
+        url: "<%= ENV['ELASTICSEARCH_URL'] %>/leads/lead/_search?pretty=%QUERY#{name}",
+        beforeSend: (jqXhr, settings) ->
+          settings.type = 'POST'
+          settings.hasContent = true
+
+          query = $(query_string).val()
+
+          words = query.split(" ");
+          if(words.length > 2 || query.indexOf("=") != -1 || query.indexOf(":") != -1 || query.indexOf(" AND ") != -1 || query.indexOf(" OR ") != -1)
+            jqXhr.abort();
+
+          settings.data =  "{\"query\":{\"query_string\":{ \"query\":\"#{name}.#{autocomplete_field}: " + query + "\"}},\"filter\":{\"term\":{\"leads_manager.uuid\":\"#{$("#leads_manager").val()}\"}}, \"size\":10}"
+          settings.contentType = 'application/json; charset=utf-8';
+
+          return true
+        ,
+        filter: (data) ->
+          filter_function(data, name, $(query_string).val())
+      },
+      engine: Hogan
+    }
+
+  filter_excluding_id = (data, name, query) ->
+    results = []
+    lead_id = $('#merge-lead-id').val()
+    for hit in data.hits.hits
+      company = if (hit._source.lead.company?) then hit._source.lead.company.name else ''
+      results.push({
+                    template: mount_template(hit._source.lead),
+                    value: hit._source.lead.name,
+                    company: company,
+                    unique_key: hit._id,
+                    job_title: hit._source.lead.job_title,
+                    created_at: hit._source.lead.created_at,
+                    tokens: [hit._source.lead.name],
+                  }) if(lead_id != hit._id)
+
+    return results
+
+  filter_attribute = (data, name, query) ->
+    results = []
+    for hit in data.hits.hits
+      template_val = mount_template(hit._source.lead)
+      results.push({
+                    template: mount_template(hit._source.lead),
+                    value: hit._source.lead.name ,
+                    unique_key: "#{hit._id}Lead",
+                    tokens: [hit._source.lead.name],
+                    type: 'lead',
+                    lead_id: hit._id,
+                    hits: data.hits.hits.length
+                  })
+    return results
+
+  mount_template = (lead) ->
+    tmpl = "<span> #{lead.name} </span>"
+    if(has(lead.job_title) && lead.company?)
+      return "#{tmpl} <span> #{lead.job_title} | #{lead.company.name} </span>"
+    if(has(lead.job_title))
+      return "#{tmpl} <span> #{lead.job_title} </span>"
+    if(lead.company?)
+      return "#{tmpl} <span> #{lead.company.name} </span>"
+    return tmpl
+
+  has = (property) ->
+    property != "" && property != null
+
+  filter_company = (data, name, query) ->
+    results = []
+    for hit in data.hits.hits
+      results.push({
+                    company_id: hit._source.lead.company.id,
+                    unique_key: "#{hit._source.lead.company.id}Company",
+                    value: hit._source.lead.company.name,
+                    tokens: [hit._source.lead.company.name],
+                    type: 'company'
+                  })
+
+    return results
+
+  filter_tags = (data, name, query) ->
+    results = []
+    for hit in data.hits.hits
+      for tag in hit._source.lead['tags']
+        tag_words = tag.name.split(" ")
+        for tag_word in tag_words
+          starts_with_query = (tag_word.substring(0, query.length) == query)
+          if(starts_with_query)
+            results.push({
+                          unique_key: "#{hit._id}Tag",
+                          value: tag.name,
+                          tokens: [tag.name],
+                          type: 'tag'
+                        })
+    return results
+
+  typeaheadField = $('#query').typeahead([
+    typeaheadObj('name', 'Nome', 'autocomplete', '#query', filter_attribute, '{{{template}}}'),
+    typeaheadObj('company.name', 'Empresa', 'autocompany','#query', filter_company, '{{value}}'),
+    typeaheadObj('tags.name', 'Tags', 'auto','#query', filter_tags, '{{value}}')
+  ])
+
+  mergeTypeahead = $('#merge-leads-query').typeahead([
+    typeaheadObj('name', 'Nome', 'autocomplete', '#merge-leads-query', filter_excluding_id, '{{{template}}}')
+  ])
+
+  $('#merge-leads-query').bind
+    'typeahead:selected': (obj, datum) ->
+      $('#from_id').val(String(datum.unique_key))
+      $('#from').attr('title', String(datum.value))
+
+      $('#selected-lead .lead-name').html(datum.value)
+      $('#selected-lead .job_and_company').html(String(datum.job_title) + " | " + String(datum.company))
+      $('#selected-lead .since').html("Desde #{I18n.l("time.formats.long", datum.created_at)}")
+      $('#merge-alert').show()
+      $('#selected-lead').css('opacity','1')
+      $('#merge_leads_button').removeAttr('disabled');
+
+  typeaheadField.bind
+    'typeahead:selected': (evt, datum) ->
+      if(datum.type == 'company')
+        typeaheadField.unbind('keyup')
+        window.location.href = (Routes.company_path(datum.company_id))
+      else if(datum.type == 'lead')
+        typeaheadField.unbind('keyup')
+        window.location.href = (Routes.lead_path(datum.lead_id))
+      else
+        typeaheadField.unbind('keyup') # believe me...
+        $(this).closest("form").submit()
+
+  typeaheadField.on
+    keyup: (evt) ->
+      if (evt.keyCode == 13)
+        $(this).closest("form").submit()

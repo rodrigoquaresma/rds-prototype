@@ -1,0 +1,189 @@
+@import "components/dialog";
+@import "components/mixins";
+@import "components/variables";
+@import "jquery.action_menu";
+@import "components/charts";
+
+@import "select2";
+@import "select2/style-select2";
+@import "select2-bootstrap";
+
+
+.group-flows .flow-card {
+  .panel-heading .panel-title { color: $link-color; }
+  .panel-body {
+    .label-number { font-size: ceil(($font-size-large * 1.25)); }
+    .label-name { font-size: $font-size-small; }
+    .label-number,
+    .label-name {
+      color: $gray-light;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+  }
+}
+.flow-stats {
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+#lead_nurturing {
+  .header-trigger,
+  .header-actions {
+    margin-top: 2em;
+    font-size: 1.35em;
+    margin-bottom: 0;
+  }
+}
+
+.button-activation-flow {
+  span {
+    &.active-text { display: none; }
+    &.deactivate-text { display: none; }
+    &.activate-text { display: inline; }
+  }
+  &.active {
+    span {
+      &.active-text { display: inline; }
+      &.deactivate-text { display: none; }
+      &.activate-text { display: none; }
+    }
+    &[data-hover="on"]:hover {
+      color: white;
+      background-color: #d9534f;
+      border-color: #d43f3a;
+      @include box-shadow(none);
+      span {
+        &.active-text { display: none; }
+        &.deactivate-text { display: inline; }
+        &.activate-text { display: none; }
+      }
+    }
+  }
+}
+
+.checkbox {
+  .label-activation-flow {
+    color: $panel-default-text;
+    background-color: $panel-default-heading-bg;
+    border-color: $panel-default-border;
+    @include border-radius(6px);
+    padding: 8px 12px;
+    display: block;
+    &.active {
+      color: $panel-success-text;
+      background-color: $panel-success-heading-bg;
+      border-color: $panel-success-border;
+    }
+  }
+}
+
+.workflow-group {
+  margin: 11px 0 0;
+  .field_with_errors { display: inline-block; }
+  .select2-container {
+    width: 400px;
+    .select2-search-choice { word-break: break-word; }
+  }
+  & > .triggerfields,
+  & > .fields {
+    &:first-child {
+      .next-step { display: none; }
+    }
+    .nurturing-step {
+      margin: 0;
+      & > header {
+        line-height: 1.25em;
+        padding: 11px;
+        border-style: solid;
+        border-width: 1px 2px 3px 1px;
+        border-color: $panel-default-border;
+        @include border-radius(6px 6px 0 6px);
+        h4 {
+          display: inline-block;
+          line-height: 1.428571429;
+          padding: 4px 0;
+          vertical-align: middle;
+          color: #555;
+          margin: 0 11px 0 0;
+          cursor: move;
+        }
+        .days, .hours, .minutes { width: 60px; }
+
+      }
+
+      .owners_router_wrapper {
+        display: inline-block;
+        width: 400px;
+
+        .alert-warning {
+          margin-top: 11px;
+          margin-bottom: 5px;
+        }
+      }
+      & > .fields {
+        border-style: solid;
+        border-width: 0 2px 4px 1px;
+        border-color: $panel-default-border $panel-default-border $panel-default-heading-bg $panel-default-border;
+        margin-left: 2em;
+        padding: 11px;
+        select,
+        input[type=text] {
+          width: 400px;
+          margin: 0 11px 0 0;
+          vertical-align: top;
+        }
+      }
+      & > .add-action-container {
+        padding: 7px 0;
+        border-style: solid;
+        border-width: 0px 2px 3px 1px;
+        border-color: $panel-default-border;
+        margin: 0 0 1em 2em;
+        @include border-radius(0 0 6px 6px);
+      }
+      &.trigger {
+        border-style: solid;
+        border-width: 1px 2px 3px 1px;
+        border-color: $panel-default-border;
+        @include border-radius(6px);
+        margin-bottom: 11px;
+        & > .fields {
+          border-width: 0 0 4px 0;
+          margin-left: 0;
+          padding: 0;
+          &:after {
+            content: "e";
+            background-color: $panel-default-heading-bg;
+            color: $gray-light;
+            display: block;
+            padding: 0.2em 1em;
+            line-height: 1em;
+          }
+          select,
+          input[type=text] {
+            margin: 11px 0 11px 11px;
+          }
+          .btn {
+            margin: 11px;
+          }
+        }
+        & > .add-action-container {
+          border-width: 0 0 0 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.add-step-container {
+  padding: 11px 0;
+  border-style: solid;
+  border-width: 1px 2px 3px 1px;
+  border-color: $panel-default-border;
+  @include border-radius(6px);
+  margin: 0 0 2em 0;
+}

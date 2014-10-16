@@ -1,0 +1,71 @@
+*:first-child+html #keywords_panel table tr td span.value{  margin: -13px 0 0 -25px; } /** Stupid IE7 and its wrong margin values **/
+*:first-child+html #flash { width: 978px; height: 80px; padding-top: 55px; }
+*:first-child+html #flash.inside_app { position: absolute; padding-top: 25px; }
+*:first-child+html #flash.inside_app > div > div { width: auto; margin: 2px 20px; }
+*:first-child+html .ui-accordion > .ui-widget-content a.connect-button-google strong, *:first-child+html .ui-accordion > .ui-widget-content a.connect-button-twitter strong, *:first-child+html .ui-accordion > .ui-widget-content a.connect-button-facebook strong{ margin: -5px 0 0 -50px;}
+
+#conversion-summary li{ margin: 13px 5px; }
+ 
+*:first-child+html #socialmedia_monitor #terms{ display: block; width: 286px; }
+
+*:first-child+html #message-dialog { overflow: hidden; margin: 0 0 20px 0; padding: 20px 0 0 20px; }
+*:first-child+html #message-dialog > form > #schedule-options-panel{ width: 480px; overflow: hidden; }
+*:first-child+html #message-dialog > form > #schedule-options-panel > input{ text-indent: 3px; }
+*:first-child+html #message-dialog > form > #schedule-options-panel > input[type=radio]{ margin: 0 2px 0 0; }
+*:first-child+html #message-dialog > form > #schedule-options-panel > label.date-picker-icon{ display: none; }
+*:first-child+html #message-dialog > form > #schedule-options-panel > select { margin: 0;}
+*:first-child+html #message-dialog > form > #submit-panel{ margin: 0 20px 0 0; }
+*:first-child+html #message-dialog > form > #submit-panel.loading-container > div > input[type=submit]{ padding: 0 10px; }
+
+*:first-child+html #keywords_panel table tr td.keyword-ranking-value a{ margin: -24px 25px -24px 0;}
+*:first-child+html #widgets #funil .graph .legend div {  width: 165px;}
+*:first-child+html #widgets #funil .graph .legend span { margin-right: 5px; } 
+
+*:first-child+html .ui-accordion-content{ overflow: hidden; }
+
+@media \0screen { #leads_crm table tr td input[type=checkbox] { margin: 5px 0 0 0; } }
+@media \0screen { #leads_crm table tr th input[type=checkbox] { margin: 5px 0 0 0; } }
+*:first-child+html #leads_crm table tr td input[type=checkbox] { margin: -2px 0 0 0; }
+* *:first-child+html #leads_crm table tr th input[type=checkbox] { margin: -2px 0 0 0; }
+
+*:first-child+html #leads_crm span.lead-tag .delete-tag-link{ position: relative; }
+*:first-child+html #leads_crm div{ white-space: nowrap; }
+*:first-child+html #leads_crm #add-tags-wrapper #add-tags-form input[type=submit]{ width: 90px; }
+*:first-child+html #leads_crm #table-filter-wrapper input{ float: left; width: 195px; }
+*:first-child+html #leads_crm #table-filter-wrapper input[type=submit]{ float: right; width: 90px; }
+*:first-child+html #leads_crm #avatar > #add-tags-wrapper{ margin: 10px 0 0 50px; }
+
+*:first-child+html #leads_crm #info hr{ display: none; }
+*:first-child+html .flag-star-link, a.flag-star-link { display: block; margin-top: 1px; }
+
+*:first-child+html #leads_crm #avatar h3{ display: inline; }
+*:first-child+html #leads_crm #avatar p{ float: none; left: 0; margin: 0; }
+*:first-child+html #leads_crm #avatar div.loading-container.flag-star{ display: inline; }
+*:first-child+html #leads_crm #avatar a.flag-star-link{  background: image-url("sprite.png") 0 -82px no-repeat; display: block; width: 11px; height: 11px; line-height: 18px; margin: 0 0 0 3px; border-bottom: none; }
+
+*:first-child+html #chart-legend li > span{ display: block; float: left; margin: 5px 5px 0 0; }
+
+*:first-child+html .cell-indicator-up{ display: block; float: left; margin: 8px 5px 0 0; }
+
+table th a.glossary{ margin: 1px 0 0 3px; }
+
+*:first-child+html #training-center aside input[type=submit]{ padding: 0 5px; }
+
+*:first-child+html #account-users-list > li > a.delete-user-link{ margin: -15px 0 0 0; }
+
+*:first-child+html .interval-options-modal > form{ margin: -5px 0 0 -170px; }
+
+.action-link{ margin: 7px 0 0 0; }
+*:first-child+html .action-link, *:first-child+html .action-link:hover{ display: inline; text-indent: 0; width: auto; height: auto; background: none; }
+
+.signup input[type=submit] { height: 50px; }
+
+#nurturing-workflows-table{ table-layout: auto; }
+.table-actions-link.active{ border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4; }
+.table-actions-list{ border: 1px solid #d4d4d4; }
+
+*:first-child+html #workflow{ margin: 0; }
+*:first-child+html .nurturing-step > header > h4 > span{ margin: -15px 10px 0 -90px; }
+
+
+

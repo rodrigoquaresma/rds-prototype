@@ -1,0 +1,193 @@
+@import "components/mixins";
+@import "components/variables";
+@import "bootstrap/panels";
+
+.panel {
+  border: none;
+  padding: 4px;
+  background-color: $panel-bg;
+  .panel-heading,
+  .panel-filter,
+  .panel-body,
+  .panel-footer {
+    border: 0;
+    background-color: transparent;
+    @include border-radius(0);
+    color: $gray-light;
+  }
+  .panel-heading,
+  .panel-filter,
+  .panel-footer {
+    border-top: {
+      style: solid;
+      width: 1px;
+      color: $panel-border-color;
+    }
+    padding: $panel-heading-padding + 1;
+    &:first-child {
+      padding-top: $panel-heading-padding - 2;
+      border: none;
+    }
+    &:last-child {
+      border: none;
+    }
+  }
+  .extention .panel-heading,
+  .extention .panel-filter,
+  .extention .panel-footer {
+    border-top: {
+      style: solid;
+      width: 1px;
+      color: $panel-border-color;
+    }
+    padding: $panel-heading-padding + 1;
+  }
+  .panel-body + .panel-heading,
+  .panel-body + .panel-filter,
+  .panel-body + .panel-footer,
+  .list-group + .panel-heading,
+  .list-group + .panel-filter,
+  .list-group + .panel-footer {
+    border: none;
+  }
+  .panel-heading { padding-right: $panel-heading-padding - 6; }
+  .panel-filter {
+    &,
+    label,
+    .help-block,
+    .help-inline {
+      font-size: $font-size-small;
+      font-weight: normal;
+      margin-bottom: 0;
+      line-height: $line-height-base;
+      vertical-align: middle;
+    }
+    label,
+    .help-inline {
+      padding: 6px 0 7px;
+      color: $gray-light;
+      display: inline-block;
+      margin: 0;
+    }
+  }
+  .panel-body {
+    background-color: $panel-body-bg;
+    word-break: break-word;
+    @include border-radius($panel-border-radius - 1);
+    border: {
+      style: solid;
+      width: 1px;
+      color: $panel-border-color;
+    }
+  }
+  .panel-footer {
+    text-align: right;
+    padding-bottom: $panel-heading-padding - 3;
+  }
+
+  // list-group
+  .list-group {
+    border: {
+      style: solid;
+      width: 1px;
+      color: $panel-border-color;
+    }
+    @include border-radius($panel-border-radius - 1);
+    background: white;
+    > .list-group-item {
+      background: none;
+      border-width: 1px 0 0 0;
+      &:first-child {
+        border-top: 0;
+        @include border-radius($panel-border-radius - 1 $panel-border-radius - 1 0 0);
+      }
+      &:last-child { @include border-radius(0 0 $panel-border-radius - 1 $panel-border-radius - 1); }
+      &.list-group-item-header { background-color: lighten($panel-bg, 2%); }
+    }
+    &.list-group-hover > .list-group-item:hover { background-color: $panel-bg; }
+  }
+
+  // with table inside panel
+  .table {
+    margin-bottom: 0;
+  }
+}
+
+.panel-group {
+  .panel-heading { padding-bottom: $panel-heading-padding - 3; }
+  .panel-heading + .panel-collapse.in { margin-top: 3px; }
+}
+
+// panels collapse (with tiny)
+.panel.field-box {
+  margin: 0;
+  @include border-radius(0);
+  border-bottom: {
+    style: solid;
+    width: 1px;
+    color: $panel-border-color;
+  }
+  &:first-of-type {
+    @include border-radius($panel-border-radius $panel-border-radius 0 0);
+  }
+  &:last-of-type {
+    @include border-radius(0 0 $panel-border-radius $panel-border-radius);
+    border-bottom: 0;
+    margin-bottom: 22px;
+  }
+  & > .panel-heading {
+    padding: $panel-heading-padding + 5;
+    .panel-title > a {
+      display: block;
+      color: $link-color;
+    }
+  }
+  .mce-panel {
+    border: none;
+    margin: 0;
+  }
+}
+
+// social medias heading
+.panel {
+  .panel-heading-social {
+    padding-bottom: 6px;
+    .xicon-twitter2,
+    .xicon-twitter2  { color: $brand-twitter;  }
+    .xicon-facebook2 { color: $brand-facebook; }
+    img {
+      width: 40px;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+
+// datapicker
+.panel-filter {
+  .form-group-interval {
+    .date-picker {
+      width: 100px;
+    }
+  }
+}
+
+// menu dropdown @ heading
+.panel-heading-btn {
+  text-align: left;
+  display: inline-block;
+  border-left: 1px solid $panel-border-color;
+  padding: 0 .3333em 0 .6666em;
+  color: $gray-light;
+}
+
+// title
+.panel-title { line-height: $line-height-computed; }
+
+// Contextual variations
+.panel-default { background-color: $panel-default-heading-bg; }
+.panel-primary { background-color: $panel-primary-heading-bg; }
+.panel-success { background-color: $panel-success-heading-bg; }
+.panel-info    { background-color: $panel-info-heading-bg;    }
+.panel-warning { background-color: $panel-warning-heading-bg; }
+.panel-danger  { background-color: $panel-danger-heading-bg;  }

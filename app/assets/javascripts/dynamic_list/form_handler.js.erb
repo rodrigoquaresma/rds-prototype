@@ -1,0 +1,355 @@
+<% environment.context_class.instance_eval do %>
+  <% include DynamicListHelper %>
+  <% include ActionView::Helpers::JavaScriptHelper %>
+  <% include ActionView::Helpers::FormOptionsHelper %>
+  <% include ActionView::Helpers::FormTagHelper %>
+  <% include ActionView::Helpers::TranslationHelper %>
+<% end %>
+
+(function($){
+  $(document).ready(function (){
+    AutoCompleteHelper.init(Routes.auto_complete_tokens_dynamic_list_lists_path());
+    Conditions.initEvents();
+
+    $.each ($('.condition1-field'), function(index, condition1Field) {
+      Conditions.setupCondition2($(condition1Field));
+    });
+
+    $(this).on('nested:fieldAdded', function(event){
+      var condition1Field = event.field.find('.condition1-field');
+      Conditions.setupCondition2($(condition1Field));
+    });
+
+  });
+
+  var AutoCompleteHelper = {
+
+    values : {
+      tag : [],
+      job_title : [],
+      company : [],
+      on_event : []
+    },
+
+    init : function(url){
+      $.get(url, function(data){
+        AutoCompleteHelper.values = data;
+        AutoCompleteHelper.setupFields();
+      });
+    },
+
+    setupFields : function(){
+      inputs = $('.condition3 input');
+      $.each (inputs, function(index, condition3Field) {
+        var conditionGroup = Conditions.getConditionGroup($(condition3Field));
+        var condition2Field = Conditions.getCondition2Field(conditionGroup);
+        var type = condition2Field.val();
+        AutoCompleteHelper.updateAutoComplete(condition3Field, type);
+      });
+    },
+
+    updateAutoComplete : function(condition3Field, type){
+      if(type == "tag" || type == "job_title" || type == "company" || type == "on_event"){
+        var autocomplete_source = AutoCompleteHelper.values[type];
+        $(condition3Field).autocomplete({
+          source: autocomplete_source,
+          disabled: false
+        });
+      } else {
+        $(condition3Field).autocomplete({ disabled: true });
+      }
+    }
+  };
+
+  var Conditions = {
+
+    initEvents : function(){
+
+      var getConditionGroup = function(conditionField){
+        return conditionField.parents('.condition-section');
+      }
+      Conditions.getConditionGroup = getConditionGroup;
+
+      var getCondition1Field = function(conditionGroup){
+        return conditionGroup.find('.condition1-field').first();
+      }
+      Conditions.getCondition1Field = getCondition1Field;
+
+      var getCondition2Field = function(conditionGroup){
+        return conditionGroup.find('.condition2-field:enabled').first();
+      }
+      Conditions.getCondition2Field = getCondition2Field;
+
+      var getCondition3Field = function(conditionGroup){
+        return conditionGroup.find('.condition3-field:enabled').first();
+      }
+      var getCondition4Field = function(conditionGroup){
+        return conditionGroup.find('.condition4-field').first();
+      }
+      Conditions.getCondition4Field = getCondition4Field;
+
+      var setupCondition2 = function(condition1Field){
+        var condition1Type = condition1Field.val();
+        var conditionGroup = getConditionGroup(condition1Field);
+
+        if(isMailingCondition(condition1Type)){
+          showMailingConditions(conditionGroup);
+        } else {
+          hideMailingConditions(conditionGroup);
+        }
+
+        var condition2Field = getCondition2Field(conditionGroup);
+        updateCondition3.apply($(condition2Field), []);
+      }
+      Conditions.setupCondition2 = setupCondition2;
+
+      var updateCondition2 = function(){
+        var condition1Field = $(this);
+        var condition1Type = condition1Field.val();
+        var conditionGroup = getConditionGroup(condition1Field);
+        var condition2Field = getCondition2Field(conditionGroup);
+
+        if(isMailingCondition(condition1Type)){
+          showMailingConditions(conditionGroup);
+        } else if (condition1Type == "marked_sale") {
+          var condition3Field = getCondition3Field(conditionGroup);
+
+          condition3Field.attr("disabled", "disabled").addClass("hidden");
+          condition2Field.attr("disabled", "disabled").addClass("hidden");
+        } else {
+          hideMailingConditions(conditionGroup);
+          updateCondition2HTML(conditionGroup, condition1Type);
+        }
+
+        condition2Field = getCondition2Field(conditionGroup);
+        updateCondition3.apply(condition2Field, []);
+      }
+      Conditions.updateCondition2 = updateCondition2;
+
+      var isMailingCondition = function(type){
+        return type == "clicked" || type == "opened"
+      }
+
+      var updateCondition2HTML = function(conditionGroup, condition1Type) {
+        var condition2Field = getCondition2Field(conditionGroup);
+
+        var id = condition2Field.attr('id');
+        var name = condition2Field.attr('name');
+
+        condition2Field.replaceWith(getHtmlForCondition2(condition1Type));
+
+        condition2Field = getCondition2Field(conditionGroup);
+        condition2Field.attr("id", id);
+        condition2Field.attr("name", name);
+      }
+
+      var showMailingConditions = function(conditionGroup) {
+        conditionGroup.find(".condition2.properties").addClass("hidden").find(".condition2-field").attr("disabled", "disabled");
+        conditionGroup.find(".condition2.mailing").removeClass("hidden").find(".condition2-field").removeAttr("disabled", "disabled");
+      }
+
+      var hideMailingConditions = function(conditionGroup) {
+        conditionGroup.find(".condition2.mailing").addClass("hidden").find(".condition2-field").attr("disabled", "disabled");
+        conditionGroup.find(".condition2.properties").removeClass("hidden").find(".condition2-field").removeAttr("disabled", "disabled");
+      }
+
+      var getHtmlForCondition2 = function(condition1Type){
+        var new_second_field_html = "";
+        <% %w(contains not_contains conversion not_conversion filled not_filled lifecycle_stage opportunity).each do |condition1Type| %>
+        <%= "if (condition1Type == '#{condition1Type}') {".html_safe %>
+        <%= ("  new_second_field_html = \"" + escape_javascript(render_second_field(condition1Type).gsub(/\r/, ' ').gsub(/\n/, ' '))  + "\";").html_safe %>
+        <%= "}".html_safe %>
+        <% end %>
+        return new_second_field_html;
+      }
+
+      var updateCondition3 = function(){
+        var condition2Field = $(this);
+        var conditionGroup = getConditionGroup(condition2Field);
+        var condition3Field = getCondition3Field(conditionGroup);
+
+        setupCondition3(condition2Field);
+        AutoCompleteHelper.updateAutoComplete(condition3Field, condition2Field.val());
+      }
+
+      var setupCondition3 = function(condition2Field) {
+        var condition2Type = condition2Field.val();
+        var conditionGroup = getConditionGroup(condition2Field);
+        var condition1Type = getCondition1Field(conditionGroup).val();
+
+        if (condition1Type == "clicked" || condition1Type == "opened"){
+          setupCondition3ForMailing(conditionGroup);
+        } else {
+
+          var condition4Field = getCondition4Field(conditionGroup);
+          condition4Field.attr("disabled","disabled").addClass("hidden");
+
+          if (condition2Type == "traffic_source") {
+            setupCondition3ForTrafficSource(conditionGroup);
+          } else if (condition1Type == "lifecycle_stage" || condition1Type == "opportunity" || condition1Type == "marked_sale") {
+            var condition3Field = getCondition3Field(conditionGroup)
+            condition3Field.attr("disabled","disabled").addClass("hidden");
+          } else {
+            setupCondition3ForProperties(conditionGroup, condition2Type);
+          }
+        }
+
+      }
+      Conditions.setupCondition3 = setupCondition3;
+
+      var setupCondition3ForMailing = function(conditionGroup){
+        var condition3 = $(conditionGroup.find('.condition3'));
+        var condition1Field = getCondition1Field(conditionGroup);
+        var condition2Field = getCondition2Field(conditionGroup);
+        var condition4Field = getCondition4Field(conditionGroup);
+
+        var condition3Input = $(condition3).find('input');
+        var condition3Select = $(condition3).find('select');
+
+        condition3Input.attr("disabled","disabled").addClass("hidden");
+        condition3Select.removeAttr("disabled").removeClass("hidden");
+        condition4Field.attr("disabled","disabled").addClass("hidden");
+
+        var isCampaign = condition2Field.val()[0] == "c";
+        var isWorkflow = condition2Field.val()[0] == "w";
+        var isOpened = condition1Field.val() == "opened";
+        var isClicked = condition1Field.val() == "clicked";
+
+        if(isCampaign) {
+
+          if(isOpened) {
+            condition3Select.attr("disabled","disabled").addClass("hidden");
+
+          } else if(isClicked) {
+            var campaign_id = condition2Field.val().substr(2);
+            $.get(Routes.dynamic_list_campaign_urls_path(campaign_id), function(response) {
+              condition3Select.html(response);
+              retrieveConditionSelectValue(condition3Select);
+            });
+          }
+
+        } else if(isWorkflow) {
+          var workflow_id = condition2Field.val().substr(2);
+          $.get(Routes.dynamic_list_workflow_emails_path(workflow_id), function(response) {
+            condition3Select.html(response);
+            retrieveConditionSelectValue(condition3Select);
+
+            if(isClicked){
+              updateCondition4.apply(condition3Select, []);
+            }
+          });
+        }
+      }
+
+      var updateCondition4 = function() {
+        var condition3Field = $(this);
+        var conditionGroup = getConditionGroup(condition3Field);
+        var condition1Field = getCondition1Field(conditionGroup);
+        var condition2Field = getCondition2Field(conditionGroup);
+        var condition4Field = getCondition4Field(conditionGroup);
+
+        var isClicked = condition1Field.val() == "clicked";
+        var isWorkflow = condition2Field.val()[0] == "w";
+
+        if(isClicked && isWorkflow){
+          var workflow_id = condition2Field.val().substr(2);
+          var email_action_id = condition3Field.val();
+
+          $.get(Routes.dynamic_list_email_action_urls_path(workflow_id, email_action_id), function(response) {
+            condition4Field.html(response);
+            condition4Field.removeAttr("disabled").removeClass("hidden");
+            retrieveConditionSelectValue(condition4Field);
+          });
+        }
+      }
+
+      var setupCondition3ForTrafficSource = function(conditionGroup) {
+        var condition3 = $(conditionGroup.find('.condition3'));
+        var inputField = condition3.find('input');
+        var selectField = condition3.find('select');
+
+        selectField.html('<%= escape_javascript options_for_select(options_for_traffic_sources) %>');
+
+        inputField.attr("disabled","disabled");
+        inputField.addClass("hidden");
+        selectField.removeAttr("disabled");
+        selectField.removeClass("hidden");
+
+        retrieveConditionSelectValue(selectField);
+      }
+
+      var retrieveConditionSelectValue = function(selectField){
+        var selected = selectField.attr("data-selected");
+        if(selected != null && selected.length > 0) {
+          selectField.removeAttr("data-selected");
+          selectField.val(selected);
+        }
+      }
+
+      var setupCondition3ForProperties = function(conditionGroup, type) {
+        var condition3 = $(conditionGroup.find('.condition3'));
+        var inputField = condition3.find('input');
+        var select = condition3.find('select');
+
+        select.attr("disabled","disabled");
+        select.addClass("hidden");
+        inputField.removeAttr("disabled");
+        inputField.removeClass("hidden");
+
+        var placeholder = getThirdFieldPlaceholder(type);
+        inputField.attr("placeholder", placeholder);
+        if(type == "before" || type == "after"){
+          inputField.addClass("datepicker");
+          inputField.datepicker();
+        } else{
+          inputField.datepicker("destroy");
+          inputField.removeClass("datepicker");
+        }
+        if(type == 'more_than' || type == 'less_than' || type == 'exactly') {
+          inputField.addClass("number");
+        } else {
+          inputField.removeClass("number");
+        }
+      }
+
+      var getThirdFieldPlaceholder = function(type){
+        var placeholders = <%= third_field_placeholders_as_json %>;
+        if(placeholders[type] != null){
+          return placeholders[type];
+        } else {
+          return "<%= escape_javascript default_third_field_placeholder %>";
+        }
+      }
+
+      var handlePreview = function(e){
+        e.preventDefault();
+        var errorCallback = function(xhr, status, error){
+           $('#list_preview').html('<div class="text-danger"><p>Ops... ocorreu um problema.</p> <p><a class="btn btn-default" id="try-again"> Tentar novamente</a></p></div>')
+
+           $("#try-again").click(function() {
+             $('#preview_list_submit').trigger('click');
+           });
+        };
+        var completeCallback = function(xhr, status){
+          $('#hidden_preview_list_form_wrapper').empty();
+        };
+        PreviewHandler.preview($(this).closest('form'), Routes.preview_dynamic_list_lists_path(), errorCallback, completeCallback, true);
+      }
+
+      $('.condition1-field').live('change', updateCondition2);
+      $('.condition2-field').live('change', updateCondition3);
+      $('.condition3-field').live('change', updateCondition4);
+      $('#preview_list_submit').bind('click', handlePreview);
+
+      $(document).on('nested:fieldAdded', function(event){
+        AutoCompleteHelper.setupFields();
+      });
+
+      $('#test_dynamic_list').on('show.bs.modal', function (e) {
+        $('#preview_list_submit').trigger('click');
+      });
+
+    }
+
+  };
+})(jQuery);

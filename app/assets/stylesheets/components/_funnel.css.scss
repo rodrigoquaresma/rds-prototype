@@ -1,0 +1,106 @@
+@import "components/variables";
+@import "components/mixins";
+
+// funnel
+.panel-funnel-group {
+  .funnel-group-step:nth-child(1) {
+    .funnel-convertion-rate { display: none; }
+    .funnel-step-bar { width: 100%; }
+  }
+  .funnel-group-step:nth-child(2) {
+    .funnel-step-bar { width: 85%; }
+  }
+  .funnel-group-step:nth-child(3) {
+    .funnel-step-bar { width: 70%; }
+  }
+  .funnel-group-step:nth-child(4) {
+    .funnel-step-bar { width: 55%; }
+  }
+  .funnel-group-step:nth-child(5) {
+    .funnel-step-bar { width: 40%; }
+  }
+  .funnel-group-step:nth-child(6) {
+    .funnel-step-bar { width: 20%; }
+  }
+  .funnel-step-label {
+    line-height: 48px;
+  }
+}
+
+.funnel-group-step {
+  padding: 15px 0;
+  border-bottom: 1px solid $panel-default-border;
+  &:last-child {
+    border-bottom-width: 0;
+  }
+  .funnel-convertion-rate {
+    text-align: center;
+    background-color: white;
+    width: 80%;
+    margin: -31px auto 0;
+    line-height: 31px;
+    font-size: 13.6px;
+    color: $gray-light;
+  }
+  & > div > div:nth-child(1) > .funnel-convertion-rate { width: 40%; }
+  & > div > div:nth-child(2) > .funnel-convertion-rate { width: 40%; }
+}
+
+.funnel-step-label {
+  font-size: 24px;
+  color: $gray-light;
+  font-weight: 200;
+  margin: 0;
+}
+
+.funnel-step-bar {
+  border-radius: 3px;
+  background-color: $panel-default-heading-bg;
+  margin: 0 auto;
+}
+
+.funnel-step-current {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: $gray;
+  line-height: 48px;
+  border-radius: 3px;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.funnel-step-last,
+.funnel-step-goal {
+  display: block;
+  text-align: right;
+  background-color: #fff;
+  line-height: 24px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.funnel-step-variation {
+  display: block;
+  font-size: 20px;
+  line-height: 24px;
+  [class^="xicon-"] {
+    width: 0.6em;
+  }
+}
+.funnel-step-value {
+  display: block;
+  font-size: 13.6px;
+  line-height: 16px;
+  color: #737373;
+}
+
+.funnel-business {
+  padding-top: 0;
+  padding-bottom: 0;
+}

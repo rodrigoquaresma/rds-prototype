@@ -1,0 +1,145 @@
+@import "components/mixins";
+@import "components/variables";
+
+.row {
+  &.grid14 {
+    .col-xs-1 { width: 07.14285714285714%; }
+    .col-xs-2 { width: 14.28571428571428%; }
+    .col-xs-3 { width: 21.42857142857142%; }
+    .col-xs-4 { width: 28.57142857142857%; }
+    .col-xs-5 { width: 35.71428571428571%; }
+    .col-xs-6 { width: 42.85714285714285%; }
+    .col-xs-7 { width: 50.00000000000000%; }
+    .col-xs-8 { width: 57.14285714285714%; }
+    .col-xs-9 { width: 64.28571428571428%; }
+    .col-xs-10 { width: 71.42857142857142%; }
+    .col-xs-11 { width: 78.57142857142857%; }
+    .col-xs-12 { width: 85.71428571428571%; }
+    .col-xs-13 { width: 92.85714285714285%; }
+    .col-xs-14 { width: 100.00000000000000%; }
+    .col-xs-offset-0 { margin-left: 00.00%;}
+    .col-xs-offset-1 { margin-left: 07.14285714285714%; }
+    .col-xs-offset-2 { margin-left: 14.28571428571428%; }
+    .col-xs-offset-3 { margin-left: 21.42857142857142%; }
+    .col-xs-offset-4 { margin-left: 28.57142857142857%; }
+    .col-xs-offset-5 { margin-left: 35.71428571428571%; }
+    .col-xs-offset-6 { margin-left: 42.85714285714285%; }
+    .col-xs-offset-7 { margin-left: 50.00000000000000%; }
+    .col-xs-offset-8 { margin-left: 57.14285714285714%; }
+    .col-xs-offset-9 { margin-left: 64.28571428571428%; }
+    .col-xs-offset-10 { margin-left: 71.42857142857142%; }
+    .col-xs-offset-11 { margin-left: 78.57142857142857%; }
+    .col-xs-offset-12 { margin-left: 85.71428571428571%; }
+    .col-xs-offset-13 { margin-left: 92.85714285714285%; }
+    .col-xs-offset-14 { margin-left: 100.00000000000000%; }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  [class^="col-sm-"] {
+    float: left;
+  }
+  .row {
+    &.grid14 {
+      .col-sm-1 { width: 07.14285714285714%; }
+      .col-sm-2 { width: 14.28571428571428%; }
+      .col-sm-3 { width: 21.42857142857142%; }
+      .col-sm-4 { width: 28.57142857142857%; }
+      .col-sm-5 { width: 35.71428571428571%; }
+      .col-sm-6 { width: 42.85714285714285%; }
+      .col-sm-7 { width: 50.00000000000000%; }
+      .col-sm-8 { width: 57.14285714285714%; }
+      .col-sm-9 { width: 64.28571428571428%; }
+      .col-sm-10 { width: 71.42857142857142%; }
+      .col-sm-11 { width: 78.57142857142857%; }
+      .col-sm-12 { width: 85.71428571428571%; }
+      .col-sm-13 { width: 92.85714285714285%; }
+      .col-sm-14 { width: 100.00000000000000%; }
+      .col-sm-offset-0 { margin-left: 00.00%; }
+      .col-sm-offset-1 { margin-left: 07.14285714285714%; }
+      .col-sm-offset-2 { margin-left: 14.28571428571428%; }
+      .col-sm-offset-3 { margin-left: 21.42857142857142%; }
+      .col-sm-offset-4 { margin-left: 28.57142857142857%; }
+      .col-sm-offset-5 { margin-left: 35.71428571428571%; }
+      .col-sm-offset-6 { margin-left: 42.85714285714285%; }
+      .col-sm-offset-7 { margin-left: 50.00000000000000%; }
+      .col-sm-offset-8 { margin-left: 57.14285714285714%; }
+      .col-sm-offset-9 { margin-left: 64.28571428571428%; }
+      .col-sm-offset-10 { margin-left: 71.42857142857142%; }
+      .col-sm-offset-11 { margin-left: 78.57142857142857%; }
+      .col-sm-offset-12 { margin-left: 85.71428571428571%; }
+      .col-sm-offset-13 { margin-left: 92.85714285714285%; }
+      .col-sm-offset-14 { margin-left: 100.00000000000000%; }
+    }
+  }
+}
+@media (min-width: $screen-md-min) {
+  .row {
+    &.grid14 {
+      .col-md-1 { width: 07.14285714285714%; }
+      .col-md-2 { width: 14.28571428571428%; }
+      .col-md-3 { width: 21.42857142857142%; }
+      .col-md-4 { width: 28.57142857142857%; }
+      .col-md-5 { width: 35.71428571428571%; }
+      .col-md-6 { width: 42.85714285714285%; }
+      .col-md-7 { width: 50.00000000000000%; }
+      .col-md-8 { width: 57.14285714285714%; }
+      .col-md-9 { width: 64.28571428571428%; }
+      .col-md-10 { width: 71.42857142857142%; }
+      .col-md-11 { width: 78.57142857142857%; }
+      .col-md-12 { width: 85.71428571428571%; }
+      .col-md-13 { width: 92.85714285714285%; }
+      .col-md-14 { width: 100.00000000000000%; }
+      .col-md-offset-0 { margin-left: 00.00%; }
+      .col-md-offset-1 { margin-left: 07.14285714285714%; }
+      .col-md-offset-2 { margin-left: 14.28571428571428%; }
+      .col-md-offset-3 { margin-left: 21.42857142857142%; }
+      .col-md-offset-4 { margin-left: 28.57142857142857%; }
+      .col-md-offset-5 { margin-left: 35.71428571428571%; }
+      .col-md-offset-6 { margin-left: 42.85714285714285%; }
+      .col-md-offset-7 { margin-left: 50.00000000000000%; }
+      .col-md-offset-8 { margin-left: 57.14285714285714%; }
+      .col-md-offset-9 { margin-left: 64.28571428571428%; }
+      .col-md-offset-10 { margin-left: 71.42857142857142%; }
+      .col-md-offset-11 { margin-left: 78.57142857142857%; }
+      .col-md-offset-12 { margin-left: 85.71428571428571%; }
+      .col-md-offset-13 { margin-left: 92.85714285714285%; }
+      .col-md-offset-14 { margin-left: 100.00000000000000%; }
+    }
+  }
+}
+@media (min-width: $screen-lg-min) {
+  .row {
+    &.grid14 {
+      .col-lg-1 { width: 07.14285714285714%; }
+      .col-lg-2 { width: 14.28571428571428%; }
+      .col-lg-3 { width: 21.42857142857142%; }
+      .col-lg-4 { width: 28.57142857142857%; }
+      .col-lg-5 { width: 35.71428571428571%; }
+      .col-lg-6 { width: 42.85714285714285%; }
+      .col-lg-7 { width: 50.00000000000000%; }
+      .col-lg-8 { width: 57.14285714285714%; }
+      .col-lg-9 { width: 64.28571428571428%; }
+      .col-lg-10 { width: 71.42857142857142%; }
+      .col-lg-11 { width: 78.57142857142857%; }
+      .col-lg-12 { width: 85.71428571428571%; }
+      .col-lg-13 { width: 92.85714285714285%; }
+      .col-lg-14 { width: 100.00000000000000%; }
+      .col-lg-offset-0 { margin-left: 00.00%;}
+      .col-lg-offset-1 { margin-left: 07.14285714285714%; }
+      .col-lg-offset-2 { margin-left: 14.28571428571428%; }
+      .col-lg-offset-3 { margin-left: 21.42857142857142%; }
+      .col-lg-offset-4 { margin-left: 28.57142857142857%; }
+      .col-lg-offset-5 { margin-left: 35.71428571428571%; }
+      .col-lg-offset-6 { margin-left: 42.85714285714285%; }
+      .col-lg-offset-7 { margin-left: 50.00000000000000%; }
+      .col-lg-offset-8 { margin-left: 57.14285714285714%; }
+      .col-lg-offset-9 { margin-left: 64.28571428571428%; }
+      .col-lg-offset-10 { margin-left: 71.42857142857142%; }
+      .col-lg-offset-11 { margin-left: 78.57142857142857%; }
+      .col-lg-offset-12 { margin-left: 85.71428571428571%; }
+      .col-lg-offset-13 { margin-left: 92.85714285714285%; }
+      .col-lg-offset-14 { margin-left: 100.00000000000000%; }
+    }
+  }
+}

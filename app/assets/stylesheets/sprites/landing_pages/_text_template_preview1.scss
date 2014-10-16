@@ -1,0 +1,25 @@
+@import "sprites/landing_pages/text/batch1/*.png";
+
+$sprite-list: sprite_names($batch1-sprites);
+
+#thumb-landing_page-image {
+  @include batch1-sprite(original);
+  display: inline-block;
+  vertical-align: top;
+	width: batch1-sprite-width(original);
+	height: batch1-sprite-height(original);
+
+	@each $sprite in $sprite-list {
+	  &.#{$sprite} {
+	    @include batch1-sprite(#{$sprite});
+	    width: batch1-sprite-width(#{$sprite});
+	  	height: batch1-sprite-height(#{$sprite});
+	  }
+	}
+}
+
+.form-title { @extend .form-header-text-color; }
+.form-button { @extend .form-button-text-color; }
+.form-subtitle-text-color { @extend .form-subtitle; }
+.title-color { @extend .title; }
+.offer-title { @extend .title; }

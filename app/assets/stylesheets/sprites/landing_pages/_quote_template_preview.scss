@@ -1,0 +1,35 @@
+// Thematic templates sprites
+// ==========================================================================
+@import "sprites/landing_pages/quote/*.png";
+
+$sprite-list: sprite_names($quote-sprites);
+
+#thumb-landing_page-image {
+  @include quote-sprite(original);
+  display: inline-block;
+  vertical-align: top;
+  width: quote-sprite-width(original);
+  height: quote-sprite-height(original);
+
+  @each $sprite in $sprite-list {
+    &.#{$sprite} {
+      @include quote-sprite(#{$sprite});
+      width: quote-sprite-width(#{$sprite});
+      height: quote-sprite-height(#{$sprite});
+    }
+  }
+}
+
+.copyright-text-color { @extend .copyright-text; }
+
+.form-header-text-color { @extend .form-title; }
+
+.form-button-text-color { @extend .form-button; }
+
+.form-subtitle-text-color { @extend .form-subtitle; }
+
+.text-color { @extend .text; }
+
+.offer-title-color { @extend .offer-title; }
+
+.quote-text-color { @extend .quote-text; }

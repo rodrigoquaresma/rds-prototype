@@ -1,0 +1,28 @@
+@import "components/mixins";
+@import "components/variables";
+
+p.conversion {
+  background-image: image-url('dashboard/arrow.png');
+  background-position: bottom;
+  color: $gray-light;
+  width: 220px;
+  height: 65px;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 2.6em;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+p.big-data {
+  font-size: 2.2em;
+  margin: .5em 0;
+}
+p.up { color: $brand-success; }
+p.down { color: $brand-danger; }
+
+.chart-loading-image {
+  display:block;
+  margin:auto;
+}

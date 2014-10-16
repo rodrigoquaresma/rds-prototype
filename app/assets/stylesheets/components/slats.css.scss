@@ -1,0 +1,53 @@
+.slats {
+  .slats-title {}
+  .slats-filter {
+    padding-bottom: 22px;
+    label{
+      font-size: $font-size-small;
+      font-weight: normal;
+      line-height: $line-height-base;
+    }
+    label,
+    .help-inline {
+      padding: 6px 0 7px;
+      color: $gray-light;
+      display: inline-block;
+      margin: 0;
+    }
+  .slats-footer {}
+  }
+}
+
+.slat-group {
+  .slat-group-item {
+    background-color: $slat-bg;
+    &:last-child {
+      border-bottom: 1px solid $slat-heading-border-color;
+    }
+    .slat-heading {
+      border-top: 1px solid $slat-heading-border-color;
+      background-color: $slat-heading-bg;
+      padding: 11px;
+      .slat-title {
+        color: $gray-light;
+        font-size: $font-size-base;
+        margin: 0;
+        time { margin-left: 11px; }
+      }
+      .slat-action { 
+        text-align: left;
+        padding: 0 1em 0 .6666em;
+        color: $gray-light;
+        &:hover { color: $link-hover-color; }
+      }
+    }
+    .slat-body {
+      color: $gray-light;
+      padding: 11px; 
+      .lg-number {
+        .number { font-size: $font-size-large; margin: 0; }
+        small { color: lighten($gray-light, 10%); display: block; }
+      }
+    }
+  }
+}

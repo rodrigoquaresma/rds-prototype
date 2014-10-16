@@ -1,0 +1,28 @@
+@import "sprites/landing_pages/text/batch2/*.png";
+
+$sprite-list: sprite_names($batch2-sprites);
+
+#thumb-landing_page-image {
+  @each $sprite in $sprite-list {
+    &.#{$sprite} {
+      @include batch2-sprite(#{$sprite});
+      width: batch2-sprite-width(#{$sprite});
+      height: batch2-sprite-height(#{$sprite});
+    }
+  }
+}
+
+.checklist-1,
+.checklist-2,
+.checklist-3,
+.checklist-4,
+.checklist-5 {
+  @extend .checklist;
+}
+
+.copyright-text,
+.copyright-text-color {
+  @extend .copyright;
+}
+
+.text-color { @extend .checklist; }

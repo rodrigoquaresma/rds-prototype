@@ -1,0 +1,139 @@
+@import "icons-font/style";
+
+[class^="xicon-"] {
+  display: inline-block;
+  width: 1.25em;
+}
+
+.toggle-star,
+.toggle-check,
+.action-add,
+.action-config,
+.action-remove,
+.action-subtract,
+.action-expand,
+.action-contract,
+.action-sync,
+.tooltip-info,
+.popover-info,
+.modal-help,
+.dropdown-options,
+.dropdown-export,
+.btn-change-account {
+  &:before {
+    font-family: 'xicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    cursor: pointer;
+  }
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    &:before {
+      text-decoration: none;
+    }
+  }
+  &.btn {
+    &:before {
+      font-size: 0.85em;
+    }
+  }
+}
+
+.toggle-star {
+  &:before {
+    content: "\e606";
+    color: $gray-light;
+  }
+  &.selected {
+    &:before {
+      color: $brand-warning;
+    }
+  }
+}
+.toggle-check {
+  &:before {
+    content: "\e61b";
+    color: $gray-light;
+  }
+  &.disabled {
+    opacity: 1;
+    &:before {
+      color: $gray-lighter;
+    }
+  }
+}
+
+.action-add {
+  &:before {
+    content: "\e65a";
+  }
+}
+.action-config {
+  color: $gray-light;
+  &:before {
+    content: "\e65b";
+  }
+}
+.action-remove {
+  &:before {
+    content: "\e614";
+  }
+}
+.action-subtract {
+  // adicionar o ícone
+}
+
+.tooltip-info {
+  &:before {
+    color: $gray-light;
+    content: "\e655";
+  }
+}
+.popover-info {
+  &:before {
+    color: $gray-light;
+    content: "\e655";
+  }
+}
+.dropdown-options {
+  &:before {
+    color: $gray-light;
+    content: "\e63a";
+  }
+}
+.dropdown-export {
+  &:before {
+    color: $gray-light;
+    content: "\e602 \e666";
+  }
+}
+.action-expand {
+  &:before {
+    color: $gray-light;
+    content: "\e66b";
+  }
+}
+.action-contract {
+  &:before {
+    color: $gray-light;
+    content: "\e66c";
+  }
+}
+.action-sync {
+  &:before {
+    color: $gray-light;
+    content: "\e66d";
+  }
+}
+.btn-change-account {
+  &:before {
+    content: "\e664";
+  }
+}

@@ -1,0 +1,55 @@
+@import "components/variables";
+@import "components/mixins";
+
+.opportunity {
+  color: lighten($gray, 25%);
+  background: none;
+  font-weight: 500;
+  margin: 0 2em 0 0;
+  &:before {
+    font-family: 'xicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1em;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    padding: 0;
+    content: "\e606";
+    color: lighten($gray, 25%);
+  }
+  &.checked {
+    color: #ff9b00;
+    background: none;
+    &:before {
+      color: #ff9b00;
+    }
+  }
+  &:hover {
+    color: lighten($gray, 05%);
+    background: none;
+    text-decoration: underline;
+    &:before {
+      color: lighten($gray, 05%);
+    }
+  }
+}
+
+.deal {
+  &:before {
+    font-family: 'xicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1em;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    padding: 0;
+    content: "\e61b";
+    margin-right: .25em;
+  }
+}

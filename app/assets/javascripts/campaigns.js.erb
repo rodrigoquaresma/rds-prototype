@@ -1,0 +1,255 @@
+//= require jquery.tmpl.min
+//= require jquery.validate
+//= require jquery-colorpicker
+
+//= require campaigns/date-picker
+
+(function($){
+
+  $('.nav-tabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+
+  $(document).ready(function (){
+    campaigns.radioHelper.init();
+    campaigns.filterHelper.init();
+    campaigns.submitHelper.init();
+    $.station.datepickerHelper.init();
+  });
+
+  var campaigns = {
+
+    filterHelper : {
+
+      init : function(){
+        $('#filter_leads_button').bind('click', campaigns.filterHelper.clickHandler);
+        $('#filter_leads_button').button();
+        $('#leads_query_input').keypress(campaigns.filterHelper.checkForEnterKey);
+      },
+
+      checkForEnterKey : function(event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+          event.preventDefault();
+          $('#filter_leads_button').click();
+          return false;
+        }
+      },
+
+      clickHandler : function(e){
+        e.preventDefault();
+        $('#filter_leads_button').button("loading");
+        $.get(Routes.filter_leads_campaigns_path(), { leads_query: $("#leads_query_input").val() } );
+        return false;
+      }
+
+    },
+
+    radioHelper : {
+
+      init : function(){
+        campaigns.radioHelper.bindRefreshToRadioClick();
+        campaigns.radioHelper.refreshAll();
+      },
+
+      bindRefreshToRadioClick : function(){
+        $('input:radio[name=recipients]').click(function () {
+          campaigns.radioHelper.refreshRecipients();
+          campaigns.radioHelper.setQueryType();
+        });
+
+        $('input:radio.shipping_radio_buttons').click(function () {
+          campaigns.radioHelper.refreshScheduling();
+        });
+
+        $('#all').click(function () {
+          $('#recipients_all').attr('checked', 'checked');
+          campaigns.radioHelper.refreshRecipients();
+          campaigns.radioHelper.setQueryType();
+        });
+        $('#list').click(function () {
+          $('#recipients_list').attr('checked', 'checked');
+          campaigns.radioHelper.refreshRecipients();
+          campaigns.radioHelper.setQueryType();
+        });
+        $('#filter').click(function () {
+          $('#recipients_filter').attr('checked', 'checked');
+          campaigns.radioHelper.refreshRecipients();
+          campaigns.radioHelper.setQueryType();
+        });
+
+        $('#not_now').click(function () {
+          $('#shipping_not_now').attr('checked', 'checked');
+          campaigns.radioHelper.refreshScheduling();
+        });
+        $('#now').click(function () {
+          $('#shipping_now').attr('checked', 'checked');
+          campaigns.radioHelper.refreshScheduling();
+        });
+        $('#schedule').click(function () {
+          $('#shipping_schedule').attr('checked', 'checked');
+          campaigns.radioHelper.refreshScheduling();
+        });
+      },
+
+      refreshAll : function(){
+        campaigns.radioHelper.refreshRecipients();
+        campaigns.radioHelper.refreshScheduling();
+      },
+      refreshRecipients : function(){
+        $('.choose-recipients .field').removeClass('active');
+        if($('#recipients_all').is(':checked')) {
+          $('#all').addClass('active');
+          $('#filter #leads_query_input').attr('disabled','disabled');
+          $('#filter #filter_leads_button').attr('disabled','disabled');
+          $('#filter .form-group-collapse').hide("fast");
+          $('#list #campaign_selected_lists').attr('disabled','disabled');
+          $('#list #campaign_except_lists').attr('disabled','disabled');
+          $('#list .form-group-collapse').hide("fast");
+        }
+        if($('#recipients_list').is(':checked')) {
+          $('#filter #leads_query_input').attr('disabled','disabled');
+          $('#filter #filter_leads_button').attr('disabled','disabled');
+          $('#filter .form-group-collapse').hide("fast");
+          $('#list').addClass('active');
+          $('#list #campaign_selected_lists').removeAttr('disabled');
+          $('#list #campaign_except_lists').removeAttr('disabled');
+          $('#list .form-group-collapse').show("fast");
+        }
+        if($('#recipients_filter').is(':checked')) {
+          $('#filter').addClass('active');
+          $('#filter #leads_query_input').removeAttr('disabled');
+          $('#filter #filter_leads_button').removeAttr('disabled');
+          $('#filter .form-group-collapse').show("fast");
+          $('#list #campaign_selected_lists').attr('disabled','disabled');
+          $('#list #campaign_except_lists').attr('disabled','disabled');
+          $('#list .form-group-collapse').hide("fast");
+        }
+      },
+
+      refreshScheduling : function(){
+        var scheduling = this;
+
+        scheduling.formattedDate = function() {
+          return scheduling.date.day + ' de ' + scheduling.date.month + ' de ' + scheduling.date.year + ', às ' + scheduling.date.hour + 'h' + scheduling.date.minute + 'min.';
+        };
+
+        scheduling.refreshModalDate = function() {
+          $('.modalMessage').html('Disparo agendado para o dia ' + scheduling.formattedDate());
+        }
+
+        $('.shipping-schedule .field').removeClass('active');
+        if($('#shipping_not_now').is(':checked')) {
+          $('#not_now').addClass('active');
+          $('#not_now .form-group-collapse').show("fast");
+          $('#schedule select').attr('disabled','disabled');
+          $('#schedule .form-group-collapse').hide("fast");
+
+          $('#button_shipping').attr('data-loading-text','Salvando...');
+          $('#button_shipping').attr('type','submit');
+          $('#button_shipping').removeAttr('data-toggle');
+          $('#button_shipping').removeAttr('data-target');
+          $('#button_shipping').html('Salvar e sair');
+
+          $('#modalConfirmLabel').html('Confirmar alterações');
+          $('.modalMessage').html('Salvar alterações?');
+          $('#button_shipping_modal').html('Salvar');
+        }
+        if($('#shipping_schedule').is(':checked')) {
+          scheduling.date = {
+            day: $("#campaign_send_at_3i").val(),
+            month: $("#campaign_send_at_2i").find('option:selected').text(),
+            year: $("#campaign_send_at_1i").val(),
+            hour: $("#campaign_send_at_4i").val(),
+            minute: $("#campaign_send_at_5i").val()
+          }
+          scheduling.refreshModalDate();
+
+          $('[data-enabled="schedule"]').change(function() {
+            scheduling.date = {
+              day: $("#campaign_send_at_3i").val(),
+              month: $("#campaign_send_at_2i").find('option:selected').text(),
+              year: $("#campaign_send_at_1i").val(),
+              hour: $("#campaign_send_at_4i").val(),
+              minute: $("#campaign_send_at_5i").val()
+            }
+            scheduling.refreshModalDate();
+          });
+          $('#schedule').addClass('active');
+          $('#schedule select').removeAttr('disabled');
+          $('#schedule .form-group-collapse').show("fast");
+          $('#not_now .form-group-collapse').hide("fast");
+
+          $('#button_shipping').removeAttr('data-loading-text');
+          $('#button_shipping').attr('type','button');
+          $('#button_shipping').attr('data-toggle','modal');
+          $('#button_shipping').attr('data-target','#modalConfirm');
+          $('#button_shipping').html('Agendar');
+
+          $('#modalConfirmLabel').html('Confirmar agendamento');
+          $('#button_shipping_modal').html('Agendar');
+        }
+        if($('#shipping_now').is(':checked')) {
+          $('#now').addClass('active');
+          $('#schedule select').attr('disabled','disabled');
+          $('#schedule .form-group-collapse').hide("fast");
+          $('#not_now .form-group-collapse').hide("fast");
+
+          $('#button_shipping').removeAttr('data-loading-text');
+          $('#button_shipping').attr('type','button');
+          $('#button_shipping').attr('data-toggle','modal');
+          $('#button_shipping').attr('data-target','#modalConfirm');
+          $('#button_shipping').html('Enviar');
+
+          $('#modalConfirmLabel').html('Confirmar disparo');
+          $('.modalMessage').html('Deseja iniciar o envio da campanha?');
+          $('#button_shipping_modal').html('Enviar');
+        }
+
+      },
+      setQueryType : function(){
+        var el = $('#campaign_leads_query_type');
+        if($('#recipients_all').is(':checked')) {
+          el.val("<%= Lead::Filter::FilterNull.to_s %>")
+        }
+        if($('#recipients_list').is(':checked')) {
+          el.val("<%= Lead::Filter::FilterMultiple.to_s %>")
+        }
+        if($('#recipients_filter').is(':checked')) {
+          el.val("<%= Lead::Filter::FilterQuery.to_s %>")
+        }
+      }
+    },
+    submitHelper: {
+      init : function(){
+        $('#email_test').addClass('hide');
+        campaigns.submitHelper.openInputTest();
+        campaigns.submitHelper.submitShipping();
+        campaigns.submitHelper.submitSave();
+      },
+      openInputTest : function() {
+        $('#email_test_link').click(function(event) {
+          event.preventDefault();
+          $('#email_test').removeClass('hide');
+        });
+      },
+      submitShipping : function() {
+        $('#button_shipping_modal').click(function () {
+          $('#button_shipping_modal').attr('disabled', 'disabled');
+          $('#main-form').submit();
+        });
+      },
+      submitSave: function() {
+        $('#button_shipping').button();
+        $('#button_shipping').click(function () {
+          if($('#shipping_not_now').is(':checked')) {
+            $('#button_shipping').button("loading").attr('disabled','disabled');
+            $('#cancel_edit_button').attr('disabled','disabled');
+            $('#main-form').submit();
+          }
+        });
+      }
+    }
+  }
+})(jQuery);

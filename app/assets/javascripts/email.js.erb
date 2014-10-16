@@ -1,0 +1,443 @@
+//= require jquery-colorpicker
+//= require jquery.tmpl.min
+//= require preview
+//= require jquery.validate
+//= require jquery.zoomer
+//= require ace/ace
+//= require ace/mode-html
+//= require data-tables/jquery.dataTables
+//= require data-tables/dataTables
+//= require s3_direct_upload-cloudfront
+
+(function ($){
+
+  $(window).load(function(){
+    emails.init();
+  });
+
+  var emails = {
+
+    init : function(){
+      emails.initPreview();
+      emails.initCurrentStepHelper();
+      emails.initPanelFocus();
+      emails.initExpandFirstPanel();
+    },
+
+    initPreview : function() {
+      if ($('.preview-loader').length > 0) {
+        var previewLoader = $('.preview-loader');
+        var previewUrl = previewLoader.data('preview-url');
+        previewLoader.html('<iframe id="preview" src="' + previewUrl + '" class="preview-window" border="0" style="border:none;width:100%;">Carregando</iframe>');
+      }
+
+    },
+
+    initCurrentStepHelper : function(){
+      if(emails.stepIsTemplate()){
+        emails.templateHelper.init();
+      } else if(emails.stepIsContent()){
+        emails.contentHelper.init();
+      } else if(emails.stepIsPlainText()){
+        emails.plainTextHelper.init();
+      }
+    },
+
+    initPanelFocus : function(){
+      $('.panel-collapse').on('show.bs.collapse', function () {
+        var targetElementId = $(this).find('textarea').data("target-id");
+        var targetElementCount = targetElementId - 1;
+        var preview = $('#preview').contents();
+        var targetLocation = $(preview.find('.render_area')[targetElementCount]).offset().top;
+        preview.scrollTop(targetLocation);
+      })
+    },
+
+    initExpandFirstPanel : function(){
+      $($('#edit-content').find('.panel-collapse')[0]).addClass('in');
+    },
+
+    stepIsTemplate : function(){
+      return $('#template_step').length > 0;
+    },
+
+    stepIsContent : function(){
+      return $('#content_step').length > 0;
+    },
+
+    stepIsPlainText : function(){
+      return $('#plain_text_step').length > 0;
+    },
+
+    stepIsResume : function(){
+      return $('#resume_step').length > 0;
+    },
+
+    templateHelper : {
+
+      init : function(){
+        emails.templateHelper.bindTabChange();
+        emails.templateHelper.setupImportButton();
+        var hash = window.location.hash;
+        hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+      },
+
+      bindTabChange : function(){
+        $('#template_origin a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
+      },
+
+      setupImportButton : function(){
+        $('#import_from_url_button').button()
+        $('#import_from_url_button').bind('click', function(){$(this).button("loading")});
+      }
+    },
+
+    contentHelper : {
+
+      ace_editor : null,
+
+      init : function(){
+        emails.contentHelper.initBGColorFields();
+        emails.contentHelper.initEditor();
+        emails.contentHelper.initEvents();
+        emails.contentHelper.initCollapsableEditors();
+        emails.formHelper.init();
+      },
+
+      initEditor : function(){
+        if(emails.contentHelper.isFromImported()){
+          emails.contentHelper.configAce();
+        } else {
+          emails.contentHelper.configTinyMCE();
+        }
+      },
+
+      isFromImported : function(){
+        return ($('#html-message-imported').length > 0);
+      },
+
+      configAce : function(){
+        // TODO - use ace editor instead of textarea
+        emails.contentHelper.realtimePreview.setUpRealTimePreview();
+        $('#html-message-imported').bind('keyup', emails.contentHelper.realtimePreview.updateTemplateAreas);
+      },
+
+      realtimePreview : {
+        zoom:           0.3000,
+        transformOrigin: '10px 10px',
+
+        updateTemplateAreas: function() {
+
+          // get content from tinies and add to hidden div
+          if(emails.contentHelper.isFromImported()){
+            $('#preview').contents().find('.<%= Mailing::EmailTemplateDefaultValuesParser::PREVIEW_DIV_CLASS %>').html($('#html-message-imported').val());
+          } else {
+            var counter = 0;
+            $('#preview').contents().find('.<%= Mailing::EmailTemplateDefaultValuesParser::PREVIEW_DIV_CLASS %>').each(function(){
+              var div = $(this);
+              if (tinymce.editors[counter]) {
+                div.html(tinymce.editors[counter].getContent());
+              }
+              counter++;
+            });
+          }
+
+          // get transformOrigin and calculate zoom based on email widht
+          var transformOrigin = emails.contentHelper.realtimePreview.transformOrigin;
+          if($('#affix-preview').width() >= 600) {
+            var zoom = 1;
+          } else {
+            var zoom = 0.00162 * $('#affix-preview').width();
+          }
+
+
+          $('#preview').contents().find('html').css({
+            'overflow-x': 'hidden',
+            'transform-origin': transformOrigin,
+            '-webkit-transform-origin': transformOrigin,
+            '-moz-transform-origin': transformOrigin,
+            '-o-transform-origin': transformOrigin,
+            'transform': 'scale(' + zoom + ')',
+            '-webkit-transform': 'scale(' + zoom + ')',
+            '-moz-transform': 'scale(' + zoom + ')',
+            '-o-transform': 'scale(' + zoom + ')',
+          });
+
+          // Recalculates the zoom based on the window width
+          $(window).resize(function() {
+            if($('#affix-preview').width() >= 600) {
+              var zoom = 1;
+            } else {
+              var zoom = 0.00162 * $('#affix-preview').width();
+            }
+
+            $('#preview').contents().find('html').css({
+              'transform-origin': transformOrigin,
+              '-webkit-transform-origin': transformOrigin,
+              '-moz-transform-origin': transformOrigin,
+              '-o-transform-origin': transformOrigin,
+              'transform': 'scale(' + zoom + ')',
+              '-webkit-transform': 'scale(' + zoom + ')',
+              '-moz-transform': 'scale(' + zoom + ')',
+              '-o-transform': 'scale(' + zoom + ')',
+            });
+          });
+
+        },
+
+        emailWidth : function(){
+          var tableInsideBody = $('#preview').contents().find('body > table')
+          if(tableInsideBody && tableInsideBody.length > 0){
+            return tableInsideBody.width();
+          }
+
+          var tableInsideRenderAreaDiv = $('#preview').contents().find('div.render_area > table');
+          if(tableInsideRenderAreaDiv && tableInsideRenderAreaDiv.length > 0){
+            return tableInsideRenderAreaDiv.width();
+          }
+
+          var firstTableInsideBody = $('#preview').contents().find('body table').first();
+          if(firstTableInsideBody && firstTableInsideBody.length > 0){
+            return firstTableInsideBody.width();
+          }
+
+          return 0; // if we can't find the width, it's better not to apply zoom at all
+        },
+
+        setUpRealTimePreview: function() {
+
+          for (var i = tinymce.editors.length - 1; i >= 0; i--) {
+            tinymce.editors[i].on('change', function() {
+              emails.contentHelper.realtimePreview.updateTemplateAreas();
+            });
+
+            tinymce.editors[i].on('keyup', function() {
+              emails.contentHelper.realtimePreview.updateTemplateAreas();
+            });
+          }
+
+          emails.contentHelper.realtimePreview.updateBackgroundColor($('#email_background_color').val());
+          emails.contentHelper.realtimePreview.updateCompanyInfo();
+        },
+
+        updateBackgroundColor: function (hexed) {
+          $('#preview').attr('style', 'background-color:' + hexed + ';');
+          $('#preview').attr('bgcolor',hexed);
+          $('#preview').contents().find('body > table').attr('bgcolor',hexed);
+          $('#preview').contents().find('#realtime-preview-table').attr('bgcolor',hexed);
+          var style = $('#preview').contents().find('body').attr('style');
+          if (style) {
+            var newStyle = style.replace(/background:\#.*?;/,"background:" + hexed + ";");
+            $('#preview').contents().find('body').attr('style', newStyle);
+          }
+        },
+
+        updateCompanyInfo: function () {
+          var company = $('#email_data_company_name').val();
+          var address = $('#email_data_company_address').val();
+          $('#preview').contents().find('#company-data').html("<strong>" + company + "</strong><br>" + address)
+        }
+      },
+
+      previewContent : function() {
+        var errorCallback = function(xhr, status, error){
+          alert("Ops, acontenceu um erro na pré visualização.");
+        };
+        var completeCallback = function(xhr, status){
+          $('#hidden_preview_list_form_wrapper').empty();
+        };
+        for (edId in tinymce.editors){
+          tinymce.editors[edId].save();
+        }
+        PreviewHandler.preview($(this).closest('form'),Routes.preview_emails_path(), errorCallback, completeCallback, false);
+      },
+
+      initEvents : function() {
+        $('#preview-content-button').bind('click', emails.contentHelper.previewContent);
+        $('#preview').load(emails.contentHelper.realtimePreview.updateTemplateAreas);
+        $('#email_data_company_name').on('keyup', emails.contentHelper.realtimePreview.updateCompanyInfo);
+        $('#email_data_company_address').on('keyup', emails.contentHelper.realtimePreview.updateCompanyInfo);
+      },
+
+      initBGColorFields : function() {
+        $('#email_background_color').bind('keyup', emails.contentHelper.setColorSampleBackground);
+        $('.background-color-sample').bind('keyup', function(){
+          $('.background-color-sample').val('');
+        });
+
+        $('.background-color-sample').ColorPicker({
+          onSubmit: function(hsb, hex, rgb, el) {
+            $(el).val('#'+hex);
+            $(el).ColorPickerHide();
+            $('#email_background_color').val('#'+hex);
+          },
+          onBeforeShow: function () {
+            $(this).ColorPickerSetColor($('#email_background_color').val().substring(1));
+          },
+          onChange: function (hsb, hex, rgb, el) {
+            hexed = '#'+hex;
+            $('.background-color-sample').css('background-color', hexed);
+            $('#email_background_color').val(hexed);
+
+            emails.contentHelper.realtimePreview.updateBackgroundColor(hexed);
+          }
+        });
+      },
+
+      initCollapsableEditors: function() {
+        $('.collapsable-area-title').click(function(){
+          $(this).siblings('.mce-tinymce').slideToggle();
+        });
+      },
+
+      setColorSampleBackground : function(){
+        var color = $('#email_background_color').val();
+        $('.background-color-sample').css('background-color', color);
+        emails.contentHelper.realtimePreview.updateBackgroundColor(color);
+      },
+
+      configTinyMCE : function(){
+        tinymce.init({
+          "plugins": "link image table textcolor code hr preview",
+          "language": "pt_BR",
+          "theme": "modern",
+          "skin": "station",
+          "menubar": false,
+          "statusbar": false,
+          "toolbar1": "fontselect fontsizeselect formatselect | forecolor backcolor | copy cut paste | undo redo",
+          "toolbar2": "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link image uploadbutton variables hr table | code removeformat",
+          "execcommand_callback": "customHandler",
+          "mode": "specific_textareas",
+          "editor_selector": "mceEditor",
+          "height" : "260",
+          setup : function(ed){
+            tinymce.uploader.setup(ed); tinymce.rdVariables.setup(ed);
+          },
+          oninit: function() {
+            emails.contentHelper.realtimePreview.setUpRealTimePreview();
+            emails.contentHelper.realtimePreview.updateTemplateAreas();
+          },
+          onchange_callback: emails.contentHelper.realtimePreview.updateTemplateAreas,
+        });
+      }
+
+    },
+
+    plainTextHelper : {
+
+      copyButton : $('#copy_plain_from_html_button'),
+
+      init : function(){
+        emails.formHelper.init();
+        emails.plainTextHelper.initEvents();
+        emails.plainTextHelper.getPlainTextIfEmpty();
+      },
+
+      initEvents : function(){
+        emails.plainTextHelper.copyButton.button();
+        emails.plainTextHelper.copyButton.bind("click", emails.plainTextHelper.copyPlainFromHtml);
+      },
+
+      copyPlainFromHtml : function(e){
+        if(e){
+          e.preventDefault();
+        }
+        var path = $('#copy_plain_from_html_button').attr("href");
+        emails.plainTextHelper.copyButton.button('loading');
+        $.get(path, emails.plainTextHelper.copyPlainFromHtmlSuccess)
+        .fail(emails.plainTextHelper.copyPlainFromHtmlError)
+        .always(emails.plainTextHelper.copyPlainFromHtmlAlways);
+      },
+
+      copyPlainFromHtmlSuccess : function(data){
+        var data = JSON.parse(data);
+        $('#plain_text_area').val(data);
+        $('#plain_text_area').removeClass("error");
+      },
+
+      copyPlainFromHtmlError : function(data){
+        alert("Não foi possível copiar o texto do HTML.");
+      },
+
+      copyPlainFromHtmlAlways : function(data){
+        emails.plainTextHelper.copyButton.button('reset');
+      },
+
+      getPlainTextIfEmpty : function(){
+        if ($('#plain_text_area').val() === ""){
+          emails.plainTextHelper.copyPlainFromHtml();
+        }
+      }
+
+    },
+
+    formHelper : {
+      init : function(){
+        $('#submit_and_go_to_next_step_button').button();
+        $('#submit_and_go_to_next_step_button').bind('click', emails.formHelper.submitAndGoToNextStepPressed)
+        $('#submit_assync_button').button();
+        $('#submit_assync_button').bind('click', emails.formHelper.handleAssyncSubmission)
+        $('form').bind('ajax:success', emails.formHelper.remoteSubmitSuccess);
+        $('form').bind('ajax:error', emails.formHelper.remoteSubmitError);
+      },
+
+      remoteSubmitSuccess : function(xhr, status){
+        if (!emails.formHelper.assyncSubmitButtonIsPressed()){
+          emails.formHelper.changeFormToSync();
+          saveButton.button('toggle');
+          saveButton.button('complete');
+          setTimeout(function () {
+            if (emails.formHelper.assyncSubmitButtonIsPressed()){
+              saveButton.button('toggle');
+              saveButton.button('reset');
+            }
+          }, 3000);
+        }
+      },
+
+      remoteSubmitError : function(xhr, status, error){
+        alert("Não foi possível salvar os dados.");
+        emails.formHelper.changeFormToSync();
+        saveButton.button('reset');
+      },
+
+      handleAssyncSubmission : function(e){
+        if (emails.formHelper.validateFormAndAlert()){
+          emails.formHelper.changeFormToAssync();
+          saveButton = $('#submit_assync_button');
+          saveButton.button('loading');
+        }
+      },
+
+      assyncSubmitButtonIsPressed : function(){
+        return $('#submit_assync_button').val() == $('#submit_assync_button').attr("data-complete-text");
+      },
+
+      changeFormToAssync : function(){
+        $("form").attr("data-remote", "true");
+      },
+
+      changeFormToSync : function(){
+        $("form").removeAttr("data-remote");
+        $("form").removeData("remote");
+      },
+
+      submitAndGoToNextStepPressed : function(){
+        if(emails.formHelper.validateFormAndAlert()){
+          $('#submit_and_go_to_next_step_button').button('loading');
+        }
+      },
+
+      validateFormAndAlert : function(){
+        if (!$('form').valid()){
+          alert("Não foi possível salvar os dados. Por favor verifique os campos.");
+          return false;
+        }
+        return true;
+      }
+    }
+  }
+})(jQuery);

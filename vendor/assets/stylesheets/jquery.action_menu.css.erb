@@ -1,0 +1,17 @@
+/* essential styles */
+.action-menu-list{ display: none; list-style: none;  position: absolute; z-index: 9000; }
+.action-menu-list.active{ background: #fff; display: block; }
+
+/* RD custom styles */
+
+.action-menu-trigger{ background: transparent url(<%= asset_path 'sprite.png' %>) -51px -449px no-repeat; border-bottom: none; border-radius: 3px 3px 0px 0px; display: block; height: 25px; margin: -5px 0 0 0; position: absolute; text-indent: -10000px; width: 35px; }
+.action-menu-trigger:hover{ background: transparent url(<%= asset_path 'sprite.png' %>) -51px -479px no-repeat; }
+.action-menu-trigger.active{ background: #fff url(<%= asset_path 'sprite.png' %>) -51px -479px no-repeat; box-shadow: 0px -1px 1px 1px rgba(0, 0, 0, 0.1); z-index: 9999; }
+
+.action-menu-list{ border-radius: 0px 3px 3px 3px; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1); margin: 10px 0 0 0; padding: 10px 15px 5px; min-width: 180px; }
+
+.action-menu-list li{ text-align: left; }
+.action-menu-list li+li{ border-top: 1px solid #d4d4d4; }
+.action-menu-list a{ border-bottom: none; display: block; height: 25px; line-height: 25px; }
+
+.action-menu-table.active tr:hover td{ background: #fff !important; }

@@ -1,0 +1,24 @@
+@import "components/variables";
+@import "components/mixins";
+
+
+/*
+ * jQuery UI Autocomplete 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/** Extensions **/
+.ui-autocomplete li.separator { margin-top: 5px; padding-top:5px; border-top: 1px solid #999;}
+.ui-autocomplete li > span { font-weight: normal; font-size: 11px; border: none; padding: 3px 5px; margin: 0; font-style: italic; color: #999; }
+.ui-autocomplete{ background: #F3F2EB; }
+.ui-autocomplete li.ui-menu-item a{ font-weight: bold; color: #463a33; font-size: 11px; border: none; padding: 3px 5px; margin: 0; cursor: pointer; }
+.ui-autocomplete li.ui-menu-item a.ui-state-hover{ font-weight: bold; color: #463a33; font-size: 11px; background: #dad9d3; border: none; padding: 3px 5px; margin: 0; }

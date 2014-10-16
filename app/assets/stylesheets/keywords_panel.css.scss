@@ -1,0 +1,135 @@
+@import "components/mixins";
+@import "components/variables";
+
+@import "components/grid20";
+
+#keywords_panel table {
+  &.table-keywords tbody { font-size: .85em; }
+  tr td {
+    &.processing { background: #e8e7e1; color: #ccc; }
+    div.progress_bar-container,
+    &.progress_bar-container {
+      .progress {
+        margin: 4px 0 8px;
+        height: 0.75em;
+      }
+    }
+    span{
+      .progress_bar {
+        display: block;
+        width: 92px;
+        height: 12px;
+        text-align: left;
+        border: 1px solid #ccc;
+        background: #fff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+      }
+      .steps {
+        display: block;
+        height: 12px;
+        background: image-url( 'sprite.png' ) -129px -324px;
+      }
+      .level {
+        display: block;
+        height: 10px;
+        width: 88px;
+        margin: 1px 0 1px 1px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        background: #a5c0ca;
+        background: -moz-linear-gradient(top, #a5c0ca 0%, #86aab8 50%, #86aab8 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a5c0ca), color-stop(50%,#86aab8), color-stop(100%,#86aab8));
+        background: -webkit-linear-gradient(top, #a5c0ca 0%,#86aab8 50%,#86aab8 100%);
+        background: -o-linear-gradient(top, #a5c0ca 0%,#86aab8 50%,#86aab8 100%);
+        background: -ms-linear-gradient(top, #a5c0ca 0%,#86aab8 50%,#86aab8 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a5c0ca', endColorstr='#86aab8',GradientType=0 );
+        background: linear-gradient(top, #a5c0ca 0%,#86aab8 50%,#86aab8 100%);
+      }
+      .value {
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 12px;
+        line-height: 12px;
+        font-size: 9px;
+        margin: -13px 0 0 40px;
+      }
+    }
+    &.keyword-ranking-value {
+      font-weight: 600;
+      .ranking-variation {
+        background-color: $panel-default-heading-bg;
+        padding: 3px;
+        margin: 0 0 0 3px;
+        color: $gray-light;
+        @include border-radius(3px);
+        &:before { margin-right: 2px; font-size: .85em; }
+        &.up:before { color: $brand-success; }
+        &.down:before { color: $brand-danger; }
+      }
+    }
+  }
+}
+
+#keywords_panel {
+  p.kp-tip {
+    padding: 5px 5px 5px 50px;
+    @include border-radius(3px);
+    background: image-url( 'background_tip.png' ) no-repeat 9px 8px #cedade;
+  }
+  time { font-weight: bold; }
+}
+
+#keywords_panel-add-form {
+  margin: 15px 0;
+  label {
+    position: absolute;
+    font-weight: normal;
+    margin: 1px 0 0 4px;
+    color: #AAA;
+  }
+}
+#keywords_panel-relevance-form .progress {
+  margin: 4px 0 0;
+  height: 0.75em;
+}
+
+div.table-info {
+  float: right;
+  width: 300px;
+  text-align: right;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 16px;
+  p { margin: 0; }
+  .btn { margin-right: 0; }
+}
+div.table-alert {
+  position: absolute;
+  width: 210px;
+  margin: 35px 0 0 685px;
+  span {
+    display: block;
+    width: 170px;
+    margin: 22px 0 0;
+    padding: 10px 20px;
+    background: #ffc;
+    @include border-radius(3px);
+    @include box-shadow(rgba(50, 50, 50, 0.5) 0px 0px 5px);
+  }
+}
+
+p.subtitle{
+  font-size: 11px;
+  color: #666;
+}
+#graph-placeholder {
+  margin:0 auto;
+  table {
+    width: inherit;
+    td { border-bottom: 0; }
+  }
+}

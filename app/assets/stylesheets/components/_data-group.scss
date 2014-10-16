@@ -1,0 +1,38 @@
+@import "components/mixins";
+@import "components/variables";
+
+// TODO can be a component
+.data-group {
+  .data-group-value {
+    color: $gray;
+    font-size: $font-size-xlarge;
+    line-height: $headings-line-height;
+    small { font-size: .65em; }
+  }
+  .data-group-label {
+    color: $gray-light;
+    font-size: $font-size-small;
+  }
+  &.data-group-well {
+    background-color: $panel-default-heading-bg;
+    @include border-radius($border-radius-base);
+    padding: 8px;
+  }
+}
+
+.data-arrow-right {
+  font-size: $font-size-xlarge;
+  line-height: $headings-line-height;
+  color: lighten($gray-light, 30%);
+  font-family: 'xicons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:before {
+    content: "\e66f";
+  }
+}

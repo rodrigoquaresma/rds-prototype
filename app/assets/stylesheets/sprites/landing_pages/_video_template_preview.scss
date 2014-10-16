@@ -1,0 +1,46 @@
+// Thematic templates sprites
+// ==========================================================================
+@import "sprites/landing_pages/video/sprites/*.png";
+
+$sprite-list: sprite_names($sprites-sprites);
+
+#thumb-landing_page-image {
+  @include sprites-sprite(original);
+  display: inline-block;
+  vertical-align: top;
+  width: sprites-sprite-width(original);
+  height: sprites-sprite-height(original);
+
+  @each $sprite in $sprite-list {
+    &.#{$sprite} {
+      @include sprites-sprite(#{$sprite});
+      width: sprites-sprite-width(#{$sprite});
+      height: sprites-sprite-height(#{$sprite});
+    }
+  }
+}
+
+.checklist-text-2,
+.checklist-text-3,
+.checklist-text-4,
+.text-color {
+  @extend .checklist-text-1;
+}
+
+.copyright-text-color { @extend .copyright-text; }
+
+.call-text-color { @extend .call-text; }
+
+.offer-title-color { @extend .offer-title; }
+
+.final-text-color { @extend .final-textarea; }
+
+.quote-color { @extend .quote-text; }
+
+.quote-name-color { @extend .quote-name-text; }
+
+.form-header-text-color { @extend .form-title; }
+
+.form-subtitle-text-color { @extend .form-subtitle; }
+
+.form-button { @extend .form-button-text-color; }

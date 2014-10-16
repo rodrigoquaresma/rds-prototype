@@ -1,0 +1,15 @@
+dl.dl-horizontal {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 5px;
+  dt {
+    float: left;
+    width: 30%; 
+    padding-bottom: 5px;
+  }
+  dd {
+    float: left;
+    width: 70%;
+    padding-bottom: 5px; 
+  }
+}

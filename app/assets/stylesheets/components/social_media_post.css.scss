@@ -1,0 +1,40 @@
+@import "components/mixins";
+@import "components/variables";
+@import "components/datepicker";
+
+
+#social-media-post-image-form { display: none; }
+
+#message-dialog #post_send_at_3i,
+#message-dialog #post_send_at_2i,
+#message-dialog #post_send_at_1i {
+  display : none;
+}
+
+#schedule-options-panel .row.form-inline { margin-top: 5px; }
+
+#choose-service-panel .checkbox {
+  padding:0;
+  margin:0 0 11px 0;
+  label {
+    background-color:$panel-default-heading-bg;
+    padding:6px 8px;
+    display:block;
+    color:$gray-light;
+    @include border-radius(4px);
+    &.selected {
+      background-color:$brand-success;
+      &#twitter-checkbox-label {
+        background-color:#55ACEE;
+        color:white;
+      }
+      &#facebook-checkbox-label {
+        background-color:#3B5998;
+        color:white;
+      }
+    }
+    input[type="checkbox"] {
+      display:none;
+    }
+  }
+}

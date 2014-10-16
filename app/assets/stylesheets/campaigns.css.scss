@@ -1,0 +1,123 @@
+@import "components/mixins";
+@import "components/variables";
+@import "components/datepicker";
+@import "select2";
+@import "select2/style-select2";
+@import "select2-bootstrap";
+
+
+#campaigns {
+  div#data-wrapper {
+    margin-top: 0px;
+    margin-bottom: 22px;
+    .delivered_emails,
+    .opened_emails,
+    .clicked_emails,
+    .spam_reports,
+    .unsubscribes,
+    .bounced_emails {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $panel-default-border;
+    }
+    .delivered_emails	{ @include border-radius(6px 0px 0px 0px); }
+    .bounced_emails { @include border-radius(0px 6px 6px 0px); }
+    .clicked_emails	{ @include border-radius(0px 0px 0px 6px); }
+    .unsubscribes	{ @include border-radius(0px 0px 6px 0px); }
+
+    .delivered_emails {
+      border-bottom: none;
+      background-color:$panel-default-heading-bg;
+    }
+    .opened_emails {
+      border-bottom: none;
+      border-top: none;
+      border-right: none;
+    }
+    .clicked_emails {
+      border-top: none;
+      border-right:none;
+    }
+    .spam_reports {
+      border-bottom: none;
+      border-top: none;
+      border-left: none;
+    }
+    .unsubscribes {
+      border-top: none;
+      border-left: none;
+    }
+    .bounced_emails {
+      border-left: none;
+      background-color: #ffc;
+    }
+
+    [class^="row"] {
+      margin: 0;
+      width: 100%;
+      [class^="col-xs"] {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    span {
+      display: block;
+      margin: 0;
+      text-align: left;
+      padding: 0 10px 2px;
+      &.word_break { padding: 0; }
+      &.total {
+        font-size: 32.5px;
+        line-height: 1em;
+        color: #666;
+      }
+      &.label {
+        font-size: 14.5px;
+        line-height: 1em;
+        color: #999;
+      }
+      &.rate {
+        font-size: 14.5px;
+        line-height: 1em;
+        color: #999;
+      }
+    }
+    li {
+      margin: 0;
+      padding: 0.8em 0;
+      width: 50%;
+      &.alert { background-color: #ffc; }
+    }
+  }
+}
+
+.panel-mail-events .panel-body {
+  hr {
+    margin: .5em 0;
+    &:last-child { display: none; }
+  }
+}
+
+.choose-recipients,
+.shipping-schedule {
+  .field {
+    .form-group-collapse { padding:0 20px; }
+    &#filter {
+      .form-group-collapse {
+        padding: 0 20px 20px;
+        #leads-filter-preview-result {
+          padding-top:0;
+          p:last-child { margin-bottom:0; }
+        }
+      }
+    }
+  }
+}
+
+#campaign_send_at_3i,
+#campaign_send_at_2i,
+#campaign_send_at_1i {
+  display: none;
+}

@@ -1,0 +1,61 @@
+var TinyMCEWrapper = function(){
+	var self = this;
+	this._configurations = {
+		"plugins": "link image table textcolor code hr preview",
+    "language": "pt_BR",
+    "theme": "modern",
+    "skin": "station",
+		"menubar": false,
+    "statusbar": false,
+    "execcommand_callback": "customHandler",
+		"mode": "specific_textareas",
+		"oninit" : function(){self._afterInit();},
+		"height" : "260",
+		"setup": function(ed){
+      tinymce.uploader.setup(ed);
+    },
+		"extended_valid_elements" : "object[classid|codebase|height|width|id|align],param[name|wmode|value],embed[language|type|src|height|width|flashvars|quality|name|align|allowScriptAccess|pluginspage|autostart|loop|volume|bgcolor|base|seamlesstabbing|swliveconnect]"
+	};
+
+	this._advancedConfigurations = $.extend({
+		"editor_selector": "mceAdvancedEditor",
+		"toolbar1": "fontselect fontsizeselect formatselect | forecolor backcolor | copy cut paste | undo redo",
+		"toolbar2": "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link image uploadbutton variables hr table | code removeformat",
+		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+	}, this._configurations);
+
+	this._noToolbarConfigurations = $.extend({
+		"editor_selector": "mceNoToolbarEditor",
+		"toolbar": "false",
+		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+	}, this._configurations);
+
+	this._simpleToolbarConfigurations = $.extend({
+		"editor_selector": "mceSimpleToolbarEditor",
+		"toolbar1": "bold italic underline | forecolor backcolor | undo redo",
+		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+	}, this._configurations);
+
+};
+
+TinyMCEWrapper.prototype.init = function () {
+	if ($(".mceNoToolbarEditor").length) {
+		tinyMCE.init(this._noToolbarConfigurations);
+	}
+	if ($(".mceAdvancedEditor").length) {
+		tinyMCE.init(this._advancedConfigurations);
+	}
+	if ($(".mceSimpleToolbarEditor").length) {
+		tinyMCE.init(this._simpleToolbarConfigurations);
+	}
+};
+
+TinyMCEWrapper.prototype._afterInit = function(){
+	$('[data-bgclass]').focusThumb({
+		thumbSelector : '#thumb-landing_page-image',
+		eventType : 'hover'
+	});
+
+	// screen height might grow after init, recalculate sticky
+	$('#sidebar').sticky('refresh');
+};

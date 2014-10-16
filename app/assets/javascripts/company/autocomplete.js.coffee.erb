@@ -1,0 +1,52 @@
+#= require typeahead.rd-custom
+
+jQuery ->
+
+  typeaheadObj = () ->
+    {
+      name: "es-companies-auto",
+      minLength: 2,
+      remote: {
+        url: "<%= ENV['ELASTICSEARCH_URL'] %>/companies/company/_search?pretty=%QUERY#{name}",
+        beforeSend: (jqXhr, settings) ->
+          settings.type = 'POST'
+          settings.hasContent = true
+
+          query = $('#query').val()
+
+          words = query.split(" ");
+          if(words.length > 2 || query.indexOf("=") != -1 || query.indexOf(":") != -1 || query.indexOf(" AND ") != -1 || query.indexOf(" OR ") != -1)
+            jqXhr.abort();
+
+          settings.data =  "{\"query\":{\"query_string\":{ \"query\":\"name.autocomplete: " + query + "\"}},\"filter\":{\"term\":{\"lm_uuid\":\"#{$("#leads_manager").val()}\"}}, \"size\":10}"
+          settings.contentType = 'application/json; charset=utf-8';
+
+          return true
+        ,
+        filter: (data) ->
+          results = []
+          for hit in data.hits.hits
+            results.push({
+                          value: hit._source.company.name,
+                          id: hit._id,
+                          unique_key: hit._id,
+                          hits: data.hits.hits.length
+                        })
+
+          return results
+      }
+    }
+
+  queryTypeahead = $('#query').typeahead([
+    typeaheadObj()
+  ])
+
+  $('#query').bind
+    'typeahead:selected': (obj, datum) ->
+      queryTypeahead.unbind('keyup')
+      window.location.href = (Routes.company_path(datum.id))
+
+  queryTypeahead.on
+    keyup: (evt) ->
+      if (evt.keyCode == 13)
+        $(this).closest("form").submit();

@@ -1,0 +1,35 @@
+@import "brand-font/style";
+
+.logo {
+  display: block;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1;
+}
+.logo a:hover,
+.logo a:focus,
+.logo:hover,
+.logo:focus {
+  text-decoration: none;
+}
+.logo span {
+  margin: 0 .1em 0 0;
+}
+.logo span:before {
+  content: none;
+}
+.logo small {
+  line-height: 1.5em;
+  font-size: 0.35em;
+  display: block;
+}
+
+.logo span.logoicon-resultados { color: #506e84; }
+.logo span.logoicon-digitais { color: #7e8285; }
+.logo span.logoicon-rd-station { color: $brand-secundary; }
+.logo small { color: #666; }
+
+.logo.bg-dark span.logoicon-resultados { color: #98b0c1; }
+.logo.bg-dark span.logoicon-digitais { color: #d3dbe0; }
+.logo.bg-dark span.logoicon-rd-station { color: #e0dbd3; }
+.logo.bg-dark small { color: #d3dbe0; }

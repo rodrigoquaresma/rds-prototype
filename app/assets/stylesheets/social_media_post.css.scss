@@ -1,0 +1,36 @@
+@import "components/social_media_post";
+@import "components/mixins";
+@import "components/variables";
+
+#scheduled-messages {
+  article {
+    &.old {
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+    &.error {
+      background: #f3e4e4;
+      border: 1px solid #ebbebe;
+      color: #a16e6e;
+    }
+    &.error:hover div.article-toolbar,
+    &.old:hover div.article-toolbar {
+      display: block;
+    }
+    &.processing {
+      background: #fffedd;
+      color: #463a33;
+      div.article-toolbar { display: none; }
+    }
+    p.mention { font-style: italic; }
+    span.avatar {
+      display: block;
+      width: 24px;
+      height: 24px;
+      text-indent: -3000px;
+      &.facebook{ background: image-url( 'sprite.png' ) -28px -24px; }
+      &.twitter{ background: image-url( 'sprite.png' ) -28px -48px; }
+      &.twitter.facebook{ background: image-url( 'sprite.png' ) -28px -168px; }
+    }
+  }
+}

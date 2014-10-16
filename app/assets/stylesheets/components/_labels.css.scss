@@ -1,0 +1,38 @@
+@import "components/variables";
+@import "components/mixins";
+@import "bootstrap/labels";
+
+.label-past { background-color: $label-past-bg; color: $label-past-color; }
+.label-goal { background-color: $label-goal-bg; }
+.label-present { background-color: $label-present-bg; }
+.label-tag {
+  background-color: #e5e5e5;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e5e5e5;
+  color: #777;
+  text-shadow: none;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  font-weight: normal;
+  margin: 0 1px 5px 0;
+  display: inline-block;
+  padding: 1px 5px;
+  word-break: break-word;
+  white-space: normal;
+  text-align: left;
+  .close {
+    float: none;
+    font-weight: normal;
+    line-height: 1em;
+    font-size: 1.25em;
+  }
+  &.label-success {
+    border-color: $brand-success;
+  }
+}
+
+.tag-wrapper {
+  margin: 5px 0 0;
+  overflow: hidden;
+}
