@@ -18,9 +18,20 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+
+  gem 'jquery-rails', '>= 1.0.12'
+  # gem 'compass-rails'
+  gem 'bootstrap-sass'
+  gem 'jquery-ui-rails'
+  # gem "asset_sync"
+  # gem 'i18n-js'
+  # gem "js-routes"
+  # gem "mousetrap-rails"
+
 end
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
