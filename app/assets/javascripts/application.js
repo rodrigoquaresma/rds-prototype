@@ -13,7 +13,6 @@
 //= require liga
 //= require jquery.bootstrap-growl
 //= require i18n
-//= require i18n/translations
 //= require hogan
 //= require js-routes
 //= require bootstrap
@@ -42,7 +41,7 @@ function isASubmit(element) {
 }
 
 function validForm(element) {
-  var form = element.closest('form')[0]; 
+  var form = element.closest('form')[0];
   if (validatable(form) && isASubmit(element)) {
     return form.checkValidity();
   }
