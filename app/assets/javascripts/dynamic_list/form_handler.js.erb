@@ -155,7 +155,7 @@
 
       var getHtmlForCondition2 = function(condition1Type){
         var new_second_field_html = "";
-        <% %w(contains not_contains conversion not_conversion filled not_filled lifecycle_stage opportunity).each do |condition1Type| %>
+        <% %w(contains not_contains conversion not_conversion filled not_filled filled_exactly not_filled_exactly lifecycle_stage opportunity).each do |condition1Type| %>
         <%= "if (condition1Type == '#{condition1Type}') {".html_safe %>
         <%= ("  new_second_field_html = \"" + escape_javascript(render_second_field(condition1Type).gsub(/\r/, ' ').gsub(/\n/, ' '))  + "\";").html_safe %>
         <%= "}".html_safe %>

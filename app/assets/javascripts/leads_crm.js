@@ -25,8 +25,11 @@ $(window).load(function () {
 
   $('#mark_sale_button').click(function(){
     var soldLeadQuery = $('#sold-lead-query').val();
-    if( soldLeadQuery != "" ){
-      $('#sold_with_value').removeClass('hide');
+    if ( $('#sold_value_false').is(':checked') ) {
+      $('#sold-lead-query').val("");
+    }
+    else if ( soldLeadQuery != "" ){
+      $('#sold_with_value').removeClass('hidden');
       $('#sold_with_value > span').text(soldLeadQuery);
     }
   });

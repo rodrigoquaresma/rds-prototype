@@ -1,4 +1,5 @@
 #= require ajax_loader
+#= require jquery.mask.min
 
 jQuery ->
 
@@ -7,43 +8,10 @@ jQuery ->
   class Helper
 
     toFloat : (numberStr) ->
-      numberStr.replace('.', '').replace(',', '.')
+      numberStr.replace(/\./g, '').replace(/\,/, '.')
 
-    onlyNumbers : (str) ->
-      parseInt(str.replace(/[^\d]/g, ''))
-
-    portion : (x, y) ->
-      if x && y && y != 0
-        'R$ ' + helper.formatCurrency(x / y)
-      else
-        '-'
-
-    formatCurrency : (value) ->
-      text = (value / 100.0).toFixed(2).replace('.', ',')
-      reg = /(\d+)(\d{3})/
-      while text.match(reg)
-        text = text.replace(reg, '$1.$2')
-      text
-
-    getAmmount : (column, cssClass) ->
-      helper.onlyNumbers(column.find(cssClass).text())
-
-    getColumn : (elem, offset) ->
-      offset ||= 0
-      self = $(elem)
-      index = self.parents('td').index() + 1 + offset
-      self.parents('tbody').find('td:nth-child(' + index + ')')
-
-    applyMask : (elem) ->
-      self = $(elem)
-      value = helper.onlyNumbers(self.val())
-      if value
-        self.val(helper.formatCurrency(value))
-      else
-        self.val('')
-
-    has_changed : (attr, value) ->
-      previous[attr] != value
+    has_changed : (value) ->
+      previous != value
 
     update_save_btn : (enabled) ->
       btn = $('#save_dashboard')
@@ -52,18 +20,27 @@ jQuery ->
       else
         btn.text('Salvo').attr('disabled', 'disabled')
 
+    msg_fail: () ->
+      $.bootstrapGrowl("Error ao salvar as informações!", { type: 'danger', width: 600, delay: 1500, allow_dismiss: true, offset: {from: 'bottom', amount: 105} })
+      update_save_btn(true)
+
+    msg_success: () ->
+       $.bootstrapGrowl("Informações salvas com sucesso!", { type: 'success', width: 600, delay: 1500, allow_dismiss: true, offset: {from: 'bottom', amount: 105} })
+
   helper = new Helper()
 
-  previous = {}
-
-  input_selected_value = (month, attr) ->
-    $('.js-edit-value[data-month="'+ month + '"][data-attr="'+ attr + '"]').val()
+  previous = -1
 
   $(document).ajaxSuccess ->
-    $(".js-edit-value, .js-previous-edit-planning, .js-next-edit-planning").unbind()
+    $(".js-edit-value, .js-previous-edit-planning, .js-next-edit-planning, .js-metric-visible").unbind()
 
-    $.each $(".js-edit-value"), (_, input) ->
-      helper.applyMask(input)
+    $(".js-input-money").mask('000.000.000.000.000,00', {reverse: true, pattern: /[0-9]/})
+    $(".js-input-number").mask("###.###.###.###.###", {reverse: true, maxlength: false, pattern: /[0-9]/})
+
+    $.each $(".js-input-money"), (_, input) ->
+      value = $(input).val()
+      if value[0] == '.'
+        $(input).val(value.substring(1))
 
     $('.js-previous, .js-next').click ->
       splitedDate = $(this).data('month').split('-')
@@ -74,54 +51,71 @@ jQuery ->
     $('.js-edit-value').keyup (event) ->
       if (event.which == TAB_KEY)
         return
-      helper.applyMask(this)
-      attr = $(this).data('attr')
-      month = $(this).data('month')
-      value = input_selected_value(month, attr)
-      helper.update_save_btn(!helper.has_changed(value))
+      helper.update_save_btn(!helper.has_changed($(this).val()))
 
     $('.js-edit-value').focus ->
       self = $(this)
-      attr = self.data('attr')
-      month = self.data('month')
-      previous[attr] = input_selected_value(month, attr)
+      previous = $(this).val()
+
+    $('.js-metric-visible').change ->
+      parent = $(this).parents('.panel')
+      metric_id = parent.data('metric-id')
+      metric_visible = !(parent.find('.js-metric-visible').prop( "checked" ))
+
+      $.ajax Routes.analytics_business_planning_metric_visible_path(),
+        type : "POST"
+        data : {
+          metric_id: metric_id,
+          metric_visible: metric_visible
+        }
+        error : () ->
+          helper.msg_fail()
+          helper.update_save_btn(true)
+        success : (data) ->
+          helper.msg_success()
 
     $('.js-edit-value').blur ->
       self = $(this)
-      month = self.data('month')
-      attr = self.data('attr')
-      value = input_selected_value(month, attr)
+      return unless helper.has_changed(self.val())
 
-      if (helper.has_changed(attr, value))
-        $.ajax Routes.analytics_business_save_funnel_report_path(),
-          type : "POST"
-          data : {
-            month_and_year: month,
-            attribute: attr,
-            value: helper.toFloat(value)
-          }
-          error : (jqXHR, textStatus, errorThrown) ->
-            $.bootstrapGrowl("Error ao salvar as informações!", { type: 'danger', width: 600, delay: 1500, allow_dismiss: true, offset: {from: 'bottom', amount: 105} })
-            helper.update_save_btn(true)
-          success : (data, textStatus, jqXHR) ->
-            $.bootstrapGrowl("Informações salvas com sucesso!", { type: 'success', width: 600, delay: 1500, allow_dismiss: true, offset: {from: 'bottom', amount: 105} })
+      parent = self.parents('.panel')
+      metric_date = self.data('month')
+      metric_id = parent.data('metric-id')
+
+      actual = parent.find(".js-actual[data-month='#{ metric_date }']").val()
+      if $(parent.find(".js-input-money.js-actual[data-month='#{ metric_date }']"))
+        actual = helper.toFloat(actual)
+
+      goal = parent.find(".js-goal[data-month='#{ metric_date }']").val()
+      if $(parent.find(".js-input-money.js-goal[data-month='#{ metric_date }']"))
+        goal = helper.toFloat(goal)
+
+      $.ajax Routes.analytics_business_save_funnel_report_path(),
+        type : "POST"
+        data : {
+          metric_date: metric_date,
+          metric_id: metric_id,
+          actual: actual,
+          goal: goal
+        }
+        error : () ->
+          helper.msg_fail()
+        success : (data, textStatus, jqXHR) ->
+          helper.msg_success()
 
       helper.update_save_btn(false)
 
-    $(document).on 'ajaxComplete', () ->
-      $(".js-previous-edit-planning, .js-next-edit-planning").unbind()
-      
-      $('.js-previous-edit-planning, .js-next-edit-planning').click ->
-        splitedDate = $(this).data('month').split('-')
-        panel = $(this).data('panel')
-        month = splitedDate[1]
-        year = splitedDate[0]
-        $.get Routes.analytics_business_planning_edit_path({year,month,panel})
+    $('.js-previous-edit-planning, .js-next-edit-planning').click ->
+      splitedDate = $(this).data('month').split('-')
+      panel = $(this).data('panel')
+      month = splitedDate[1]
+      year = splitedDate[0]
+      $.get Routes.analytics_business_planning_edit_path({year,month,panel})
 
-      $(".js-edit-planning").on 'click', () ->
-        $.ajax
-          url: Routes.analytics_business_planning_edit_path()
-          success: () ->
-            $('.js-actions-footer-planning').removeClass('hide')
-          error: () ->
-            $('.js-planning-show').html('<div class="loading"><p>Ops... ocorreu um problema.</p> <p><a class="btn btn-default" href="'+Routes.analytics_business_planning_edit_path()+'"> Tentar novamente</a></p></div>')
+    $(".js-edit-planning").on 'click', () ->
+      $.ajax
+        url: Routes.analytics_business_planning_edit_path()
+        success: () ->
+          $('.js-actions-footer-planning').removeClass('hide')
+        error: () ->
+          $('.js-planning-show').html('<div class="loading"><p>Ops... ocorreu um problema.</p> <p><a class="btn btn-default" href="'+Routes.analytics_business_planning_edit_path()+'"> Tentar novamente</a></p></div>')

@@ -13,6 +13,7 @@
 //= require liga
 //= require jquery.bootstrap-growl
 //= require i18n
+//= require i18n/translations
 //= require hogan
 //= require js-routes
 //= require bootstrap
@@ -31,12 +32,35 @@ function getUrlVars() {
   }
   return vars;
 }
+
+function validatable(form) {
+  return form && form.checkValidity;
+}
+
+function isASubmit(element) {
+  return element.attr('type') == 'submit';
+}
+
+function validForm(element) {
+  var form = element.closest('form')[0]; 
+  if (validatable(form) && isASubmit(element)) {
+    return form.checkValidity();
+  }
+  return true;
+}
+
+
 (function ($){
   'use strict';
   var initList = [];
   var EventHandler = {
     handleButtonState : function(event){
       var $this = $(this);
+
+      if (!validForm($this)) {
+        return;
+      }
+
       var loadingText = $this.data('loadingText');
       if (loadingText){
         var btnName = $this.attr('name');

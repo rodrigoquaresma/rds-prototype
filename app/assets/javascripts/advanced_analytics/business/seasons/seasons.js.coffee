@@ -1,6 +1,11 @@
+#= require ajax_loader
+
 jQuery ->
-  $.get Routes.analytics_report_fetch_leads_count_by_season_path(), (data) ->
+  AjaxLoader.load(Routes.analytics_report_fetch_leads_count_by_season_path(), '#leads_count', {
+    setLoading: (container, message) ->
+      container.text(message)
+  }).success = (url, container, data) ->
     $('#entry-in').change ->
       count = data[$(this).val()]
-      $('#leads_count').text(count ? count : '-')
+      container.text(count ? count : '-')
     .change()

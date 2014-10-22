@@ -21,7 +21,28 @@ jQuery ->
   load_conversions = () ->
     params = parse_parameters()
     return unless params.start_date && params.end_date
-    AjaxLoader.load(Routes.analytics_campaigns_conversions_data_path(params), '.js-conversions-table')
+    AjaxLoader.load(Routes.analytics_campaigns_conversions_data_path(params), '.js-conversions-table', {
+      nextLoadingMessageIndex: AjaxLoader.stopInLastMessage
+      loadingMessages: [
+        'Carregando',
+        'Carregando.',
+        'Carregando..',
+        'Carregando...',
+        'Ainda estamos carregando',
+        'Ainda estamos carregando.',
+        'Ainda estamos carregando..',
+        'Ainda estamos carregando...',
+        'Este relatório pode demorar até alguns minutos',
+        'Este relatório pode demorar até alguns minutos.',
+        'Este relatório pode demorar até alguns minutos..',
+        'Este relatório pode demorar até alguns minutos...',
+        'São muitos dados para processar, desculpe o inconveniente',
+        'São muitos dados para processar, desculpe o inconveniente.',
+        'São muitos dados para processar, desculpe o inconveniente...',
+        'São muitos dados para processar, desculpe o inconveniente....',
+        'Já estamos trabalhando para melhorar este tempo'
+      ]
+    })
 
   parse_parameters = () ->
     {
