@@ -22,7 +22,7 @@ group :assets do
 
   gem 'jquery-rails', '>= 1.0.12'
   # gem 'compass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '~> 3.2.0'
   gem 'jquery-ui-rails'
   # gem "asset_sync"
   gem 'i18n-js'

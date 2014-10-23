@@ -2,6 +2,7 @@
 // defaults to true if twbs-font-path function is present (no function => twbs-font-path('') parsed as string == right side)
 // in Sass 3.3 this can be improved with: function-exists(twbs-font-path)
 $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")')) !default;
+
 //
 // Variables
 // --------------------------------------------------
@@ -13,85 +14,15 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
 $gray-dark:              lighten(#000, 20%) !default;   // #333
-$gray-medium-dark:       lighten(#000, 28%) !default;   // #474747
 $gray:                   lighten(#000, 33.5%) !default; // #555
-$gray-medium-light:      lighten(#000, 40%) !default;   // #474747
 $gray-light:             #737373 !default;   			// #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
 $brand-primary:         #3A87AD !default;
-$brand-secundary:       #846d50 !default;
 $brand-success:         #82c4b6 !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
-
-$brand-twitter: 		#00aced;
-$brand-facebook:		#3B5998;
-
-//## colors for legend charts
-
-$brand-chart-1:       #4c66b7 !default; //#506e84
-$brand-chart-2:       #7ca932 !default;
-$brand-chart-3:       #ddb606 !default;
-$brand-chart-4:       #b94c2e !default;
-$brand-chart-5:       #7e4e9c !default;
-$brand-chart-6:       #737373 !default;
-$brand-chart-7:       #70a5c2 !default;
-$brand-chart-8:       #9fbe3e !default;
-$brand-chart-9:       #e59b5a !default;
-$brand-chart-10:      #c76689 !default;
-$brand-chart-11:      #7b6db4 !default;
-$brand-chart-12:      #a5a5a5 !default;
-
-//## btns color charts
-$btn-chart-1-color:                 #fff !default;
-$btn-chart-1-bg:                    $brand-chart-1 !default;
-$btn-chart-1-border:                darken($btn-chart-1-bg, 5%) !default;
-
-$btn-chart-2-color:                 #fff !default;
-$btn-chart-2-bg:                    $brand-chart-2 !default;
-$btn-chart-2-border:                darken($btn-chart-2-bg, 5%) !default;
-
-$btn-chart-3-color:                 #fff !default;
-$btn-chart-3-bg:                    $brand-chart-3 !default;
-$btn-chart-3-border:                darken($btn-chart-3-bg, 5%) !default;
-
-$btn-chart-4-color:                 #fff !default;
-$btn-chart-4-bg:                    $brand-chart-4 !default;
-$btn-chart-4-border:                darken($btn-chart-4-bg, 5%) !default;
-
-$btn-chart-5-color:                 #fff !default;
-$btn-chart-5-bg:                    $brand-chart-5 !default;
-$btn-chart-5-border:                darken($btn-chart-5-bg, 5%) !default;
-
-$btn-chart-6-color:                 #fff !default;
-$btn-chart-6-bg:                    $brand-chart-6 !default;
-$btn-chart-6-border:                darken($btn-chart-6-bg, 5%) !default;
-
-$btn-chart-7-color:                 #fff !default;
-$btn-chart-7-bg:                    $brand-chart-7 !default;
-$btn-chart-7-border:                darken($btn-chart-7-bg, 5%) !default;
-
-$btn-chart-8-color:                 #fff !default;
-$btn-chart-8-bg:                    $brand-chart-8 !default;
-$btn-chart-8-border:                darken($btn-chart-8-bg, 5%) !default;
-
-$btn-chart-9-color:                 #fff !default;
-$btn-chart-9-bg:                    $brand-chart-9 !default;
-$btn-chart-9-border:                darken($btn-chart-9-bg, 5%) !default;
-
-$btn-chart-10-color:                 #fff !default;
-$btn-chart-10-bg:                    $brand-chart-10 !default;
-$btn-chart-10-border:                darken($btn-chart-10-bg, 5%) !default;
-
-$btn-chart-11-color:                 #fff !default;
-$btn-chart-11-bg:                    $brand-chart-11 !default;
-$btn-chart-11-border:                darken($btn-chart-11-bg, 5%) !default;
-
-$btn-chart-12-color:                 #fff !default;
-$btn-chart-12-bg:                    $brand-chart-12 !default;
-$btn-chart-12-border:                darken($btn-chart-12-bg, 5%) !default;
 
 
 //== Scaffolding
@@ -120,11 +51,8 @@ $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !def
 $font-family-base:        $font-family-sans-serif !default;
 
 $font-size-base:          16px !default;
-$font-size-xsmall:        ceil(($font-size-base * 0.8125))  !default; // ~13px
-$font-size-small:         ceil(($font-size-base * 0.8750))  !default; // ~14px
-$font-size-medium:        ceil(($font-size-base * 1.1250))  !default; // ~18px
 $font-size-large:         ceil(($font-size-base * 1.2500))  !default; // ~20px
-$font-size-xlarge:        ceil(($font-size-base * 2.0000))  !default; // ~32px
+$font-size-small:         ceil(($font-size-base * 0.8750))  !default; // ~14px
 
 $font-size-h1:            floor(($font-size-base * 2.6250)) !default; // ~42px
 $font-size-h2:            floor(($font-size-base * 2.1250)) !default; // ~34px
@@ -150,7 +78,10 @@ $headings-color:          inherit !default;
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
 //** Load fonts from this directory.
+
+
 $icon-font-path: "bootstrap/" !default;
+
 //** File name for all font files.
 $icon-font-name:          "glyphicons-halflings-regular" !default;
 //** Element ID within SVG icon file.
@@ -199,8 +130,6 @@ $caret-width-large:         5px !default;
 $table-cell-padding:            10px !default;
 //** Padding for cells in `.table-condensed`.
 $table-condensed-cell-padding:  5px !default;
-//** Padding for cells in `.table-expanded`.
-$table-expanded-cell-padding:  15px !default;
 
 //** Default background color used for all tables.
 $table-bg:                      #f5f5f5 !default;
@@ -212,11 +141,6 @@ $table-bg-active:               $table-bg-hover !default;
 
 //** Border color for table and cell borders.
 $table-border-color:            #ddd !default;
-
-$table-bg-filter:               $table-bg !default;
-$table-bg-thead:               	transparent !default;
-$table-bg-tbody:               	white !default;
-$table-bg-tfoot:               	transparent !default;
 
 
 //== Buttons
@@ -232,10 +156,6 @@ $btn-default-border:             #ccc !default;
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
-
-$btn-secundary-color:            $brand-secundary !default;
-$btn-secundary-bg:               #fff !default;
-$btn-secundary-border:           darken($btn-secundary-bg, 5%) !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
@@ -342,7 +262,6 @@ $zindex-tooltip:           1070 !default;
 $zindex-navbar-fixed:      1030 !default;
 $zindex-modal-background:  1040 !default;
 $zindex-modal:             1050 !default;
-$zindex-autocomplete:      1060 !default;
 
 
 //== Media queries breakpoints
@@ -454,10 +373,11 @@ $navbar-default-toggle-hover-bg:           #ddd !default;
 $navbar-default-toggle-icon-bar-bg:        #888 !default;
 $navbar-default-toggle-border-color:       #ddd !default;
 
+
 // Inverted navbar
 // Reset inverted navbar basics
 $navbar-inverse-color:                      $gray-lighter !default;
-$navbar-inverse-bg:                         $brand-secundary !default;
+$navbar-inverse-bg:                         $brand-primary !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 
 // Inverted navbar links
@@ -649,12 +569,6 @@ $label-color:                 #fff !default;
 //** Default text color of a linked label
 $label-link-hover-color:      #fff !default;
 
-//** Dashboard label
-$label-past-bg:               $gray-lighter !default;
-$label-past-color:            $gray-light !default;
-$label-present-bg:            $brand-secundary !default;
-$label-goal-bg:               $link-color !default;
-
 
 //== Modals
 //
@@ -774,12 +688,10 @@ $list-group-link-heading-color: #333 !default;
 //##
 
 $panel-bg:                    #f5f5f5 !default;
-$panel-body-bg:               #fff !default;
 $panel-body-padding:          10px !default;
 $panel-heading-padding:       10px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-large !default;
-$panel-border-color:          #ddd !default;
 
 //** Border color for elements within panels
 $panel-inner-border:          #ddd !default;
@@ -810,15 +722,6 @@ $panel-danger-border:         $state-danger-border !default;
 $panel-danger-heading-bg:     $state-danger-bg !default;
 
 
-//== Slats
-//
-//##
-
-$slat-bg:                    #fff !default;
-$slat-heading-bg:            #f5f5f5 !default;
-$slat-heading-border-color:  #ddd !default;
-
-
 //== Thumbnails
 //
 //##
@@ -837,18 +740,6 @@ $thumbnail-caption-color:     $text-color !default;
 //** Padding around the thumbnail caption
 $thumbnail-caption-padding:   9px !default;
 
-
-//== Template Thumbnails
-//
-//##
-
-$template-thumbnail-padding:           15px !default;
-$template-thumbnail-bg:                #fff !default;
-$template-thumbnail-border:            #ddd !default;
-$template-thumbnail-border-radius:     $border-radius-base !default;
-$template-thumbnail-hover-bg:          #f9f9f9 !default;
-$template-thumbnail-active-border:     #bcbcbc !default;
-$template-thumbnail-active-bg:         #f1f1f1 !default;
 
 //== Wells
 //
@@ -939,6 +830,8 @@ $pre-scrollable-max-height:   340px !default;
 //
 //##
 
+//** Horizontal offset for forms and lists.
+$component-offset-horizontal: 180px !default;
 //** Text muted color
 $text-muted:                  $gray-light !default;
 //** Abbreviations and acronyms border color
@@ -953,7 +846,10 @@ $blockquote-font-size:        ($font-size-base * 1.25) !default;
 $blockquote-border-color:     $gray-lighter !default;
 //** Page header border color
 $page-header-border-color:    $gray-lighter !default;
-
+//** Width of horizontal description list titles
+$dl-horizontal-offset:        $component-offset-horizontal !default;
+//** Horizontal line color.
+$hr-border:                   $gray-lighter !default;
 
 //== Miscellaneous
 //
@@ -965,7 +861,10 @@ $hr-border:                   $gray-lighter !default;
 //** Horizontal offset for forms and lists.
 $component-offset-horizontal: 180px !default;
 
-// to conserve variables v2.3.2
+
+//== to conserve variables v2.3.2
+//
+//##
 
 $linkColor:         $link-color;
 $green:             $brand-success;
@@ -980,3 +879,152 @@ $grayLight:         $gray-light;
 $fontSizeSmall:     $font-size-small;
 $baseBorderRadius:  $border-radius-base;
 $borderRadiusLarge: $border-radius-large;
+
+
+// only news
+
+//== colors
+//
+//##
+
+$gray-medium-dark:  lighten(#000, 28%) !default;   // #474747
+$gray-medium-light: lighten(#000, 40%) !default;   // #474747
+$brand-secundary:   #846d50 !default;
+$brand-twitter: 		#00aced;
+$brand-facebook:		#3B5998;
+
+//== colors for legend charts
+//
+//##
+
+$brand-chart-1:       #4c66b7 !default; //#506e84
+$brand-chart-2:       #7ca932 !default;
+$brand-chart-3:       #ddb606 !default;
+$brand-chart-4:       #b94c2e !default;
+$brand-chart-5:       #7e4e9c !default;
+$brand-chart-6:       #737373 !default;
+$brand-chart-7:       #70a5c2 !default;
+$brand-chart-8:       #9fbe3e !default;
+$brand-chart-9:       #e59b5a !default;
+$brand-chart-10:      #c76689 !default;
+$brand-chart-11:      #7b6db4 !default;
+$brand-chart-12:      #a5a5a5 !default;
+
+
+//== new btns
+//
+//##
+
+$btn-secundary-color:            $brand-secundary !default;
+$btn-secundary-bg:               #fff !default;
+$btn-secundary-border:           darken($btn-secundary-bg, 5%) !default;
+
+$btn-chart-1-color:              #fff !default;
+$btn-chart-1-bg:                 $brand-chart-1 !default;
+$btn-chart-1-border:             darken($btn-chart-1-bg, 5%) !default;
+
+$btn-chart-2-color:              #fff !default;
+$btn-chart-2-bg:                 $brand-chart-2 !default;
+$btn-chart-2-border:             darken($btn-chart-2-bg, 5%) !default;
+
+$btn-chart-3-color:              #fff !default;
+$btn-chart-3-bg:                 $brand-chart-3 !default;
+$btn-chart-3-border:             darken($btn-chart-3-bg, 5%) !default;
+
+$btn-chart-4-color:              #fff !default;
+$btn-chart-4-bg:                 $brand-chart-4 !default;
+$btn-chart-4-border:             darken($btn-chart-4-bg, 5%) !default;
+
+$btn-chart-5-color:              #fff !default;
+$btn-chart-5-bg:                 $brand-chart-5 !default;
+$btn-chart-5-border:             darken($btn-chart-5-bg, 5%) !default;
+
+$btn-chart-6-color:              #fff !default;
+$btn-chart-6-bg:                 $brand-chart-6 !default;
+$btn-chart-6-border:             darken($btn-chart-6-bg, 5%) !default;
+
+$btn-chart-7-color:              #fff !default;
+$btn-chart-7-bg:                 $brand-chart-7 !default;
+$btn-chart-7-border:             darken($btn-chart-7-bg, 5%) !default;
+
+$btn-chart-8-color:              #fff !default;
+$btn-chart-8-bg:                 $brand-chart-8 !default;
+$btn-chart-8-border:             darken($btn-chart-8-bg, 5%) !default;
+
+$btn-chart-9-color:              #fff !default;
+$btn-chart-9-bg:                 $brand-chart-9 !default;
+$btn-chart-9-border:             darken($btn-chart-9-bg, 5%) !default;
+
+$btn-chart-10-color:             #fff !default;
+$btn-chart-10-bg:                $brand-chart-10 !default;
+$btn-chart-10-border:            darken($btn-chart-10-bg, 5%) !default;
+
+$btn-chart-11-color:             #fff !default;
+$btn-chart-11-bg:                $brand-chart-11 !default;
+$btn-chart-11-border:            darken($btn-chart-11-bg, 5%) !default;
+
+$btn-chart-12-color:             #fff !default;
+$btn-chart-12-bg:                $brand-chart-12 !default;
+$btn-chart-12-border:            darken($btn-chart-12-bg, 5%) !default;
+
+
+//== Typo
+//
+//##
+
+$font-size-xsmall:        ceil(($font-size-base * 0.8125))  !default; // ~13px
+$font-size-medium:        ceil(($font-size-base * 1.1250))  !default; // ~18px
+$font-size-xlarge:        ceil(($font-size-base * 2.0000))  !default; // ~32px
+
+
+//== Tables
+//
+//##
+
+$table-expanded-cell-padding:  15px !default;
+$table-bg-filter:               $table-bg !default;
+$table-bg-thead:               	transparent !default;
+$table-bg-tbody:               	white !default;
+$table-bg-tfoot:               	transparent !default;
+
+$zindex-autocomplete:      1060 !default;
+
+
+//== Dashboard label
+//
+//##
+
+$label-past-bg:               $gray-lighter !default;
+$label-past-color:            $gray-light !default;
+$label-present-bg:            $brand-secundary !default;
+$label-goal-bg:               $link-color !default;
+
+
+//== Panels
+//
+//##
+
+$panel-body-bg:               #fff !default;
+$panel-border-color:          #ddd !default;
+
+
+//== Slats
+//
+//##
+
+$slat-bg:                    #fff !default;
+$slat-heading-bg:            #f5f5f5 !default;
+$slat-heading-border-color:  #ddd !default;
+
+
+//== Template Thumbnails
+//
+//##
+
+$template-thumbnail-padding:           15px !default;
+$template-thumbnail-bg:                #fff !default;
+$template-thumbnail-border:            #ddd !default;
+$template-thumbnail-border-radius:     $border-radius-base !default;
+$template-thumbnail-hover-bg:          #f9f9f9 !default;
+$template-thumbnail-active-border:     #bcbcbc !default;
+$template-thumbnail-active-bg:         #f1f1f1 !default;
