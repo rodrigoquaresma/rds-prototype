@@ -1,4 +1,26 @@
 RdsPrototype::Application.routes.draw do
+
+
+  scope '/lead-scoring' do
+    get "/", :to => 'lead_scoring#index'
+    get "/resumo", :to => 'lead_scoring#show'
+    get "/editar", :to => 'lead_scoring#steps'
+    get "/estatisticas", :to => 'lead_scoring#stats'
+    get "/configuracao", :to => 'lead_scoring#settings'
+    get "/configuracoes", :to => 'lead_scoring#settings'
+  end
+
+  # get "lead-scoring/index"
+  #
+  # get "lead-scoring/show"
+  #
+  # get "lead-scoring/steps"
+  #
+  # get "lead-scoring/stats"
+  #
+  # get "lead-scoring/settings"
+
+
   root to: "home#index"
 
   get "home/index"
