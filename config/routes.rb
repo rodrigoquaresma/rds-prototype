@@ -10,17 +10,6 @@ RdsPrototype::Application.routes.draw do
     get "/configuracoes", :to => 'lead_scoring#settings'
   end
 
-  # get "lead-scoring/index"
-  #
-  # get "lead-scoring/show"
-  #
-  # get "lead-scoring/steps"
-  #
-  # get "lead-scoring/stats"
-  #
-  # get "lead-scoring/settings"
-
-
   root to: "home#index"
 
   get "home/index"
