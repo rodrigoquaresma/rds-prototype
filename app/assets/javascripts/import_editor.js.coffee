@@ -25,10 +25,8 @@ $.station.init.add ->
 
   toggleFieldTrigger.on "change", toggleSelectedField
 
-  return
-
-$(document).ready ->
-  $(".date-picker").datepicker
-    format: "dd/mm/yyyy"
-    language: "pt-BR"
+  $('.date-picker').datepicker
+    format: 'dd/mm/yyyy'
+    todayHighlight: 'true'
+    language: 'pt-BR'
   return

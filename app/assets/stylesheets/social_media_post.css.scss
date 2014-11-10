@@ -1,6 +1,8 @@
-@import "components/social_media_post";
 @import "components/mixins";
 @import "components/variables";
+@import "components/variables-custom";
+
+@import "components/social_media_post";
 
 #scheduled-messages {
   article {

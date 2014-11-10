@@ -1,69 +1,78 @@
 jQuery ->
-
   $('#goals').on 'shown.bs.modal', () ->
     $.get Routes.edit_funnel_setups_path(), (data) ->
       $('#goals .modal-body').html(data)
 
-  $('#save-funnel-setup').on 'click', () ->
-    $('#funnel-setup-form').submit()
+  $('#save-funnel-setup').on 'click', () -> $('#funnel-setup-form').submit()
 
 class FunnelData
-  constructor: ->
+  load: ->
+    window.deferred = $.Deferred();
+
     me = this
     $.when(
-      this.load_visitors() if $('#visitors_total').size() == 1
-      this.load_leads() if $('#leads_total').size() == 1
-      this.load_qualified_leads() if $('#qualified_leads_total').size() == 1
-      this.load_opportunities() if $('#opportunities_total').size() == 1
-      this.load_sales() if $('#sales_total').size() == 1
+      $.get(Routes.dashboard_load_dashboard_path()).done (data) =>
+         this.load_visitors(data) if $('#visitors_total').size() == 1
+         this.load_leads(data) if $('#leads_total').size() == 1
+         this.load_qualified_leads(data) if $('#qualified_leads_total').size() == 1
+         this.load_opportunities(data) if $('#opportunities_total').size() == 1
+         this.load_sales(data) if $('#sales_total').size() == 1
     ).then () ->
       me.calculate_percentages()
       conversions = $(".conversion")
       $(conversions[conversions.length - 1]).hide()
+      window.deferred.resolve() if window.googleChartLoaded
 
-  load_visitors: =>
+  runChartCallbacks: ->
+    window.googleChartLoaded = true
+    window.deferred.resolve()
+
+  load_visitors: (data) ->
     #console.log 'Loading visitors funnel data...'
-    $.get(Routes.dashboard_load_visitors_values_path()).done (data) =>
-      $('#visitors_total').text(I18n.toNumber(data.visitors.current_month_value, {precision: 0}))
-      $('#visitors_delta').html(this.variation_html(data.visitors.current_month_value,data.visitors.last_month_value))
+    $('#visitors_total').text(I18n.toNumber(data.visitors.current_month_value, {precision: 0}))
+    $('#visitors_delta').html(this.variation_html(data.visitors.current_month_value,data.visitors.last_month_value))
+
+    if data.visitors.graphics
       this.goal_comparison("#visitors_goal_delta", data.visitors.current_month_value,this.goal_of_day(data.visitors.graphics.data_rows))
       window.deferred.done =>
         this.plot_graphic(data.visitors.graphics, 'chart_visitors')
 
-  load_leads: ->
+  load_leads: (data) ->
     #console.log 'Loading leads funnel data...'
-    $.get(Routes.dashboard_load_leads_values_path()).done (data) =>
-      $('#leads_total').text(I18n.toNumber(data.leads.current_month_value, {precision: 0}))
-      $('#leads_delta').html(this.variation_html(data.leads.current_month_value,data.leads.last_month_value))
+    $('#leads_total').text(I18n.toNumber(data.leads.current_month_value, {precision: 0}))
+    $('#leads_delta').html(this.variation_html(data.leads.current_month_value,data.leads.last_month_value))
+
+    if data.leads.graphics
       this.goal_comparison("#leads_goal_delta", data.leads.current_month_value,this.goal_of_day(data.leads.graphics.data_rows))
       window.deferred.done =>
         this.plot_graphic(data.leads.graphics, 'chart_leads')
 
-  load_qualified_leads: ->
+  load_qualified_leads: (data) ->
     #console.log 'Loading qualified leads funnel data...'
-    $.get(Routes.dashboard_load_qualified_leads_values_path()).done (data) =>
-      $('#qualified_leads_total').text(I18n.toNumber(data.qualified_leads.current_month_value, {precision: 0}))
-      $('#qualified_leads_delta').html(this.variation_html(data.qualified_leads.current_month_value,data.qualified_leads.last_month_value))
-      this.goal_comparison("#qualified_leads_goal_delta", data.qualified_leads.current_month_value,this.goal_of_day(data.qualified_leads.graphics.data_rows))
+    $('#qualified_leads_total').text(I18n.toNumber(data.qualified_leads.current_month_value, {precision: 0}))
+    $('#qualified_leads_delta').html(this.variation_html(data.qualified_leads.current_month_value,data.qualified_leads.last_month_value))
 
+    if data.qualified_leads.graphics
+      this.goal_comparison("#qualified_leads_goal_delta", data.qualified_leads.current_month_value,this.goal_of_day(data.qualified_leads.graphics.data_rows))
       window.deferred.done =>
         this.plot_graphic(data.qualified_leads.graphics, 'chart_qualified_leads')
 
-  load_opportunities: ->
+  load_opportunities: (data) ->
     #console.log 'Loading opportunity funnel data...'
-    $.get(Routes.dashboard_load_opportunity_values_path()).done (data) =>
-      $('#opportunities_total').text(I18n.toNumber(data.opportunities.current_month_value, {precision: 0}))
-      $('#opportunities_delta').html(this.variation_html(data.opportunities.current_month_value,data.opportunities.last_month_value))
+    $('#opportunities_total').text(I18n.toNumber(data.opportunities.current_month_value, {precision: 0}))
+    $('#opportunities_delta').html(this.variation_html(data.opportunities.current_month_value,data.opportunities.last_month_value))
+  
+    if data.opportunities.graphics
       this.goal_comparison("#opportunities_goal_delta", data.opportunities.current_month_value,this.goal_of_day(data.opportunities.graphics.data_rows))
-
       window.deferred.done =>
         this.plot_graphic(data.opportunities.graphics, 'chart_opportunities')
 
-  load_sales: ->
+  load_sales: (data) ->
     #console.log 'Loading sales funnel data...'
-    $.get(Routes.dashboard_load_sales_values_path()).done (data) =>
-      $('#sales_total').text(I18n.toNumber(data.sales.current_month_value, {precision: 0}))
-      $('#sales_delta').html(this.variation_html(data.sales.current_month_value,data.sales.last_month_value))
+    $('#sales_total').text(I18n.toNumber(data.sales.current_month_value, {precision: 0}))
+    $('#sales_delta').html(this.variation_html(data.sales.current_month_value,data.sales.last_month_value))
+
+    if data.sales.graphics
       this.goal_comparison("#sales_goal_delta", data.sales.current_month_value,this.goal_of_day(data.sales.graphics.data_rows))
       window.deferred.done =>
         this.plot_graphic(data.sales.graphics, 'chart_sales')
@@ -173,15 +182,10 @@ class FunnelData
     else
       return "<p class=\"\"><span i=\"xicon\"></i>0%</p>"
 
-  window.deferred = $.Deferred()
+window.funnelData = new FunnelData()
+window.funnelData.load();
 
-  runChartCallbacks = ->
-    deferred.resolve()
-
-  $(window).load =>
-    google.load('visualization', '1', {'packages':['corechart'], "callback" : runChartCallbacks})
-
-  window.funnelData = new FunnelData()
+$(window).load => google.load('visualization', '1', {'packages':['corechart'], "callback" : window.funnelData.runChartCallbacks})
 
 # export to be accessible outside coffee wrappers
 (exports ? this).FunnelData = FunnelData

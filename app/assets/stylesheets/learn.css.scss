@@ -1,5 +1,6 @@
 @import "components/mixins";
 @import "components/variables";
+@import "components/variables-custom";
 
 ul.training-modules-list {
   background: #f3f2eb;
@@ -55,7 +56,7 @@ ul.module-tasks-list {
   > li > a+a {
     background: none;
     display: inline;
-    float: none; 
+    float: none;
     line-height: 30px;
     margin: 0 0 0 10px;
     width: auto;

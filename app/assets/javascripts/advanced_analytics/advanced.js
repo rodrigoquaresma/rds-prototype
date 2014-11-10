@@ -4,19 +4,25 @@
 //= require advanced_analytics/helpers/event_handler_helper
 
 (function($) {
+  $(window).load(function(){
+    $('iframe[data-src]').attr('src', function() {
+      return $(this).data('src');
+    });
+    $('.report-change-select, .report-filter-group, .report-date-range-filter-group, .report-range-filter-group').change();
+  });
 
   $.station.init.add(function(){
     $('.report-change-btn').click(EventHandler.changeReport);
 
     $('.update-report-change-select-btn').click(EventHandler.updateReportChangeSelect);
 
-    $('.report-change-select').change(EventHandler.changeReportSelect).change();
+    $('.report-change-select').change(EventHandler.changeReportSelect);
 
-    $('.report-filter-group').change(EventHandler.updateFilter).change();
+    $('.report-filter-group').change(EventHandler.updateFilter);
 
-    $('.report-date-range-filter-group').change(EventHandler.updateFixedDateRangeFilter).change();
+    $('.report-date-range-filter-group').change(EventHandler.updateFixedDateRangeFilter);
 
-    $('.report-range-filter-group').change(EventHandler.updateRangeFilter).change();
+    $('.report-range-filter-group').change(EventHandler.updateRangeFilter);
 
     $('.btn input[type="checkbox"]').change( function() {
       self = $(this);

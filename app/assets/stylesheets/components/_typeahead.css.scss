@@ -1,3 +1,7 @@
+@import "components/mixins";
+@import "components/variables";
+@import "components/variables-custom";
+
 .twitter-typeahead { width:100%; }
 .typeahead,
 .tt-query,
@@ -25,7 +29,7 @@
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  @include border-radius($baseBorderRadius);
+  @include border-radius($border-radius-base);
   -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
@@ -34,8 +38,8 @@
     margin: 0;
     padding: .5em;
     color: $gray;
-    font-size: $fontSizeSmall;
-    background-color: $grayLighter;
+    font-size: $font-size-small;
+    background-color: $gray-lighter;
   }
   .tt-suggestion {
     padding: .5em;
@@ -44,17 +48,17 @@
       display: block;
       line-height: 1.5em;
       &:nth-child(2) {
-        font-size: $fontSizeSmall;
+        font-size: $font-size-small;
         color: $gray;
       }
     }
   }
   .tt-suggestion.tt-is-under-cursor {
-    color: $white;
-    background-color: $linkColor;
+    color: white;
+    background-color: $link-color;
     span {
-      &:nth-child(1) { color: $white; }
-      color: $grayLighter;
+      &:nth-child(1) { color: white; }
+      color: $gray-lighter;
     }
   }
   .tt-suggestion p { margin: 0; }

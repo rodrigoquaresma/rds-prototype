@@ -19,8 +19,8 @@ $(window).load(function () {
     $.get(timeline.data('load-timeline-url'));
   }
 
-  $("#mark_sale_form").on( "change", ":radio", function() {
-    $(".form-group-collapse").slideToggle(300);
+  $('.form-collapse').on( 'change', ':radio', function() {
+    $(this).closest('.modal-body').find('.form-group-collapse').slideToggle(300);
   });
 
   $('#mark_sale_button').click(function(){
@@ -31,6 +31,13 @@ $(window).load(function () {
     else if ( soldLeadQuery != "" ){
       $('#sold_with_value').removeClass('hidden');
       $('#sold_with_value > span').text(soldLeadQuery);
+    }
+  });
+
+  $('.form-collapse .js-btn-confirm').click(function(){
+    var collapseInput = $(this).closest('.form-collapse').find('.form-group-collapse input');
+    if ( $(this).closest('.form-collapse').find('input:radio[value=false]').is(':checked') ) {
+      collapseInput.val("");
     }
   });
 });
@@ -215,8 +222,53 @@ RD.LeadsController = (function ($, AutoCompleteHelper) {
       $('.see-more, .see-less').bind('click', LeadsController.seeMore);
       $('.see-more-convertion, .see-less-convertion').live('click', LeadsController.seeMoreConvertion);
       $('#save-btn').bind('click', LeadsController.ajaxSubmit);
+      $('.toggle_opportunity').bind('click', LeadsController.toggleOpportunity);
       // $('#tag_lead').on('show', LeadsController.openTagsDialog);
       $("#add-to-workflow, #change-workflow").live('ajax:beforeSend', LeadsController.addToWorkflow);
+    },
+
+    toggleOpportunity: function(e) {
+      e.preventDefault();
+
+      // confirm if the star is checked and it's not the confirm modal button, otherwise toggle opportunity
+      if ($(this).hasClass('checked') && $(this).attr('id') != 'mark_lost_button') {
+        $('#mark_lost .modal').modal('toggle'); return;
+      }
+
+      LeadsController.ajaxToggleOpportunity(function(data, textStatus, jqXHR){
+        $('.opportunity').toggleClass('checked');
+
+        LeadsController.resetToggleOpportunity();
+        LeadsController.refreshTimeline();
+      });
+    },
+
+    ajaxToggleOpportunity: function(callback) {
+      var $form = $('#mark_lost');
+
+      var payload = JSON.stringify({ reason: $('#reason').val() }),
+          address = $form.attr('action');
+
+      $.ajax({
+        contentType: 'application/json',
+        type: 'put',
+        url: address,
+        data: payload,
+        success: callback
+      });
+    },
+
+    resetToggleOpportunity: function() {
+      $('#reason').val('');
+      $('#mark_lost_motive_true').trigger('click');
+    },
+
+    refreshTimeline: function() {
+      var timeline = $('.timeline');
+
+      if (timeline) {
+        $.get(timeline.data('load-timeline-url'));
+      }
     },
 
     seeMore : function(){

@@ -1,8 +1,9 @@
-@import "components/variables";
 @import "components/mixins";
+@import "components/variables";
+@import "components/variables-custom";
+
 @import "bootstrap-custom";
 
-#demo-videos h4 { line-height: 40px; }
 del { text-decoration: line-through; }
 
 header h1 a {
