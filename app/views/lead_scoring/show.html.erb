@@ -1,2 +1,37 @@
-<h1>LeadScoring#show</h1>
-<p>Find me in app/views/lead_scoring/show.html.erb</p>
+<% content_for :header do %>
+  <%= stylesheet_link_tag 'lead_scoring' %>
+<% end %>
+
+<% content_for :pagetitle do %>
+  <%= link_to "Lead Scoring", lead_scoring_index_path %>
+<% end %>
+
+<% content_for :pagesubtitle do %>
+  <h2>Analisar</h2>
+<% end %>
+
+<div class="container">
+  <div class="container-nav-pills">
+    <ul class="nav nav-pills">
+      <li class="active"><%= link_to "Propriedades do Lead", "javascript:void(0);" %></li>
+      <li class=""><%= link_to "Conversões", "javascript:void(0);" %></li>
+      <li class="disabled"><%= link_to "Emails", "javascript:void(0);" %></li>
+      <li class="disabled"><%= link_to "Fluxos de automação", "javascript:void(0);" %></li>
+    </ul>
+  </div>
+
+  <div id="properties">
+    <%= render :partial => 'lead_scoring/show_properties' %>
+  </div>
+
+  <div id="conversions" class="hide">
+    <%= render :partial => 'lead_scoring/show_conversions' %>
+  </div>
+
+</div>
+
+<% content_for :footer do %>
+  <script>
+
+  </script>
+<% end %>

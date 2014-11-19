@@ -1,2 +1,24 @@
-<h1>LeadScoring#settings</h1>
-<p>Find me in app/views/lead_scoring/settings.html.erb</p>
+<% content_for :header do %>
+<% end %>
+
+<% content_for :pagetitle do %>
+  Lead Scoring
+<% end %>
+
+<% content_for :pagesubtitle do %>
+<% end %>
+
+<div class="container">
+  <div class="container-nav-pills">
+    <ul class="nav nav-pills">
+      <li class=""><%= link_to "FIT", lead_scoring_resume_path %></li>
+      <li class=""><%= link_to "Interesse", lead_scoring_steps_path %></li>
+      <li class=""><%= link_to "Estatísticas", lead_scoring_stats_path %></li>
+      <li class="active"><%= link_to "Configurar", lead_scoring_settings_path %></li>
+    </ul>
+  </div>
+
+
+  <p>Configurar</p>
+
+</div>

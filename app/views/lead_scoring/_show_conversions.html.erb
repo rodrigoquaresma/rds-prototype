@@ -1,0 +1,648 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-10">
+        <h3 class="panel-title">Assistente de conversão <small>Quais as conversões com melhor desempenho para descer Leads no meu funil de vendas?</small></h3>
+      </div>
+      <div class="col-xs-2 text-right">
+        <a href="javascript:void(0)" class="popover-info btn-heading" data-container="body" data-content="Análise das conversões (Landing Pages, importações e Formulários integrados) que mais auxiliam a converter Leads para estágios de fundo de funil. A Eficácia Geral é um indicador qualitativo do percentual de Leads que converteram em determinada conversão e posteriormente tiveram seu estágio alterado para o estágio analisado. O valor absoluto indica quantos Leads que tiveram seu estágio alterado para o analisado no períoso selecionado e converteram nas indicadas conversões." data-html="true" data-original-title="" data-placement="left" data-toggle="popover" title=""></a>
+        <div class="dropdown panel-heading-btn">
+          <a href="javascript:void(0)" class="dropdown-export dropdown-toggle" data-toggle="dropdown"></a>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li role="presentation" class="dropdown-header">Exportar</li>
+            <li><a href="javascript:void(0)" class="js-campaigns-export-csv">Planilha (.csv)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-filter form-inline">
+    <div class="form-group">
+      <select class="form-control input-sm js-conversion-mode-change">
+        <option value="all_conversions" selected="">Todas conversões</option>
+        <option value="last_touch">Última conversão</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>antes do Lead ter seu estágio alterado para </label>
+      <select class="js-stage-name-select form-control input-sm">
+        <option value="Leads Qualificados">Lead Qualificado</option>
+        <option value="Oportunidades" selected="">Oportunidade</option>
+        <option value="Vendas">Venda</option>
+      </select>
+    </div>
+    <span class="help-inline">entre</span>
+    <div class="form-group form-group-interval">
+      <div class="input-daterange input-group">
+        <input type="text" id="start_date" name="start_date" class="form-control input-sm date-picker" value="10/2013">
+        <span class="input-group-addon input-sm">e</span>
+        <input type="text" id="end_date" name="end_date" class="form-control input-sm date-picker" value="10/2014">
+      </div>
+    </div>
+  </div>
+
+  <div class="extention js-conversions-table">
+    <div class="panel-filter form-inline">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label>Ordenar por </label>
+            <select class="form-control input-sm js-sort-by" id="sort" name="sort">
+              <option value="name">Nome</option>
+              <option value="value" selected="selected">Oportunidades no período</option>
+              <option value="total_value">Oportunidades total</option>
+              <option value="total_leads">Leads total</option>
+              <option value="efficiency">Eficácia geral</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-6 text-right">
+          <div class="form-group">
+            <label>Mostrar </label>
+            <select class="form-control input-sm js-limit" id="limit" name="limit">
+              <option value="25">25</option>
+              <option value="50" selected="selected">50</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+              <option value="500">500</option>
+              <option value="0">Todos</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-table">
+      <table class="table table-hover table-sm text-right">
+        <thead>
+          <tr>
+            <th style="width:70%">Conversões</th>
+            <th style="width:15%" class="text-right">Eficácia geral</th>
+            <th style="width:15%" class="text-right">Oportunidades</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  1. importado
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>76.008</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>6.712</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">8,83%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="9%" aria-valuemin="0" aria-valuemax="100" style="width: 9%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">6.250</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="100.0" aria-valuemin="0" aria-valuemax="100" style="width: 100.0%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  2. marketing-digital-para-empreendedores
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>53.628</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>4.202</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">7,84%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="8%" aria-valuemin="0" aria-valuemax="100" style="width: 8%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">4.062</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="64.992" aria-valuemin="0" aria-valuemax="100" style="width: 64.992%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  3. kit-marketing-digital
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>16.565</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>2.538</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">15,32%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="15%" aria-valuemin="0" aria-valuemax="100" style="width: 15%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">2.416</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="38.656" aria-valuemin="0" aria-valuemax="100" style="width: 38.656%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  4. singup-step-1
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>5.507</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>2.009</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">36,48%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="36%" aria-valuemin="0" aria-valuemax="100" style="width: 36%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.779</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="28.464" aria-valuemin="0" aria-valuemax="100" style="width: 28.464%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  5. ebook-blog_para_negocios
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>13.936</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.673</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">12,00%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="12%" aria-valuemin="0" aria-valuemax="100" style="width: 12%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.583</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="25.328" aria-valuemin="0" aria-valuemax="100" style="width: 25.328%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  6. teste-gratuito-do-rd-station
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>3.425</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.730</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">50,51%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="51%" aria-valuemin="0" aria-valuemax="100" style="width: 51%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.537</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="24.592" aria-valuemin="0" aria-valuemax="100" style="width: 24.592%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  7. planejamento-marketing-digital
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>8.140</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.590</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">19,53%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20%" aria-valuemin="0" aria-valuemax="100" style="width: 20%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.534</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="24.544" aria-valuemin="0" aria-valuemax="100" style="width: 24.544%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  8. ebook-como-montar-orcamento-mkt-digital
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>5.513</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.469</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">26,65%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="27%" aria-valuemin="0" aria-valuemax="100" style="width: 27%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.394</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="22.304" aria-valuemin="0" aria-valuemax="100" style="width: 22.304%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  9. singup-step-2
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>4.014</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.566</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">39,01%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="39%" aria-valuemin="0" aria-valuemax="100" style="width: 39%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.392</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="22.272" aria-valuemin="0" aria-valuemax="100" style="width: 22.272%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  10. planilha-controle-automacao-de-marketing
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>4.833</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.348</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">27,89%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28%" aria-valuemin="0" aria-valuemax="100" style="width: 28%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.303</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20.848" aria-valuemin="0" aria-valuemax="100" style="width: 20.848%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  11. template-criar-ebooks-no-estado-da-arte-usando-o-power-point
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>11.146</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.361</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">12,21%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="12%" aria-valuemin="0" aria-valuemax="100" style="width: 12%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.297</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20.752000000000002" aria-valuemin="0" aria-valuemax="100" style="width: 20.752000000000002%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  12. introducao-seo
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>8.771</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.374</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">15,67%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="16%" aria-valuemin="0" aria-valuemax="100" style="width: 16%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.292</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20.671999999999997" aria-valuemin="0" aria-valuemax="100" style="width: 20.671999999999997%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  13. checklist-para-publicacao-de-material-educativo
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>6.195</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.378</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">22,24%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="22%" aria-valuemin="0" aria-valuemax="100" style="width: 22%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.287</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20.592" aria-valuemin="0" aria-valuemax="100" style="width: 20.592%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  14. funil-hotsite-capa
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>3.832</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.057</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">27,58%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28%" aria-valuemin="0" aria-valuemax="100" style="width: 28%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">1.003</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="16.048000000000002" aria-valuemin="0" aria-valuemax="100" style="width: 16.048000000000002%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  15. 101-dicas-marketing-digital-form
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>7.551</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.062</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">14,06%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="14%" aria-valuemin="0" aria-valuemax="100" style="width: 14%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">998</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="15.967999999999998" aria-valuemin="0" aria-valuemax="100" style="width: 15.967999999999998%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  16. kit-gestao-de-conteudo
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>7.350</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.069</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">14,54%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="15%" aria-valuemin="0" aria-valuemax="100" style="width: 15%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">995</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="15.920000000000002" aria-valuemin="0" aria-valuemax="100" style="width: 15.920000000000002%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  17. ebook-marketing_facebook
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>22.847</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.080</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">4,73%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="5%" aria-valuemin="0" aria-valuemax="100" style="width: 5%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">986</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="15.776000000000002" aria-valuemin="0" aria-valuemax="100" style="width: 15.776000000000002%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  18. guia-do-predictable-revenue-para-triplicar-suas-vendas-pwat
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>3.770</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>1.012</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">26,84%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="27%" aria-valuemin="0" aria-valuemax="100" style="width: 27%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">973</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="15.568000000000001" aria-valuemin="0" aria-valuemax="100" style="width: 15.568000000000001%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  19. hangout-estruturas-e-processos-de-marketing-e-vendas
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>3.085</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>914</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">29,63%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="30%" aria-valuemin="0" aria-valuemax="100" style="width: 30%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">889</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="14.224" aria-valuemin="0" aria-valuemax="100" style="width: 14.224%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left">
+                <h4 class="cell-title">
+                  20. como-vender-mais-com-marketing-digital-e-geracao-de-leads
+                </h4>
+                <div class="cell-subtitle">
+                  <span class="cell-subtitle-label">Total: </span>
+                  <span class="cell-subtitle-value"><strong>4.509</strong> Leads</span>
+                  <span class="cell-subtitle-value"> / <strong>866</strong> Oportunidades</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">19,21%</div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="19%" aria-valuemin="0" aria-valuemax="100" style="width: 19%%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="progress-group progress-group-right">
+                  <div class="progress-group-value">850</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="13.600000000000001" aria-valuemin="0" aria-valuemax="100" style="width: 13.600000000000001%;"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
