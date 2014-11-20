@@ -3,11 +3,10 @@
 #= require ajax_loader
 
 jQuery ->
-  $(document).on 'ready', () ->
+  $ ->
     load_conversions()
 
-    $('.js-stage-name-select, .js-conversion-mode-change, .input-daterange input[type="text"]').change () ->
-      load_conversions()
+    $('.js-stage-name-select, .js-conversion-mode-change, .input-daterange input[type="text"]').on 'change', load_conversions
 
   $(document).on 'ajaxComplete', () ->
     $('.js-sort-by, .js-limit').change () ->

@@ -1,4 +1,5 @@
 //= require datepicker/bootstrap-datepicker
+//= require bootstrap-datepicker.pt-BR
 //= require advanced_analytics/helpers/business_helper
 //= require advanced_analytics/helpers/date_helper
 //= require advanced_analytics/helpers/event_handler_helper
@@ -9,35 +10,23 @@
       return $(this).data('src');
     });
     $('.report-change-select, .report-filter-group, .report-date-range-filter-group, .report-range-filter-group').change();
-  });
 
-  $.station.init.add(function(){
-    $('.report-change-btn').click(EventHandler.changeReport);
+    $('.report-change-btn').on('click', EventHandler.changeReport).filter('.active').click();
 
-    $('.update-report-change-select-btn').click(EventHandler.updateReportChangeSelect);
+    $('.update-report-change-select-btn').on('click', EventHandler.updateReportChangeSelect).filter('.active').click();
 
-    $('.report-change-select').change(EventHandler.changeReportSelect);
+    $('.report-change-select').on('change', EventHandler.changeReportSelect).change();
 
-    $('.report-filter-group').change(EventHandler.updateFilter);
+    $('.report-filter-group').on('change', EventHandler.updateFilter).change();
 
-    $('.report-date-range-filter-group').change(EventHandler.updateFixedDateRangeFilter);
+    $('.report-date-range-filter-group').on('change', EventHandler.updateFixedDateRangeFilter).change();
 
-    $('.report-range-filter-group').change(EventHandler.updateRangeFilter);
+    $('.report-range-filter-group').on('change', EventHandler.updateRangeFilter).change();
 
-    $('.btn input[type="checkbox"]').change( function() {
+    $('.btn input[type="checkbox"]').on('change', function() {
       self = $(this);
       self.parents('.btn').toggleClass('active', self.is(':checked'))
-    });
-
-    $.fn.datepicker.dates['en'] = {
-      days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
-      daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
-      daysMin: ["Do", "Se", "Te", "Qu", "Qu", "Se", "Sa", "Do"],
-      months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-      monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-      today: "Hoje",
-      clear: "Limpar"
-    };
+    }).change();
 
     $('.date-picker').datepicker({
       format: "m/yyyy",
@@ -50,7 +39,7 @@
       autoclose: true
     });
 
-    $(".report_full_screen").click(function(){
+    $(".report_full_screen").on('click', function(){
       var windowFeatures = "menubar=yes,location=no,resizable=yes,scrollbars=yes,status=yes";
       var self = $(this);
 
@@ -60,7 +49,7 @@
       window.open(url, "Full Screen Report", windowFeatures);
     });
 
-    $(".export_report").click(function(){
+    $(".export_report").on('click', function(){
       var self = $(this);
       var reportFormat = self.data('format');
       var iFrame = Helper.getIFrame(self);

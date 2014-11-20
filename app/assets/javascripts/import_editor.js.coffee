@@ -3,6 +3,7 @@
 #= require import_editor/lead_import
 #= require import_editor/lead_import_column
 #= require datepicker/bootstrap-datepicker
+#= require bootstrap-datepicker.pt-BR
 
 jQuery ->
   columns_count = $('#number_of_columns').val()

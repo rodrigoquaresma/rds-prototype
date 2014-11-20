@@ -14,7 +14,6 @@ var CustomFieldHandler;
 
       _init = function () {
         $('.destroy-custom-field-modal-link').click(_destroyCustomField);
-        $('#custom_field_name').blur(_fillCustomFieldLabel);
         $('#custom-field-options').on('click', '.js-remove-field-option', _removeOption);
         $('#custom-field-options').on('click', '.js-add-field-option', _addOption);
         _initRefreshPreview();
@@ -67,14 +66,6 @@ var CustomFieldHandler;
           params = { options: _getOptionsValues(), label: label};
 
         $('.js-field-preview').html(CustomFieldTemplates.renderByType(fieldType, params));
-      },
-
-      _fillCustomFieldLabel = function () {
-        var labelInput = $('#custom_field_label');
-        if (labelInput.val() === '') {
-          labelInput.val(this.value);
-          _refreshFieldPreview();
-        }
       },
 
       _getOptionsValues = function () {
