@@ -1,0 +1,17 @@
+<div class="container-nav-pills">
+  <ul class="nav nav-pills">
+    <li class="<%= active_tab(request.fullpath, 'perfil') %>"><%= link_to "Perfil", lead_scoring_rules_fit_path %></li>
+    <li class="<%= active_tab(request.fullpath, 'interesse') %>"><%= link_to "Interesse", lead_scoring_rules_interest_path %></li>
+    <li class="<%= active_tab(request.fullpath, 'segmentacao') %>"><%= link_to "Segmentação", lead_scoring_rules_segmentation_path %></li>
+    <li class="<%= active_tab(request.fullpath, 'automacao') %>"><%= link_to "Automação", lead_scoring_rules_automation_path %></li>
+  </ul>
+</div>
+
+<div class="steps-wrapper hide">
+  <ul class="steps">
+    <li class="<%= active_tab(request.fullpath, 'perfil') %>"><span><%= link_to "Perfil", lead_scoring_rules_fit_path %></span></li>
+    <li class="<%= active_tab(request.fullpath, 'interesse') %>"><span><%= link_to "Interesse", lead_scoring_rules_interest_path %></span></li>
+    <li class="<%= active_tab(request.fullpath, 'segmentacao') %>"><span><%= link_to "Segmentação", lead_scoring_rules_segmentation_path %></span></li>
+    <li class="<%= active_tab(request.fullpath, 'automacao') %>"><span><%= link_to "Automação", lead_scoring_rules_automation_path %></span></li>
+  </ul>
+</div>

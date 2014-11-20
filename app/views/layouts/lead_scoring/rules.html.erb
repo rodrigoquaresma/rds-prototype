@@ -10,11 +10,16 @@
   <h2>Configurar</h2>
 <% end %>
 
-<% content_for :footer do %>
- <%= javascript_include_tag 'lead_scoring' %>
+<% content_for :content do %>
+  <div class="container">
+    <%= render :partial => 'lead_scoring/rules_navbar' %>
+    <%= yield %>
+  </div>
+  <%= yield :actions_footer %>
 <% end %>
 
-<div class="container">
-  <%= render :partial => 'lead_scoring/steps/navbar' %>
-  <p>Editar</p>
-</div>
+<% content_for :footer do %>
+  <%= javascript_include_tag "lead_scoring", async: true %>
+<% end %>
+
+<%= render :template => "layouts/application" %>

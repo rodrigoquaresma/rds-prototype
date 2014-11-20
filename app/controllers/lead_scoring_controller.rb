@@ -1,35 +1,41 @@
 class LeadScoringController < ApplicationController
 
+  layout false
+
   def index
+    render layout: "application"
   end
 
   def show
+    render layout: "application"
   end
 
-  def steps
-    render 'steps/index'
+  def rules
+    render layout: "application"
   end
 
-  def step_fit
-    render 'lead_scoring/steps/fit'
+  def rules_fit
+    render layout: "lead_scoring/rules"
   end
 
-  def step_interest
-    render 'lead_scoring/steps/interest'
+  def rules_interest
+    render layout: "lead_scoring/rules"
   end
 
-  def step_segmentation
-    render 'lead_scoring/steps/segmentation'
+  def rules_segmentation
+    render layout: "lead_scoring/rules"
   end
 
-  def step_automation
-    render 'lead_scoring/steps/automation'
+  def rules_automation
+    render layout: "lead_scoring/rules"
   end
 
   def stats
+    render layout: "application"
   end
 
   def settings
+    render layout: "application"
   end
 
 end

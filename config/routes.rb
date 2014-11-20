@@ -4,12 +4,12 @@ RdsPrototype::Application.routes.draw do
   scope '/lead-scoring', :as => :lead_scoring do
     get "/", :to => 'lead_scoring#index', :as => :index
     get "/analisar", :to => 'lead_scoring#show', :as => :show
-    scope "/configurar", :as => :steps do
+    scope "/configurar", :as => :rules do
       get '/' => redirect("/lead-scoring/configurar/perfil"), :as => :index
-      get "/perfil", :to => 'lead_scoring#step_fit', :as => :fit
-      get "/interesse", :to => 'lead_scoring#step_interest', :as => :interest
-      get "/segmentacao", :to => 'lead_scoring#step_segmentation', :as => :segmentation
-      get "/automacao", :to => 'lead_scoring#step_automation', :as => :automation
+      get "/perfil", :to => 'lead_scoring#rules_fit', :as => :fit
+      get "/interesse", :to => 'lead_scoring#rules_interest', :as => :interest
+      get "/segmentacao", :to => 'lead_scoring#rules_segmentation', :as => :segmentation
+      get "/automacao", :to => 'lead_scoring#rules_automation', :as => :automation
     end
     get "/avaliar", :to => 'lead_scoring#stats', :as => :stats
   end
