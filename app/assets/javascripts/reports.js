@@ -1,4 +1,5 @@
 //= require datepicker/bootstrap-datepicker
+//= require bootstrap-datepicker.pt-BR
 
 	$(document).ready(function (){
 		ReportFeatures.init();
@@ -15,15 +16,6 @@
 
 			$('#dias').change(function (){
 				window.location.href="?dias="+$(this).val();
-			});
-
-			$('#start_date, #end_date').datepicker({
-				dateFormat: 'dd/mm/yyyy',
-				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-				dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
-				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-				prevText: 'Anterior',
-				nextText: 'Próximo'
 			});
 
 			$('#intervalo').change();

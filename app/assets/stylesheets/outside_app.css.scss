@@ -1,8 +1,9 @@
-@import "components/variables";
 @import "components/mixins";
+@import "components/variables";
+@import "components/variables-custom";
+
 @import "bootstrap-custom";
 
-#demo-videos h4 { line-height: 40px; }
 del { text-decoration: line-through; }
 
 header h1 a {
@@ -60,7 +61,7 @@ header a {
         margin: 20px;
         padding: 20px;
         background: #ebeeef;
-        @include border-radius($baseBorderRadius);
+        @include border-radius($border-radius-base);
       }
     }
   }
@@ -290,7 +291,7 @@ div#pricing section div.container hr {
 body { padding-top: 0; }
 #wrapper { padding: 30px 0; }
 .outside-form {
-  background: $white;
+  background: #fff;
   padding: 30px 40px;
   margin-top: 20px;
   border: 1px solid #d4d4d4;

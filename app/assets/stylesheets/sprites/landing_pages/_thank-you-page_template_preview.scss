@@ -1,0 +1,36 @@
+// Thematic templates sprites
+// ==========================================================================
+@import "sprites/landing_pages/thank-you-page/sprites/*.png";
+
+$sprite-list: sprite_names($sprites-sprites);
+
+#thumb-landing_page-image {
+  @include sprites-sprite(original);
+  display: inline-block;
+  vertical-align: top;
+  width: sprites-sprite-width(original);
+  height: sprites-sprite-height(original);
+
+  @each $sprite in $sprite-list {
+    &.#{$sprite} {
+      @include sprites-sprite(#{$sprite});
+      width: sprites-sprite-width(#{$sprite});
+      height: sprites-sprite-height(#{$sprite});
+    }
+  }
+}
+
+.cta-button2-text-color,
+.link-button {
+  @extend .cta-button2;
+}
+.offer-title-color,
+.offer-title {
+  @extend .thank-text;
+}
+.description-text-offer-color { @extend .description-text-offer; }
+.cta-button-text-color { @extend .cta-button; }
+.share-text-color { @extend .share; }
+.related-offer-title { @extend .related-offer-title-color; }
+.related-offer-subtitle { @extend .related-offer-subtitle-color; }
+.copyright-text-color { @extend .copyright-text; }

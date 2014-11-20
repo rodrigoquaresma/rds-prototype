@@ -1,0 +1,28 @@
+var CustomFieldTemplates = (function ($) {
+
+  var _templateIds = {
+    <% CustomField::AVAILABLE_TYPES.each do |type| %>
+      '<%= type.to_s %>' : '<%= "#js-#{type.to_s.underscore.underscore.gsub(/[\/_]/, '-')}" %>',
+    <% end %>
+  },
+
+  _getTemplateByFieldType = function (fieldType) {
+    return _templateIds[fieldType];
+  },
+
+  _render = function (template, params) {
+    return $(template).tmpl(params);
+  };
+
+  _renderByType = function (fieldType, params) {
+    var templateId = _getTemplateByFieldType(fieldType);
+    return _render(templateId, params);
+  };
+
+  return {
+    templatesIds : _templateIds,
+    renderByType : _renderByType,
+    getTemplateByFieldType : _getTemplateByFieldType,
+    render : _render
+  };
+})(jQuery);

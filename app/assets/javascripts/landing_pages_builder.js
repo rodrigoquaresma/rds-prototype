@@ -19,6 +19,7 @@
 //= require landing_pages/tab_content
 //= require landing_pages/tab_conversion
 //= require landing_pages/form_editor
+//= require conversion_form
 //= require landing_pages/file_upload
 //= require s3_direct_upload-cloudfront
 

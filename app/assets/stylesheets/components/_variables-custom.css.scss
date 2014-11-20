@@ -1,0 +1,171 @@
+@import "components/mixins";
+@import "components/variables";
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+//** grays
+$gray-medium-dark:       lighten(#000, 28%) !default;   // #474747
+$gray-medium-light:      lighten(#000, 40%) !default;   // #474747
+
+//** brand
+$brand-secundary:       #846d50 !default;
+
+//** social media colors
+$brand-twitter: 		#00aced;
+$brand-facebook:		#3B5998;
+
+//** colors for legend charts
+$brand-chart-1:       #4c66b7 !default; //#506e84
+$brand-chart-2:       #7ca932 !default;
+$brand-chart-3:       #ddb606 !default;
+$brand-chart-4:       #b94c2e !default;
+$brand-chart-5:       #7e4e9c !default;
+$brand-chart-6:       #737373 !default;
+$brand-chart-7:       #70a5c2 !default;
+$brand-chart-8:       #9fbe3e !default;
+$brand-chart-9:       #e59b5a !default;
+$brand-chart-10:      #c76689 !default;
+$brand-chart-11:      #7b6db4 !default;
+$brand-chart-12:      #a5a5a5 !default;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-size-xsmall:        ceil(($font-size-base * 0.8125))  !default; // ~13px
+$font-size-medium:        ceil(($font-size-base * 1.1250))  !default; // ~18px
+$font-size-xlarge:        ceil(($font-size-base * 2.0000))  !default; // ~32px
+
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Padding for cells in `.table-expanded`.
+$table-expanded-cell-padding:  15px !default;
+
+//** table backgrounds
+$table-bg-filter:               $table-bg !default;
+$table-bg-thead:               	transparent !default;
+$table-bg-tbody:               	white !default;
+$table-bg-tfoot:               	transparent !default;
+
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-secundary-color:            $brand-secundary !default;
+$btn-secundary-bg:               #fff !default;
+$btn-secundary-border:           darken($btn-secundary-bg, 5%) !default;
+
+$btn-chart-1-color:                 #fff !default;
+$btn-chart-1-bg:                    $brand-chart-1 !default;
+$btn-chart-1-border:                darken($btn-chart-1-bg, 5%) !default;
+
+$btn-chart-2-color:                 #fff !default;
+$btn-chart-2-bg:                    $brand-chart-2 !default;
+$btn-chart-2-border:                darken($btn-chart-2-bg, 5%) !default;
+
+$btn-chart-3-color:                 #fff !default;
+$btn-chart-3-bg:                    $brand-chart-3 !default;
+$btn-chart-3-border:                darken($btn-chart-3-bg, 5%) !default;
+
+$btn-chart-4-color:                 #fff !default;
+$btn-chart-4-bg:                    $brand-chart-4 !default;
+$btn-chart-4-border:                darken($btn-chart-4-bg, 5%) !default;
+
+$btn-chart-5-color:                 #fff !default;
+$btn-chart-5-bg:                    $brand-chart-5 !default;
+$btn-chart-5-border:                darken($btn-chart-5-bg, 5%) !default;
+
+$btn-chart-6-color:                 #fff !default;
+$btn-chart-6-bg:                    $brand-chart-6 !default;
+$btn-chart-6-border:                darken($btn-chart-6-bg, 5%) !default;
+
+$btn-chart-7-color:                 #fff !default;
+$btn-chart-7-bg:                    $brand-chart-7 !default;
+$btn-chart-7-border:                darken($btn-chart-7-bg, 5%) !default;
+
+$btn-chart-8-color:                 #fff !default;
+$btn-chart-8-bg:                    $brand-chart-8 !default;
+$btn-chart-8-border:                darken($btn-chart-8-bg, 5%) !default;
+
+$btn-chart-9-color:                 #fff !default;
+$btn-chart-9-bg:                    $brand-chart-9 !default;
+$btn-chart-9-border:                darken($btn-chart-9-bg, 5%) !default;
+
+$btn-chart-10-color:                 #fff !default;
+$btn-chart-10-bg:                    $brand-chart-10 !default;
+$btn-chart-10-border:                darken($btn-chart-10-bg, 5%) !default;
+
+$btn-chart-11-color:                 #fff !default;
+$btn-chart-11-bg:                    $brand-chart-11 !default;
+$btn-chart-11-border:                darken($btn-chart-11-bg, 5%) !default;
+
+$btn-chart-12-color:                 #fff !default;
+$btn-chart-12-bg:                    $brand-chart-12 !default;
+$btn-chart-12-border:                darken($btn-chart-12-bg, 5%) !default;
+
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+$zindex-modal-background:  1040 !default;
+$zindex-autocomplete:      1060 !default;
+
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+$nav-open-link-hover-color:                 #fff !default;
+
+
+//== Labels
+//
+//##
+
+//** Dashboard label
+$label-past-bg:               $gray-lighter !default;
+$label-past-color:            $gray-light !default;
+$label-present-bg:            $brand-secundary !default;
+$label-goal-bg:               $link-color !default;
+
+
+//== Panels
+//
+//##
+
+$panel-body-bg:               #fff !default;
+$panel-border-color:          #ddd !default;
+
+
+//== Slats
+//
+//##
+
+$slat-bg:                    #fff !default;
+$slat-heading-bg:            #f5f5f5 !default;
+$slat-heading-border-color:  #ddd !default;
+
+
+//== Template Thumbnails
+//
+//##
+
+$template-thumbnail-padding:           15px !default;
+$template-thumbnail-bg:                #fff !default;
+$template-thumbnail-border:            #ddd !default;
+$template-thumbnail-border-radius:     $border-radius-base !default;
+$template-thumbnail-hover-bg:          #f9f9f9 !default;
+$template-thumbnail-active-border:     #bcbcbc !default;
+$template-thumbnail-active-bg:         #f1f1f1 !default;

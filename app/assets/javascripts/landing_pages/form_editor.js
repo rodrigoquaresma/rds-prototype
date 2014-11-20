@@ -11,7 +11,7 @@
 
 		openFormsDialogLinkClick : function(event) {
 			$("#form-builder-dialog").load(this.href, function(){
-				$('#field-sugestions-list a, #field-list a').bind('click', ConversionPagesEventHandler.addListItem);
+				$('.js-old-landing-page').bind('click', ConversionPagesEventHandler.addListItem);
 				$('.remove-field-link').bind('click', ConversionPagesEventHandler.removeFieldLinkClick);
 				$('#form-builder-form').bind('ajax:beforeSend', ConversionPagesEventHandler.saveDialogLinkClick);
 				$('#sortable-fields-form li').bind('click', ConversionPagesEventHandler.markListItem);
@@ -27,6 +27,7 @@
 				$('#sortable-fields-form').sortable({revert: true});
 				$.station.initVisualComponents(this);
 				$(this).modal('show');
+				ConversionFormHandler.init();
 			});
 		return false;
 		},

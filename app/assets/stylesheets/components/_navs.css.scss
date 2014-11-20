@@ -1,6 +1,9 @@
 @import "components/mixins";
 @import "components/variables";
+@import "components/variables-custom";
+
 @import "components/brand";
+
 @import "bootstrap/navs";
 @import "bootstrap/navbar";
 
@@ -13,14 +16,20 @@
         background-color: $navbar-default-link-hover-bg;
       }
     }
+    > li > a:hover,
+    > li > a:focus,
+    > .active > a:hover,
+    > .active > a:focus { color: $link-color; }
   }
 }
-.navbar-default .nav>li>a { font-size: $font-size-small; }
+.navbar-default .nav>li>a { font-size: $font-size-small; height: 50px; }
 
 .dropdown-menu {
   > li > a {
     padding: 10px 20px;
     font-size: $font-size-small;
+    &:hover,
+    &:focus { color: $link-color; }
   }
 }
 
@@ -44,8 +53,6 @@
 
 .navbar-account {
   .navbar-account-link {
-    padding-top: 16px;
-    padding-bottom: 12px;
     .navbar-account-name {
       text-align: right;
       max-width: 180px;
@@ -53,19 +60,15 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: inline-block;
-      line-height: 1em;
     }
     .caret {
-      display: inline-block;
-      line-height: 1em;
-      margin-top: -2px;
+      height: 12px;
+      margin-top: 10px;
+      vertical-align: top;
     }
   }
 }
-.navbar-nav>li>a.btn-change-account {
-  padding-bottom: 13px;
-  // border-left: 1px solid $navbar-default-border;
-}
+.navbar-nav>li>a.btn-change-account { padding-bottom: 13px; }
 
 
 .navbar-btn {

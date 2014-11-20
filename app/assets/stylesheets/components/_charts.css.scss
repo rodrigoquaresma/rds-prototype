@@ -1,5 +1,6 @@
-@import "components/variables";
 @import "components/mixins";
+@import "components/variables";
+@import "components/variables-custom";
 
 .percent-variation { display: inline-block; text-indent: 15px; }
 .percent-variation.up { background: image-url( 'sprite.png' ) -493px -128px no-repeat; }

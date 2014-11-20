@@ -1,5 +1,7 @@
 @import "components/mixins";
 @import "components/variables";
+@import "components/variables-custom";
+
 @import "bootstrap/panels";
 
 .panel {
@@ -191,3 +193,48 @@
 .panel-info    { background-color: $panel-info-heading-bg;    }
 .panel-warning { background-color: $panel-warning-heading-bg; }
 .panel-danger  { background-color: $panel-danger-heading-bg;  }
+
+.panel-warning {
+  .panel-title { color: $state-warning-text;}
+  .list-group { border-color: $state-warning-border; }
+  .list-group-item { border-color: $state-warning-border; }
+}
+
+
+.list-group-accounts {
+  .list-group-item {
+    .accounts-icon {
+      font-size: 42px;
+      color: white;
+      display: block;
+      margin-top:4px;
+      &.xicon-google-analytics  { color: #f56e2b; }
+      &.xicon-twitter2,
+      &.xicon-facebook2 {
+        font-size: 28px;
+        @include border-radius($border-radius-base);
+        text-align: center;
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5em;
+      }
+      &.xicon-twitter2          { background-color: $brand-twitter;  }
+      &.xicon-facebook2         { background-color: $brand-facebook; }
+    }
+    .accounts-title {
+      margin: 0 0 6px 0;
+      font-weight: 500;
+      font-size: $font-size-base;
+    }
+    .accounts-text {
+      margin: 0 0 6px 0;
+      color: $gray-light;
+      font-size: $font-size-small;
+      &.text-warning { color: $state-warning-text; }
+      .xicon-checkmark { color: $brand-success; }
+    }
+    .accounts-actions {
+      margin: 0 0 4px 0;
+    }
+  }
+}

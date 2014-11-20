@@ -3,6 +3,7 @@
 #= require import_editor/lead_import
 #= require import_editor/lead_import_column
 #= require datepicker/bootstrap-datepicker
+#= require bootstrap-datepicker.pt-BR
 
 jQuery ->
   columns_count = $('#number_of_columns').val()
@@ -25,10 +26,8 @@ $.station.init.add ->
 
   toggleFieldTrigger.on "change", toggleSelectedField
 
-  return
-
-$(document).ready ->
-  $(".date-picker").datepicker
-    format: "dd/mm/yyyy"
-    language: "pt-BR"
+  $('.date-picker').datepicker
+    format: 'dd/mm/yyyy'
+    todayHighlight: 'true'
+    language: 'pt-BR'
   return

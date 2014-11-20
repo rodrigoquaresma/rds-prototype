@@ -3,11 +3,12 @@
 #= require ajax_loader
 
 jQuery ->
-  $(document).on 'ready', () ->
+  $ ->
     today = new Date()
     year = today.getFullYear()
     month = today.getMonth()
-    funnels(year, month)
+    if $('.business-results').length > 0
+      funnels(year, month)
 
   $('.funnel-date-picker').change ->
     splitedDate = $(this).val().split('/')

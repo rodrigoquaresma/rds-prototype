@@ -1,5 +1,6 @@
 @import "components/mixins";
 @import "components/variables";
+@import "components/variables-custom";
 
 #leads_crm #lead-nurturing-empty,
 #leads_crm #lead-nurturing-disable,
@@ -49,12 +50,6 @@ p.alert.alert-info.merge {
 }
 
 .base_number { font-size: 1.2em; color: lighten($gray-light, 30%); }
-
-.owner-show p:first-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis
-}
 
 #leads {
   .lead-name { margin-right: 11px; }

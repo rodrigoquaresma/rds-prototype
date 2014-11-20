@@ -1,9 +1,5 @@
-#= require advanced_analytics/advanced
-#= require advanced_analytics/funnel
-
 jQuery ->
-
-  $(".js-channel-options").change ->
+  $(".js-channel-options").on 'change', ->
     self = $(this).find(":selected")
     reports = $(self).data('report-ids').split(",")
     for btn, i in $('.js-report-change-ids')
