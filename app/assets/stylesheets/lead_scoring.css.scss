@@ -96,3 +96,12 @@ margin-right: -5px;
 .table-hover > tbody > tr.active > td .progress {
   background-color: #fff;
 }
+
+// put in panels
+
+.panel-filter {
+  .btn-height-xs,
+  .btn-height-sm,
+  .btn-height,
+  .btn-height-lg { padding: 0 .3333em 0 .6666em; }
+}

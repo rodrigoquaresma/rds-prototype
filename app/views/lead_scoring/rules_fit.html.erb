@@ -1,1 +1,148 @@
-<p>fit</p>
+<div class="row">
+  <div class="col-xs-3">
+    <p class="help-block">Alinhe junto ao seu time de vendas quais as propriedades que melhor representam um Lead pronto para venda.</p>
+    <p class="help-block">Você també pode utilizar os dados do <%= link_to "Marketing BI", "" %> para descobrir os termos mais relevantes entre os seus clientes para cada propriedade.</p>
+  </div>
+  <div class="col-xs-9">
+    <form class="form-inline">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Propriedades</h3>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="#" class="slider-title">Cargo</a>
+          </div>
+          <div class="col-xs-4">
+            <div id="slider3"></div>
+          </div>
+          <div class="col-xs-4 hide">
+            <div class="slider-group slider -group-right">
+              <div class="slider-group-value">80%</div>
+              <div class="slider">
+                <input class="slider" type="range" min="0" max="100" step="1" value="80">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2 text-right">
+            <a class="btn-height-sm action-config" href="#"></a>
+            <a class="btn-height-sm action-remove" href="#"></a>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="#" class="slider-title">Setor</a>
+          </div>
+          <div class="col-xs-4">
+            <div class="slider-group slider -group-right">
+              <div class="slider-group-value">10%</div>
+              <div class="slider">
+                <input class="slider" type="range" min="0" max="100" step="1" value="10">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2 text-right">
+            <a class="btn-height-sm action-config" href="#"></a>
+            <a class="btn-height-sm action-remove" href="#"></a>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="#" class="slider-title">Tamanho (colaboradores)</a>
+          </div>
+          <div class="col-xs-4">
+            <div class="slider-group slider -group-right">
+              <div class="slider-group-value">10%</div>
+              <div class="slider">
+                <input class="slider" type="range" min="0" max="100" step="1" value="10">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2 text-right">
+            <a class="btn-height-sm action-config" href="#"></a>
+            <a class="btn-height-sm action-remove" href="#"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <a href="#" class=""><i class="xicon-plus"></i> Adicionar propriedade</a>
+    </div>
+  </div>
+</form>
+  </div>
+</div>
+
+
+<div class="row hide">
+  <div class="col-xs-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation" class="active"><a href="#">Propriedades</a></li>
+      <li role="presentation"><a href="#">Peso das propriedades</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-9">
+    <p>Faça uma análise junto à sua base de clientes e duscubra quais os termos mais relevantes</p>
+    <form class="form-inline">
+      <div class="panel panel-default">
+        <div class="panel-filter">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>Propriedade</label>
+                <select class="form-control input-sm" style="width:200px;">
+                  <option>cargo</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <input class="slider" type="range" min="0" max="100" step="1" value="80">
+
+              <div class="form-group hide">
+                <label>peso</label>
+                <input class="form-control input-sm" style="width:48px;" type="text" value="80"/>
+              </div>
+              <span class="help-inline btn-height hide">%</span>
+            </div>
+            <div class="col-xs-3 text-right">
+              <a href="#" class="panel-heading-btn action-config btn-height-sm"></a>
+              <a href="#" class="panel-heading-btn action-remove btn-height-sm"></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <p>Avalie as opções mais relevantes para a propriedade <strong>Cargo</strong></p>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>Cargo</label>
+                <select class="form-control input-sm">
+                  <option>contém o</option>
+                  <option>é igual ao</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>termo</label>
+                <input class="form-control input-sm" type="text" value="diretor" />
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label>nota</label>
+                <input class="form-control input-sm" type="text" value="diretor" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
