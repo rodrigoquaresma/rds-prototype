@@ -1,7 +1,18 @@
-//# Place all the behaviors and hooks related to the matching controller here.
-//# All this logic will automatically be available in application.js.
-//# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+//= require rangeslider.min
 
 (function ($){
-  
-});
+  $(document).ready(function(){
+
+    // rangeslider
+    $('input[type="range"]').rangeslider({
+      polyfill: false,
+      onInit: function() {
+        $('#' + this.identifier).closest('.range-slider-group').find('.slider-value').html(this.value);
+        this.update();
+      },
+      onSlide: function(pos, value) {
+        $('#' + this.identifier).closest('.range-slider-group').find('.slider-value').html(value);
+      }
+    });
+  });
+})(jQuery);

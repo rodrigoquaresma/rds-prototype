@@ -1,0 +1,79 @@
+@import "components/mixins";
+@import "components/variables";
+@import "components/variables-custom";
+
+.rangeslider,
+.rangeslider__fill {
+  background: $gray-lighter;
+  display: block;
+  height: 20px;
+  width: 100%;
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  @include border-radius(10px);
+}
+
+.rangeslider {
+  position: relative;
+}
+
+.rangeslider--disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+
+.rangeslider__fill {
+  background: $link-color;
+  position: absolute;
+  top: 0;
+  @include border-radius(10px 0 0 10px);
+}
+
+.rangeslider__handle {
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  @include border-radius(50%);
+}
+
+.rangeslider__value-bubble {
+  border: 1px solid #ccc;
+  display: block;
+  padding: 5px;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 25px;
+  width: 100px;
+  margin-left: -50px;
+  text-align: center;
+  @include border-radius(5px);
+
+  &:before,
+  &:after {
+    border-width: 11px;
+    border-style: solid;
+    border-color: transparent;
+    content: "";
+    display: block;
+    margin: auto;
+    width: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  &:before {
+    border-top-color: #ccc;
+    border-bottom-width: 0;
+    bottom: -11px;
+  }
+  &:after {
+    border-top-color: #fff;
+    border-bottom-width: 0;
+    bottom: -10px;
+  }
+}

@@ -3,7 +3,55 @@
 @import "components/variables-custom";
 
 @import "components/breadcrumbs";
+@import "components/rangeslider";
 
+
+// range-slider
+
+.range-slider-group {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  .range-slider-input,
+  .range-slider-value {
+    position: relative;
+    min-height: 1px;
+    float: left;
+  }
+  .range-slider-input {
+    width: 75%;
+    padding: 6px 0;
+  }
+  .range-slider-value {
+    width: 25%;
+    text-align: right;
+    .slider-value {
+      font-size: $font-size-xlarge;
+      line-height: 1em;
+      color: $gray-light;
+      &:after {
+        content: "%";
+        font-size: $font-size-small;
+        color: $gray-light;
+      }
+    }
+  }
+}
+
+.slider-title {
+  font-size: $font-size-large;
+  line-height: $font-size-xlarge;
+}
+.slider-value-total {
+  font-size: $font-size-small;
+  color: $gray-light;
+}
+
+// for panels
 .panel-leadscoring-scale {
   .quadrant {
     border-left: 1px solid #ddd;
@@ -77,6 +125,8 @@
 }
 
 
+
+
 .input-daterange .input-group-addon {
 width: auto;
 min-width: 16px;
@@ -98,10 +148,35 @@ margin-right: -5px;
 }
 
 // put in panels
-
 .panel-filter {
   .btn-height-xs,
   .btn-height-sm,
   .btn-height,
   .btn-height-lg { padding: 0 .3333em 0 .6666em; }
+}
+.panel-footer.text-left { text-align: left; }
+
+
+button {
+  &.panel-heading-btn {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: none;
+    background-image: none;
+    border-width: 0 0 0 1px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-appearance: button;
+    cursor: pointer;
+    text-transform: none;
+  }
+}
+
+.modal-body {
+  p + h4 { margin-top: 22px; }
 }
