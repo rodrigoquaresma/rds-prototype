@@ -16,7 +16,8 @@
   margin: 0 .1em 0 0;
 }
 .logo span:before {
-  content: none;
+  content: "";
+  font-size: 0;
 }
 .logo small {
   line-height: 1.5em;

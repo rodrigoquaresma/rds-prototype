@@ -90,6 +90,9 @@ function validForm(element) {
         if (flashMessageType === "alert"){
           flashMessageType = "danger";
         }
+
+        flashMessage = flashMessage.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
         $.bootstrapGrowl(flashMessage, {
           type: flashMessageType,
           width: 600,

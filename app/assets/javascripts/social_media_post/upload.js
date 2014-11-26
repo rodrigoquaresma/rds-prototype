@@ -110,7 +110,7 @@
 
 
     documentKeyPress : function(e) {
-      if ( $('#facebook-checkbox-label').hasClass('selected') && (e.keyCode===32 || e.charCode===32) ) {
+      if ( ($('#facebook-checkbox-label').hasClass('selected') || $('#linkedin-checkbox-label').hasClass('selected')) && (e.keyCode===32 || e.charCode===32) ) {
         var content = $('#message').val();
         var url = content.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/);
         if (url && url.length>0 && $('input#fbpw_ajax_flag').val() == 0) {

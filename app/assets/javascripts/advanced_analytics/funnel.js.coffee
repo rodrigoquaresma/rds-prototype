@@ -24,4 +24,6 @@ jQuery ->
       language: "pt-BR",
       todayHighlight: true,
       autoclose: true
-    })
+    }).on 'keydown', (e) ->
+      # prevent manual input
+      e.preventDefault()

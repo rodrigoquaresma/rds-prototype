@@ -3,7 +3,7 @@
   $.station.init.add(function(){
 
     $('#message-dialog').off('.rd-socialmediapostmessage')
-    .on('click.rd-socialmediapostmessage','#twitter-checkbox-label, #facebook-checkbox-label', EventHandler.enableCheckbox)
+    .on('click.rd-socialmediapostmessage','#twitter-checkbox-label, #facebook-checkbox-label, #linkedin-checkbox-label', EventHandler.enableCheckbox)
     .on('keyup.rd-socialmediapostmessage','#message', EventHandler.updateCharCounter)
     .on('submit.rd-socialmediapostmessage','#social-media-post-message-form', EventHandler.checkSocialNetSelected);
 
@@ -12,16 +12,20 @@
 
   var IMAGE_URL_SIZE = 23;
   var FACEBOOK_MAX_SIZE = 50000;
+  var LINKEDIN_MAX_SIZE = 700;
 
   var Helper = {
 
     getMaxMessageSize : function () {
       var twitterIsSelected =  $('#twitter-checkbox-label').hasClass('selected');
       var facebookIsSelected =  $('#facebook-checkbox-label').hasClass('selected');
+      var linkedinIsSelected =  $('#linkedin-checkbox-label').hasClass('selected');
       var twitterMaxSize = $('#twitter-checkbox-label input:checkbox').data('length');
 
       if (twitterIsSelected) {
         return twitterMaxSize;
+      } else if (linkedinIsSelected) {
+        return LINKEDIN_MAX_SIZE;
       } else if (facebookIsSelected) {
         return FACEBOOK_MAX_SIZE;
       }
@@ -30,7 +34,7 @@
 
     updateCounterView : function(maxChar, remainingChar) {
 
-      if (maxChar === 0 || maxChar === FACEBOOK_MAX_SIZE) {
+      if (maxChar === 0 || maxChar === FACEBOOK_MAX_SIZE || maxChar === LINKEDIN_MAX_SIZE ) {
         $('#counter').addClass('hide');
       } else {
         $('#counter').removeClass('hide');
@@ -48,6 +52,7 @@
 
       var twitterIsSelected =  $('#twitter-checkbox-label').hasClass('selected');
       var facebookIsSelected =  $('#facebook-checkbox-label').hasClass('selected');
+      var linkedinIsSelected =  $('#linkedin-checkbox-label').hasClass('selected');
 
       var messageText = $('#message').val();
       var messageSize = (messageText) ? messageText.length : 0;
@@ -59,8 +64,8 @@
 
       var contentWithinBounds = messageSize <= maxChar;
       var hasContent = messageSize > 0;
-      
-      var socialMediaSelected = twitterIsSelected || facebookIsSelected;
+
+      var socialMediaSelected = twitterIsSelected || facebookIsSelected || linkedinIsSelected;
       var hasValidContent = hasContent && contentWithinBounds;
 
       if (socialMediaSelected && hasValidContent && !isUploadingImage) {
@@ -88,17 +93,19 @@
     enableCheckbox : function(event) {
       var jqLink = $(this);
       var jqCheckbox = jqLink.find('input');
+      var facebookIsSelected =  $('#facebook-checkbox-label').hasClass('selected');
+      var linkedinIsSelected =  $('#linkedin-checkbox-label').hasClass('selected');
 
       if (!jqCheckbox.is(':disabled')){
 
         if(jqCheckbox.attr('checked')){
           jqCheckbox.removeAttr('checked');
           jqLink.removeClass('selected');
-          if(jqCheckbox.attr('value')==='facebook'){ $('#fbpw_wrapper').hide(); }
+          if((jqCheckbox.attr('value')==='facebook' || jqCheckbox.attr('value')==='linkedin') && !($linkedinIsSelected || facebookIsSelected)) { $('#fbpw_wrapper').hide(); }
           } else {
             jqCheckbox.attr('checked', 'checked');
             jqLink.addClass('selected');
-            if(jqCheckbox.attr('value')==='facebook'){ $('#fbpw_wrapper').show(); }
+            if(jqCheckbox.attr('value')==='facebook' || jqCheckbox.attr('value')==='linkedin'){ $('#fbpw_wrapper').show(); }
             }
 
             $('#message').trigger('keyup');

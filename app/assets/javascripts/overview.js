@@ -27,6 +27,10 @@
         itemType = "connect";
         itemNumber = 15;
         break;
+      case "#linkedin":
+        itemType = "connect";
+        itemNumber = 16;
+        break;
       default:
         itemType = "onboarding";
         itemNumber = 0;

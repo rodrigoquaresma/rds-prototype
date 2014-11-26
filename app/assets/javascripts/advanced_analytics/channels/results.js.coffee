@@ -7,7 +7,7 @@ jQuery ->
     today = new Date()
     year = today.getFullYear()
     month = today.getMonth()
-    if $('.business-results').length > 0
+    if $('.channel-results').length > 0
       funnels(year, month)
 
   $('.funnel-date-picker').on 'change', ->

@@ -8,6 +8,7 @@
 //** grays
 $gray-medium-dark:       lighten(#000, 28%) !default;   // #474747
 $gray-medium-light:      lighten(#000, 40%) !default;   // #474747
+$gray-light-medium:      lighten(#000, 70%) !default;   // #474747
 
 //** brand
 $brand-secundary:       #846d50 !default;
@@ -15,6 +16,7 @@ $brand-secundary:       #846d50 !default;
 //** social media colors
 $brand-twitter: 		#00aced;
 $brand-facebook:		#3B5998;
+$brand-linkedin:		#1B86BB;
 
 //** colors for legend charts
 $brand-chart-1:       #4c66b7 !default; //#506e84
@@ -37,6 +39,7 @@ $brand-chart-12:      #a5a5a5 !default;
 
 $font-size-xsmall:        ceil(($font-size-base * 0.8125))  !default; // ~13px
 $font-size-medium:        ceil(($font-size-base * 1.1250))  !default; // ~18px
+$font-size-mlarge:        ceil(($font-size-base * 1.6870))  !default; // ~27px
 $font-size-xlarge:        ceil(($font-size-base * 2.0000))  !default; // ~32px
 
 

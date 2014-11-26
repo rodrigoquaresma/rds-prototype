@@ -14,8 +14,8 @@
 
 (function($){
 
-	$(document).ready(function(){
-		$(".table-actions-link").actionMenu();
+  $(document).ready(function(){
+    $(".table-actions-link").actionMenu();
 
     UpdateRemoveLinksHandler.UpdateLinkRemoveCondition($('.fields > .fields'));
     UpdateRemoveLinksHandler.UpdateLinkRemoveGroup();
@@ -39,7 +39,7 @@
       return $elements;
     };
 
-	});
+  });
 
   var ViewOrderHandler = {
     updateOrder : function(){
@@ -84,33 +84,51 @@
     ViewOrderHandler.updateOrder();
   });
 
-	var ModalOperations = {
-		DestroyLeadsModalUpdate : function(){
-			var listId = $(this).data('list-id');
-			var destroyLeadsButton = $('#destroyLeadsModal').find('.destroy-list-leads-link');
-			destroyLeadsButton.attr('href', Routes.dynamic_list_list_leads_path(listId) )
-		},
+  var destroyLeadsButton = $('#destroyLeadsModal').find('.destroy-list-leads-link');
 
-		ExportConversionsModalUpdate : function(){
-			var listId = $(this).data('list-id');
-			var exportConversionsForm = $('#exportConversionsModal').find('.conversions.export-form');
-			exportConversionsForm.attr('action', Routes.export_dynamic_list_list_leads_conversions_path(listId))
-		}
-	};
+  var ModalOperations = {
+    ValidateBeforeDestroyLeads : function(){
+      var listName = $('.js-destroy-leads-validation-input').data('list-name').toLowerCase(),
+        listNameInputValue = $('.js-destroy-leads-validation-input').val().toLowerCase();
+      if (listNameInputValue == listName) {
+        destroyLeadsButton.removeClass('disabled');
+      } else {
+        destroyLeadsButton.addClass('disabled');
+      }
+    },
 
-	$('.destroy-leads-modal-link').live('click', ModalOperations.DestroyLeadsModalUpdate);
-	$('.export-conversions-modal-link').live('click', ModalOperations.ExportConversionsModalUpdate);
+    DestroyLeadsModalUpdate : function(){
+      var listId = $(this).data('list-id'),
+        listNameValidationInput = $('#destroyLeadsModal').find('.js-destroy-leads-validation-input');
 
-	$('form.export-form').each(function () {
-		$(this).validate({
-			onsubmit: false,
-			rules: {
-				email: {
-					required: true,
-					email: true
-				}
-			}
-		});
-	});
+      listNameValidationInput.removeData();
+      listNameValidationInput.val('');
+      listNameValidationInput.attr('data-list-name', $(this).data('list-name'));
+      destroyLeadsButton.addClass('disabled');
+      destroyLeadsButton.attr('href', Routes.dynamic_list_list_leads_path(listId) );
+    },
+
+    ExportConversionsModalUpdate : function(){
+      var listId = $(this).data('list-id'),
+        exportConversionsForm = $('#exportConversionsModal').find('.conversions.export-form');
+      exportConversionsForm.attr('action', Routes.export_dynamic_list_list_leads_conversions_path(listId))
+    }
+  };
+
+  $('.js-destroy-leads-validation-input').on('keyup', ModalOperations.ValidateBeforeDestroyLeads);
+  $('.destroy-leads-modal-link').on('click', ModalOperations.DestroyLeadsModalUpdate);
+  $('.export-conversions-modal-link').on('click', ModalOperations.ExportConversionsModalUpdate);
+
+  $('form.export-form').each(function () {
+    $(this).validate({
+      onsubmit: false,
+      rules: {
+        email: {
+          required: true,
+          email: true
+        }
+      }
+    });
+  });
 
 })(jQuery);

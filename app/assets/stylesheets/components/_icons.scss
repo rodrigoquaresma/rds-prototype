@@ -16,6 +16,7 @@
 .action-sync,
 .tooltip-info,
 .popover-info,
+.modal-info,
 .modal-help,
 .dropdown-options,
 .dropdown-export,
@@ -96,6 +97,7 @@
     content: "\e655";
   }
 }
+.modal-info,
 .popover-info {
   &:before {
     color: $gray-light;

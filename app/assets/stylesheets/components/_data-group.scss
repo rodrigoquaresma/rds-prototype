@@ -6,9 +6,10 @@
 .data-group {
   .data-group-value {
     color: $gray;
-    font-size: $font-size-xlarge;
+    font-size: $font-size-mlarge;
     line-height: $headings-line-height;
     small { font-size: .65em; }
+    // .data-group-value-secundary { color: lighten(adjust-hue($state-info-text, -10), 10%); }
   }
   .data-group-label {
     color: $gray-light;
@@ -20,6 +21,9 @@
     padding: 8px;
   }
 }
+// .data-group-info { color: lighten(adjust-saturation($brand-info, -75), 5%); }
+
+
 
 .data-arrow-right {
   font-size: $font-size-xlarge;

@@ -1,14 +1,18 @@
-#custom-fields {
-  #custom-field-builder-preview .form-group {
-    -webkit-opacity: .7;
-    -moz-opacity: .7;
-    opacity: .7;
+#custom-field-builder-preview .form-group {
+  -webkit-opacity: .7;
+  -moz-opacity: .7;
+  opacity: .7;
+}
+.custom-field-single-option {
+  margin-bottom: 11px;
+  input {
+    display: inline-block;
+    width: 410px;
   }
-  .custom-field-single-option {
-    margin-bottom: 11px;
-    input {
-      display: inline-block;
-      width: 410px;
-    }
+}
+
+.modal-body {
+  .custom-field-single-option input {
+    width: 370px;
   }
 }

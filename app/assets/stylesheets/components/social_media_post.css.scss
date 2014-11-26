@@ -17,22 +17,25 @@
 #choose-service-panel .checkbox {
   padding:0;
   margin:0 0 11px 0;
-  label {
-    background-color:$panel-default-heading-bg;
-    padding:6px 8px;
+  > label {
+    padding:5px 7px;
     display:block;
-    color:$gray-light;
-    @include border-radius(4px);
+    background-color: white;
+    border: 1px solid $gray-lighter;
+    @include border-radius($border-radius-base);
+    &#twitter-checkbox-label  { color:$brand-twitter;  border-color:$brand-twitter; }
+    &#facebook-checkbox-label { color:$brand-facebook; border-color:$brand-facebook;}
+    &#linkedin-checkbox-label { color:$brand-linkedin; border-color:$brand-linkedin;}
     &.selected {
-      background-color:$brand-success;
-      &#twitter-checkbox-label {
-        background-color:#55ACEE;
-        color:white;
-      }
-      &#facebook-checkbox-label {
-        background-color:#3B5998;
-        color:white;
-      }
+      &#twitter-checkbox-label  { color:white; background-color:$brand-twitter; }
+      &#facebook-checkbox-label { color:white; background-color:$brand-facebook; }
+      &#linkedin-checkbox-label { color:white; background-color:$brand-linkedin; }
+    }
+    &.disabled {
+      cursor: not-allowed !important;
+      background-color: $gray-lighter !important;
+      color: $gray-light-medium !important;
+      border-color: $gray-lighter !important;
     }
     input[type="checkbox"] {
       display:none;

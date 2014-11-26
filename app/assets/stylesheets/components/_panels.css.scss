@@ -82,6 +82,7 @@
       color: $panel-border-color;
     }
   }
+  .panel-body + .panel-body { margin-top: 5px; }
   .panel-footer {
     text-align: right;
     padding-bottom: $panel-heading-padding - 3;
@@ -154,9 +155,9 @@
 .panel {
   .panel-heading-social {
     padding-bottom: 6px;
-    .xicon-twitter2,
     .xicon-twitter2  { color: $brand-twitter;  }
     .xicon-facebook2 { color: $brand-facebook; }
+    .xicon-linkedin2 { color: $brand-linkedin; }
     img {
       width: 40px;
       float: left;
@@ -167,7 +168,8 @@
 
 // datapicker
 .panel-filter {
-  .form-group-interval {
+  .form-group,
+  .input-group {
     .date-picker {
       width: 100px;
     }
@@ -194,9 +196,14 @@
 .panel-warning { background-color: $panel-warning-heading-bg; }
 .panel-danger  { background-color: $panel-danger-heading-bg;  }
 
+.panel-success {
+  .panel-title { color: $state-success-text;}
+  .panel-body, .list-group { border-color: $state-success-border; }
+  .list-group-item { border-color: $state-success-border; }
+}
 .panel-warning {
   .panel-title { color: $state-warning-text;}
-  .list-group { border-color: $state-warning-border; }
+  .panel-body, .list-group { border-color: $state-warning-border; }
   .list-group-item { border-color: $state-warning-border; }
 }
 
@@ -210,7 +217,8 @@
       margin-top:4px;
       &.xicon-google-analytics  { color: #f56e2b; }
       &.xicon-twitter2,
-      &.xicon-facebook2 {
+      &.xicon-facebook2,
+      &.xicon-linkedin2 {
         font-size: 28px;
         @include border-radius($border-radius-base);
         text-align: center;
@@ -220,6 +228,7 @@
       }
       &.xicon-twitter2          { background-color: $brand-twitter;  }
       &.xicon-facebook2         { background-color: $brand-facebook; }
+      &.xicon-linkedin2         { background-color: $brand-linkedin; }
     }
     .accounts-title {
       margin: 0 0 6px 0;

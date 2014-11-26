@@ -37,6 +37,9 @@
       language: "pt-BR",
       todayHighlight: true,
       autoclose: true
+    }).on('keydown', function(e) {
+      // prevent manual input
+      e.preventDefault();
     });
 
     $(".report_full_screen").on('click', function(){

@@ -30,10 +30,8 @@
 
 .funnel-group-step {
   padding: 15px 0;
-  border-bottom: 1px solid $panel-default-border;
-  &:last-child {
-    border-bottom-width: 0;
-  }
+  border-bottom: 1px solid #eee;
+  &:last-child { border-bottom-width: 0; }
   .funnel-convertion-rate {
     text-align: center;
     background-color: white;
@@ -48,7 +46,7 @@
 }
 
 .funnel-step-label {
-  font-size: 24px;
+  font-size: $font-size-large;
   color: $gray-light;
   font-weight: 200;
   margin: 0;
