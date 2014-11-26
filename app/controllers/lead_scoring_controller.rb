@@ -15,6 +15,8 @@ class LeadScoringController < ApplicationController
   end
 
   def rules_fit
+    @fit_terms = "fit_terms.new"
+    # 2.times { @fit_terms.fit_terms.build}
     render layout: "lead_scoring/rules"
   end
 

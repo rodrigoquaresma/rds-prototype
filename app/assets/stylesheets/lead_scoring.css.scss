@@ -4,6 +4,7 @@
 
 @import "components/breadcrumbs";
 @import "components/rangeslider";
+@import "components/star-rating";
 
 
 // range-slider
@@ -37,6 +38,7 @@
         content: "%";
         font-size: $font-size-small;
         color: $gray-light;
+        line-height: 1em;
       }
     }
   }
@@ -45,6 +47,7 @@
 .slider-title {
   font-size: $font-size-large;
   line-height: $font-size-xlarge;
+  display: block;
 }
 .slider-value-total {
   font-size: $font-size-small;
@@ -124,7 +127,13 @@
   }
 }
 
-
+// add terms
+.list-term-group {
+  > .list-term-group-item {
+    .action-remove { visibility: hidden; }
+    &:hover .action-remove { visibility: visible; }
+  }
+}
 
 
 .input-daterange .input-group-addon {
@@ -157,8 +166,10 @@ margin-right: -5px;
 .panel-footer.text-left { text-align: left; }
 
 
+// put at icons
 button {
-  &.panel-heading-btn {
+  &.popover-info,
+  &.action-remove {
     -webkit-box-shadow: none;
     box-shadow: none;
     -webkit-user-select: none;
@@ -167,7 +178,9 @@ button {
     user-select: none;
     background: none;
     background-image: none;
-    border-width: 0 0 0 1px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -177,6 +190,81 @@ button {
   }
 }
 
-.modal-body {
-  p + h4 { margin-top: 22px; }
+// put at modals
+
+.modal-content { background-color: #f5f5f5; }
+.modal-body p + h4 { margin-top: 22px; }
+.modal-footer .dropdown-menu { text-align: left; }
+
+// label for rating
+.rating-value {
+  display: inline-block;
+  line-height: 1.428571429;
+  padding: 7px 6px;
+  vertical-align: middle;
+  color: $gray-light;
+  margin: 0 0 0 .5em;
+  background-color: #f5f5f5;
+  width: 2em;
+  text-align: center;
+  @include border-radius(3px);
+}
+
+// rating
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:25px;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:24px;
+    line-height:36px;
+    color:#ddd;
+    margin:0;
+    // text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    // text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    // text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    // text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
 }

@@ -13,14 +13,45 @@
  <%= javascript_include_tag 'lead_scoring' %>
 <% end %>
 
-
 <div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <%= render :partial => 'lead_scoring/panel_scoring' %>
+    </div>
+    <div class="col-xs-4">
+      <p class="help-block">Configure as regras de classificação do Scoring e como seus Leads avançam pelo funil de vendas.</p>
+      <%= link_to "Configurar", lead_scoring_rules_index_path, class: 'btn btn-default btn-block' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="data-group score-stats">
+        <div class="row row-nogutter">
+          <div class="col-xs-3">
+            <div class="data-group-value size-plus">A</div>
+          </div>
+          <div class="col-xs-3">
+            <div class="data-group-value size-a">2.655 <small>Leads</small></div>
+            <div class="data-group-label">15.1%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-3">
+    </div>
+</div>
+
+<div class="container hide">
   <div class="row">
     <div class="col-xs-4">
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">Analisar</h3></div>
         <div class="panel-body">
-          <p>Analise sua base de clientes para construir as regras de Scoring de forma mais precisa, identificando quais os dados mais eficazes.</p>
+          <p class="help-block">Analise sua base de clientes para construir as regras de Scoring de forma mais precisa, identificando quais os dados mais eficazes.</p>
           <%= link_to "Analisar", lead_scoring_show_path, class: 'btn btn-default btn-block' %>
         </div>
       </div>

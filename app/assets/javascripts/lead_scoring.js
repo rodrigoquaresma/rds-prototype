@@ -1,4 +1,5 @@
 //= require rangeslider.min
+//= require star-rating.min
 
 (function ($){
   $(document).ready(function(){
@@ -14,5 +15,17 @@
         $('#' + this.identifier).closest('.range-slider-group').find('.slider-value').html(value);
       }
     });
+
+    // rating label
+    $( ".rating label" ).hover(
+      function() {
+        $(this).closest('.list-term-group-item').find('.rating-value').html(this.title);
+      }, function() {
+        var $jqThisClosest = $(this).closest('.list-term-group-item');
+        $jqThisClosest.find('.rating-value').html($jqThisClosest.find('input:checked').attr('value'));
+      }
+    );
+
+
   });
 })(jQuery);
