@@ -67,10 +67,19 @@
     font-size: $font-size-base;
     color: #ccc;
     font-weight: 200;
+    margin: 10px 0;
+  }
+  &.guideline {
+    .quadrant {
+      padding-top: 250px;
+      margin-bottom: -260px;
+      line-height: 1em;
+    }
   }
 }
 
 .panel-scoring-row {
+  &:last-child {margin-bottom:20px;}
   .fit-label {
     border-radius: 4px 0 0 4px;
     border-style: solid;
@@ -80,6 +89,7 @@
     font-size: $font-size-xlarge;
     text-align: center;
     color:$gray-light;
+    margin: 5px 0;
     .fit-a {color:#66c366;}
     .fit-b {color:#6cd26c;}
     .fit-c {color:#9ee29e;}
@@ -92,9 +102,10 @@
     border-width: 1px 0px;
     line-height: ceil(($font-size-base * 3.0000));
     font-size: $font-size-base;
-    text-align: left;
+    text-align: center;
     text-indent: 4px;
     height:50px;
+    margin: 5px 0;
     &.quadrant-four {
       border-width: 1px 1px 1px 0;
       border-radius: 0px 4px 4px 0;
@@ -277,7 +288,7 @@ button {
   border: 1px solid #ddd;
   padding: 10px;
   .data-group-value.size-plus {
-    line-height: 66px;
+    line-height: 52px;
     text-align: center;
   }
   .data-group-value {
