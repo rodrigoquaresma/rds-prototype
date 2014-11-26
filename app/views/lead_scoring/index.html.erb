@@ -13,36 +13,207 @@
  <%= javascript_include_tag 'lead_scoring' %>
 <% end %>
 
-<div class="container">
+<div class="container" id="version-a">
   <div class="row">
-    <div class="col-xs-8">
-      <%= render :partial => 'lead_scoring/panel_scoring' %>
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="panel-title">Perfil do Lead</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</p>
+          <%= render :partial => 'lead_scoring/stats_fit_leads' %>
+          <hr class="spacer-sm invisible" />
+          <p>Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</p>
+          <%= render :partial => 'lead_scoring/stats_fit_sales' %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Configurar regras de Perfil", lead_scoring_rules_index_path, class: 'btn btn-default' %>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-4">
-      <p class="help-block">Configure as regras de classificação do Scoring e como seus Leads avançam pelo funil de vendas.</p>
-      <%= link_to "Configurar", lead_scoring_rules_index_path, class: 'btn btn-default btn-block' %>
+    <div class="col-xs-3">
+      <p class="help-block">Grading your inbound leads ensures that the leads being passed from marketing to sales match your company’s ideal customer profile. Leads are automatically evaluated based on a number of implicit factors and assigned a letter grade (A - D).</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-3">
-      <div class="data-group score-stats">
-        <div class="row row-nogutter">
-          <div class="col-xs-3">
-            <div class="data-group-value size-plus">A</div>
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="panel-title">Interesse do Lead</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
+            </div>
           </div>
-          <div class="col-xs-3">
-            <div class="data-group-value size-a">2.655 <small>Leads</small></div>
-            <div class="data-group-label">15.1%</div>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => 'lead_scoring/panel_scoring' %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Configurar regras de Interesse", lead_scoring_rules_interest_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <p class="help-block">A lead score, displayed as a numerical value, indicates how interested leads are in your product or service. By assigning points to the prospect actions you deem the most valuable, like visiting the pricing page or requesting a demo, you can create a score for your leads that will show how active they have been and how high their interest level is.</p>
+    </div>
+  </div>
+  <hr />
+  <a href="#" class="change-version">Trocar versão</a>
+</div>
+
+<div class="container hide" id="version-b">
+  <div class="alert alert-warning">
+    Aviso sobre a atualização do Scoring dos Leads após as alterações das regras de perfil e interesse.
+  </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="panel-title">Perfil do Lead</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="panel-heading-help">Última atualização em <strong>24/11/2014 às 18h37min</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</p>
+          <%= render :partial => 'lead_scoring/stats_fit_leads' %>
+          <hr class="spacer-sm invisible" />
+          <p>Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</p>
+          <%= render :partial => 'lead_scoring/stats_fit_sales' %>
+        </div>
+        <div class="panel-footer">
+          <span class="panel-footer-help">Regras de Perfil alteradas em 24/11/2014 às 18h45min</span>
+          <div class="btn-group">
+            <%= link_to "Atualizar", lead_scoring_index_path, class: 'btn btn-warning' %>
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Ações</span>
+            </button>
+            <ul class="dropdown-menu text-left" role="menu">
+              <li><%= link_to "Configurar", lead_scoring_rules_index_path %></li>
+              <li><%= link_to "Descartar alterações", lead_scoring_index_path %></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xs-3">
+      <p class="help-block">Grading your inbound leads ensures that the leads being passed from marketing to sales match your company’s ideal customer profile. Leads are automatically evaluated based on a number of implicit factors and assigned a letter grade (A - D).</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="panel-title">Interesse do Lead</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => 'lead_scoring/panel_scoring' %>
+        </div>
+        <div class="panel-footer">
+          <span class="panel-footer-help">Regras de Interesse alteradas em 24/11/2014 às 18h45min</span>
+          <div class="btn-group">
+            <%= link_to "Atualizar", lead_scoring_index_path, class: 'btn btn-warning' %>
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Ações</span>
+            </button>
+            <ul class="dropdown-menu text-left" role="menu">
+              <li><%= link_to "Editar", lead_scoring_rules_interest_path %></li>
+              <li><%= link_to "Descartar alterações", lead_scoring_index_path %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-3">
+      <p class="help-block">A lead score, displayed as a numerical value, indicates how interested leads are in your product or service. By assigning points to the prospect actions you deem the most valuable, like visiting the pricing page or requesting a demo, you can create a score for your leads that will show how active they have been and how high their interest level is.</p>
+    </div>
+  </div>
+  <hr />
+  <a href="#" class="change-version">Trocar versão</a>
+</div>
+
+
+<div class="container hide">
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="panel-title">Configuração do Lead Scoring</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => 'lead_scoring/panel_scoring' %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Editar", lead_scoring_rules_index_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+      <div class="hide">
+        <%= render :partial => 'lead_scoring/panel_scoring' %>
+      </div>
     </div>
     <div class="col-xs-3">
+      <%= link_to "Atualizar", "", class: 'btn btn-warning btn-block' %>
+      <%= link_to "Descartar alterações", "", class: 'btn btn-default btn-block' %>
+      <hr />
+      <p class="help-block">Configure as regras de classificação do Scoring e como seus Leads avançam pelo funil de vendas.</p>
+      <%= link_to "Editar", lead_scoring_rules_index_path, class: 'btn btn-default btn-block' %>
     </div>
+  </div>
+  <div class="hide">
+    <hr />
+    <h4>Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</h4>
+    <%= render :partial => 'lead_scoring/stats_fit_leads' %>
+    <hr />
+    <h4>Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</h4>
+    <%= render :partial => 'lead_scoring/stats_fit_sales' %>
+    <hr />
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Distribuição do Perfil
+    </div>
+    <div class="panel-body">
+      <h4 class="panel-title">Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</h4>
+      <%= render :partial => 'lead_scoring/stats_fit_leads' %>
+      <h4 class="panel-title">Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</h4>
+      <%= render :partial => 'lead_scoring/stats_fit_sales' %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to "Editar", lead_scoring_rules_index_path, class: 'btn btn-default btn-block' %>
+    </div>
+  </div>
+
 </div>
 
 <div class="container hide">

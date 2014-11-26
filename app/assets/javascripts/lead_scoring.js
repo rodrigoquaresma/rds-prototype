@@ -1,5 +1,4 @@
 //= require rangeslider.min
-//= require star-rating.min
 
 (function ($){
   $(document).ready(function(){

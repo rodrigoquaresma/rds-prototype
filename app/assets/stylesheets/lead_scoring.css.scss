@@ -4,7 +4,6 @@
 
 @import "components/breadcrumbs";
 @import "components/rangeslider";
-@import "components/star-rating";
 
 
 // range-slider
@@ -164,6 +163,8 @@ margin-right: -5px;
   .btn-height-lg { padding: 0 .3333em 0 .6666em; }
 }
 .panel-footer.text-left { text-align: left; }
+.panel-heading-help,
+.panel-footer-help { font-size: $font-size-small; color: $gray-light; padding-right: 5px; }
 
 
 // put at icons
@@ -267,4 +268,38 @@ button {
     position:relative;
     top:2px;
     left:2px;
+}
+
+// show stats
+
+.score-stats {
+  @include border-radius(4px);
+  border: 1px solid #ddd;
+  padding: 10px;
+  .data-group-value.size-plus {
+    line-height: 66px;
+    text-align: center;
+  }
+  .data-group-value {
+    margin-bottom: 3px;
+  }
+  .data-group-label {
+    margin-top: 2px;
+  }
+  &.fit-a {
+    .data-group-value.size-plus { color: #66C366; }
+    .progress-bar { background-color: #66C366; }
+  }
+  &.fit-b {
+    .data-group-value.size-plus { color: #6CD26C; }
+    .progress-bar { background-color: #6CD26C; }
+  }
+  &.fit-c {
+    .data-group-value.size-plus { color: #9EE29E; }
+    .progress-bar { background-color: #9EE29E; }
+  }
+  &.fit-d {
+    .data-group-value.size-plus { color: #CCC; }
+    .progress-bar { background-color: #CCC; }
+  }
 }

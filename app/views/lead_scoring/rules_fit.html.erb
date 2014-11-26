@@ -95,7 +95,9 @@
 <% content_for :actions_footer do %>
 <div class="actions-footer">
   <div class="container">
-    <button type="button" class="btn btn-primary">Salvar alterações</button>
+    <%= link_to "Descartar alterações", lead_scoring_rules_fit_path, :class => 'btn btn-link' %>
+    <%= link_to "Salvar", lead_scoring_rules_fit_path, :class => 'btn btn-default' %>
+    <%= link_to "Salvar e avançar", lead_scoring_rules_interest_path, :class => 'btn btn-primary' %>
   </div>
 </div>
 <% end %>

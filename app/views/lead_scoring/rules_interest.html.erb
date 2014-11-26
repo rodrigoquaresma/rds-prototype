@@ -1,1 +1,12 @@
 <p>interest</p>
+
+<% content_for :actions_footer do %>
+<div class="actions-footer">
+  <div class="container">
+    <%= link_to "Voltar", lead_scoring_rules_fit_path, :class => 'btn btn-link pull-left' %>
+    <%= link_to "Descartar alterações", lead_scoring_rules_interest_path, :class => 'btn btn-link' %>
+    <%= link_to "Salvar", lead_scoring_rules_interest_path, :class => 'btn btn-default' %>
+    <%= link_to "Salvar e sair", lead_scoring_index_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>
