@@ -59,5 +59,19 @@ module RdsPrototype
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    base_js = %w(
+      lead_scoring.js
+    )
+    vendor_js = %w(
+      rangeslider.min.js
+    )
+    base_css = %w(
+      lead_scoring.css
+    )
+    vendor_css = %w(
+    )
+
+    config.assets.precompile += [ base_js, vendor_js, base_css, vendor_css].flatten
+
   end
 end
