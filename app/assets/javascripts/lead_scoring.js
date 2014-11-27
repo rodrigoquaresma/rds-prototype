@@ -1,4 +1,6 @@
 //= require rangeslider.min
+//= require datepicker/bootstrap-datepicker
+//= require bootstrap-datepicker.pt-BR
 
 (function ($){
   $(document).ready(function(){
@@ -25,6 +27,10 @@
       }
     );
 
+    $('.date-picker').datepicker({
+        format: "dd/mm/yyyy",
+        language: "pt-BR"
+    });
 
   });
 })(jQuery);

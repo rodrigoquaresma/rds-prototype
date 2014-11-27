@@ -14,24 +14,45 @@
 <% end %>
 
 <div class="container" id="version-a">
+  <!-- perfil -->
   <div class="row">
     <div class="col-xs-9">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-6">
-              <h4 class="panel-title">Perfil do Lead</h4>
+              <h4 class="panel-title">Perfil da base</h4>
             </div>
             <div class="col-xs-6 text-right">
               <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
             </div>
           </div>
         </div>
+        <div class="panel-filter">
+          <div class="form-inline">
+            <div class="form-group form-group-interval">
+              <label for="intervalo">Período </label>
+              <select class="form-control input-sm" id="intervalo" name="intervalo">
+                <option value="custom">Personalizado</option>
+                <option value="Hoje" data-start-date="27/11/2014" data-end-date="27/11/2014" data-granularity="0">Hoje</option>
+                <option value="2 semanas" data-start-date="13/11/2014" data-end-date="27/11/2014" data-granularity="0">2 semanas</option>
+                <option value="1 mês" data-start-date="27/10/2014" data-end-date="27/11/2014" data-granularity="1">1 mês</option>
+                <option value="6 meses" data-start-date="01/05/2014" data-end-date="27/11/2014" data-granularity="2">6 meses</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="input-daterange input-group top" id="datepicker">
+                <input type="text" id="start_date" name="start_date" class="form-control input-sm date-picker" value="27/10/2014">
+                <span class="input-group-addon input-sm">à</span>
+                <input type="text" id="end_date" name="end_date" class="form-control input-sm date-picker" value="27/11/2014">
+              </div>
+            </div>
+            <input class="btn btn-default btn-sm" data-loading-text="Aguarde" name="commit" type="submit" value="Aplicar">
+          </div>
+        </div>
         <div class="panel-body">
-          <p>Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</p>
           <%= render :partial => 'lead_scoring/stats_fit_leads' %>
           <hr class="spacer-sm invisible" />
-          <p>Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</p>
           <%= render :partial => 'lead_scoring/stats_fit_sales' %>
         </div>
         <div class="panel-footer">
@@ -43,30 +64,102 @@
       <p class="help-block">Grading your inbound leads ensures that the leads being passed from marketing to sales match your company’s ideal customer profile. Leads are automatically evaluated based on a number of implicit factors and assigned a letter grade (A - D).</p>
     </div>
   </div>
+  <!-- Grupos de pontuação para interesse -->
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Grupos de pontuação para interesse</h4>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => 'lead_scoring/stats_interest' %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Configurar pontuação de Interesse", lead_scoring_rules_interest_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <p class="help-block">A lead score, displayed as a numerical value, indicates how interested leads are in your product or service. By assigning points to the prospect actions you deem the most valuable, like visiting the pricing page or requesting a demo, you can create a score for your leads that will show how active they have been and how high their interest level is.</p>
+    </div>
+  </div>
+  <!-- segmentacao -->
   <div class="row">
     <div class="col-xs-9">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-6">
-              <h4 class="panel-title">Interesse do Lead</h4>
+              <h4 class="panel-title">Segmentações do Lead Scoring</h4>
             </div>
             <div class="col-xs-6 text-right">
               <span class="panel-heading-help">Última atualização: <strong>26/11/2014</strong></span>
             </div>
           </div>
         </div>
+        <div class="panel-filter">
+          <div class="form-inline">
+            <div class="form-group">
+              <select class="form-control input-sm">
+                <option>Leads</option>
+                <option>Leads Qualificados</option>
+                <option>Oportunidades</option>
+                <option>Clientes</option>
+              </select>
+            </div>
+            <div class="form-group form-group-interval">
+              <label for="intervalo">no período </label>
+              <select class="form-control input-sm" id="intervalo" name="intervalo">
+                <option value="custom">Personalizado</option>
+                <option value="Hoje" data-start-date="27/11/2014" data-end-date="27/11/2014" data-granularity="0">Hoje</option>
+                <option value="2 semanas" data-start-date="13/11/2014" data-end-date="27/11/2014" data-granularity="0">2 semanas</option>
+                <option value="1 mês" data-start-date="27/10/2014" data-end-date="27/11/2014" data-granularity="1">1 mês</option>
+                <option value="6 meses" data-start-date="01/05/2014" data-end-date="27/11/2014" data-granularity="2" selected>6 meses</option>
+              </select>
+            </div>
+            <div class="form-group">
+            	<div class="input-daterange input-group top" id="datepicker">
+                <input type="text" id="start_date" name="start_date" class="form-control input-sm date-picker" value="27/10/2014">
+                <span class="input-group-addon input-sm">à</span>
+                <input type="text" id="end_date" name="end_date" class="form-control input-sm date-picker" value="27/11/2014">
+              </div>
+            </div>
+            <input class="btn btn-default btn-sm" data-loading-text="Aguarde" name="commit" type="submit" value="Aplicar">
+          </div>
+        </div>
         <div class="panel-body">
-          <p>Distribuição dos Leads da sua base pelos quadrantes de Interesse e Perfil.</p>
-          <%= render :partial => 'lead_scoring/panel_scoring' %>
+          <%= render :partial => 'lead_scoring/stats_fit_vs_interest' %>
+          <%= render :partial => 'lead_scoring/stats_fit_vs_interest_graphic' %>
+          <p>Taxas de conversão de cada segmentação (?)</p>
         </div>
         <div class="panel-footer">
-          <%= link_to "Configurar regras de Interesse", lead_scoring_rules_interest_path, class: 'btn btn-default' %>
+          <%= link_to "Configurar segmentações do Lead Scoring", lead_scoring_rules_segmentation_path, class: 'btn btn-default' %>
         </div>
       </div>
     </div>
     <div class="col-xs-3">
-      <p class="help-block">A lead score, displayed as a numerical value, indicates how interested leads are in your product or service. By assigning points to the prospect actions you deem the most valuable, like visiting the pricing page or requesting a demo, you can create a score for your leads that will show how active they have been and how high their interest level is.</p>
+      <p class="help-block">As segmentações são como a área de distribuição dos seus Leads.</p>
+    </div>
+  </div>
+  <!-- automações -->
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Automações do Lead Scoring</h4>
+        </div>
+        <div class="panel-body">
+          <p>Número de oportunidades geradas</p>
+          <p>Número de leads que completaram cada fluxo</p>
+          <p>Taxas de conversão de cada fluxo (?)</p>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Configurar Automações do Lead Scoring", lead_scoring_rules_automation_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <p class="help-block">A automação é quem distribui seus Leads de acordo com as regras de segmentação</p>
     </div>
   </div>
   <hr />
@@ -91,10 +184,8 @@
           </div>
         </div>
         <div class="panel-body">
-          <p>Distribuição dos <strong>Leads</strong> da sua base nos perfis do Lead Scoring</p>
           <%= render :partial => 'lead_scoring/stats_fit_leads' %>
           <hr class="spacer-sm invisible" />
-          <p>Distribuição dos <strong>Clientes</strong> da sua base nos perfis do Lead Scoring</p>
           <%= render :partial => 'lead_scoring/stats_fit_sales' %>
         </div>
         <div class="panel-footer">
@@ -132,7 +223,7 @@
         </div>
         <div class="panel-body">
           <p>Distribuição dos Leads da sua base pelos quadrantes de Interesse e Perfil.</p>
-          <%= render :partial => 'lead_scoring/panel_scoring' %>
+          <%= render :partial => 'lead_scoring/stats_fit_vs_interest_graphic' %>
         </div>
         <div class="panel-footer">
           <span class="panel-footer-help">Regras de Interesse alteradas em 24/11/2014 às 18h45min</span>
@@ -174,14 +265,14 @@
           </div>
         </div>
         <div class="panel-body">
-          <%= render :partial => 'lead_scoring/panel_scoring' %>
+          <%= render :partial => 'lead_scoring/stats_fit_vs_interest_graphic' %>
         </div>
         <div class="panel-footer">
           <%= link_to "Editar", lead_scoring_rules_index_path, class: 'btn btn-default' %>
         </div>
       </div>
       <div class="hide">
-        <%= render :partial => 'lead_scoring/panel_scoring' %>
+        <%= render :partial => 'lead_scoring/stats_fit_vs_interest_graphic' %>
       </div>
     </div>
     <div class="col-xs-3">

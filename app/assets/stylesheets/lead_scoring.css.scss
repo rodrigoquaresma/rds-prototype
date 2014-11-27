@@ -4,6 +4,9 @@
 
 @import "components/breadcrumbs";
 @import "components/rangeslider";
+@import "datepicker/datepicker3";
+
+@import "components/grid20";
 
 
 // range-slider
@@ -79,7 +82,7 @@
 }
 
 .panel-scoring-row {
-  &:last-child {margin-bottom:20px;}
+
   .fit-label {
     border-radius: 4px 0 0 4px;
     border-style: solid;
@@ -135,6 +138,35 @@
     .quadrant-three {background-color:#d9d9d9; color:rgba(000,000,000,0.25);}
     .quadrant-four  {background-color:#e6e6e6; color:rgba(000,000,000,0.25);}
   }
+}
+
+.panel-scoring.general-stats {
+  padding-bottom: 10px;
+  .panel-scoring-row {
+    .fit-label { line-height: 145px; }
+    .quadrant { height:auto; }
+  }
+  .data-group {
+    border: none;
+    .data-group-value {
+      color: $gray-light;
+      &.size-plus {
+        color: inherit;
+      }
+    }
+    .data-group-label {
+      line-height: 1.25em;
+    }
+    .progress {
+      margin: 10px 0;
+      .progress-bar { background-color: $gray-light ; }
+    }
+  }
+  .fit-label > .data-group .progress-group { opacity: .5;}
+}
+.panel-scoring.graphic-stats {
+  padding-bottom: 10px;
+  .panel-scoring-row:last-child {margin-bottom:20px;}
 }
 
 // add terms
