@@ -1,4 +1,50 @@
-<p>interest</p>
+<div class="row">
+  <div class="col-xs-3">
+    <p class="help-block">Alinhe junto ao seu time de vendas quais as propriedades que melhor representam um Lead pronto para venda.</p>
+    <p class="help-block">Você também pode utilizar os dados do <%= link_to "Marketing BI", "" %> para descobrir os termos mais relevantes entre os seus clientes para cada propriedade.</p>
+  </div>
+  <div class="col-xs-9">
+    <form class="form-inline">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row row-nogutter">
+            <div class="col-xs-9">
+              <h3 class="panel-title">Grupo</h3>
+            </div>
+            <div class="col-xs-3 text-right">
+              <button type="button" class="panel-heading-btn popover-info" data-toggle="modal" data-target="#modalHelpProperty"></button>
+            </div>
+          </div>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="row row-gutter-xs">
+              <div class="col-xs-9">
+                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">Cargo</a>
+              </div>
+              <div class="col-xs-3 text-right">
+                <span class="group-value">5 <small>pontos</small></span>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row row-gutter-xs">
+              <div class="col-xs-9">
+                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">Cargo</a>
+              </div>
+              <div class="col-xs-3 text-right">
+                <span class="group-value">5 <small>pontos</small></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-left">
+          <a href="#" class="btn-height-sm" data-toggle="modal" data-target="#modalProperty"><i class="xicon-plus"></i> Adicionar propriedade</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 <% content_for :actions_footer do %>
 <div class="actions-footer">

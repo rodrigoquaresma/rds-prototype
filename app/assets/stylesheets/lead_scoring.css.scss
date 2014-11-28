@@ -345,5 +345,6 @@ button {
 
 // stats interest
 .interest-stats {
-  .progress { margin: 4px 0;}
+  .data-group-value.size-plus { font-size: $font-size-large; }
+  .progress { margin: 4px 0; }
 }
