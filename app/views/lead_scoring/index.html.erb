@@ -71,9 +71,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">Grupos de pontuação para interesse</h4>
         </div>
-        <div class="panel-body">
-          <%= render :partial => 'lead_scoring/stats_interest' %>
-        </div>
+        <%= render :partial => 'lead_scoring/stats_interest' %>
         <div class="panel-footer">
           <%= link_to "Configurar pontuação de Interesse", lead_scoring_rules_interest_path, class: 'btn btn-default' %>
         </div>

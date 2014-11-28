@@ -320,15 +320,10 @@ button {
   border: 1px solid #ddd;
   padding: 10px;
   .data-group-value.size-plus {
-    line-height: 52px;
+    line-height: 60px;
     text-align: center;
   }
-  .data-group-value {
-    margin-bottom: 3px;
-  }
-  .data-group-label {
-    margin-top: 2px;
-  }
+  .progress { margin: 4px 0;}
   &.fit-a {
     .data-group-value.size-plus { color: #66C366; }
     .progress-bar { background-color: #66C366; }
@@ -345,4 +340,9 @@ button {
     .data-group-value.size-plus { color: #CCC; }
     .progress-bar { background-color: #CCC; }
   }
+}
+
+// stats interest
+.interest-stats {
+  .progress { margin: 4px 0;}
 }
