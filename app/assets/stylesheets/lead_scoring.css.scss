@@ -348,3 +348,30 @@ button {
   .data-group-value.size-plus { font-size: $font-size-large; }
   .progress { margin: 4px 0; }
 }
+
+
+// data-groups
+
+.data-group {
+  .data-title {
+    font-size: $font-size-large; //20
+    line-height: 1.8em; //36
+    display: inline-block;
+    margin: 0;
+  }
+  .data-value {
+    font-size: $font-size-large; //20
+    line-height: 36px; //21
+    display: inline-block;
+    color: $gray-light;
+    height: auto;
+    small {
+      font-size: $font-size-small;
+    }
+  }
+  .data-label {
+    font-size: $font-size-small; //14
+    line-height: 15px; //15
+    display: inline-block;
+  }
+}
