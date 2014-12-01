@@ -9,7 +9,7 @@
         <div class="panel-heading">
           <div class="row row-nogutter">
             <div class="col-xs-9">
-              <h3 class="panel-title">Grupo</h3>
+              <h3 class="panel-title">Grupos de pontuação</h3>
             </div>
             <div class="col-xs-3 text-right">
               <button type="button" class="panel-heading-btn popover-info" data-toggle="modal" data-target="#modalHelpProperty"></button>
@@ -20,7 +20,7 @@
           <div class="list-group-item">
             <div class="row row-gutter-xs">
               <div class="col-xs-9">
-                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">Cargo</a>
+                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">ToFu</a>
               </div>
               <div class="col-xs-3 text-right">
                 <span class="group-value">5 <small>pontos</small></span>
@@ -30,7 +30,7 @@
           <div class="list-group-item">
             <div class="row row-gutter-xs">
               <div class="col-xs-9">
-                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">Cargo</a>
+                <a href="#" class="group-title" data-toggle="modal" data-target="#modalProperty">MoFu</a>
               </div>
               <div class="col-xs-3 text-right">
                 <span class="group-value">5 <small>pontos</small></span>
@@ -45,6 +45,8 @@
     </form>
   </div>
 </div>
+
+<%= render :partial => 'lead_scoring/add_convertion' %>
 
 <% content_for :actions_footer do %>
 <div class="actions-footer">
