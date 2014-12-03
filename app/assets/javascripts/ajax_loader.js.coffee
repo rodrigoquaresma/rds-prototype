@@ -13,7 +13,7 @@ AjaxLoader =
       if status == 'success' && json.status
         status = json.status
         data = json.data
-      options[status](url, container, data, options)
+      options[status](url.replace(/&failed=true$/, ''), container, data, options)
     options
 
   json: (data) ->

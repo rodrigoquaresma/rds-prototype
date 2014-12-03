@@ -21,19 +21,19 @@ var TinyMCEWrapper = function(){
 		"editor_selector": "mceAdvancedEditor",
 		"toolbar1": "fontselect fontsizeselect formatselect | forecolor backcolor | copy cut paste | undo redo",
 		"toolbar2": "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link image uploadbutton variables hr table | code removeformat",
-		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+		"content_css": "<%= asset_path('landing_page/tinymce_content.css') %>"
 	}, this._configurations);
 
 	this._noToolbarConfigurations = $.extend({
 		"editor_selector": "mceNoToolbarEditor",
 		"toolbar": "false",
-		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+		"content_css": "<%= asset_path('landing_page/tinymce_content.css') %>"
 	}, this._configurations);
 
 	this._simpleToolbarConfigurations = $.extend({
 		"editor_selector": "mceSimpleToolbarEditor",
 		"toolbar1": "bold italic underline | forecolor backcolor | undo redo",
-		"content_css": "<%= asset_path('landing_pages/tinyMCE.css') %>"
+		"content_css": "<%= asset_path('landing_page/tinymce_content.css') %>"
 	}, this._configurations);
 
 };

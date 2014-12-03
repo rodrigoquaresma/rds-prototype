@@ -60,11 +60,14 @@ var CustomFieldHandler;
         return $.inArray(value, multipleFields) >= 0;
       },
 
+      _getLabelValue = function () {
+        return $('#custom_field_label').val() || "Qual sua idade?";
+      },
+
       _refreshFieldPreview = function () {
-        var label = $('#custom_field_label').val(),
+        var label = _getLabelValue(),
           fieldType = $('#custom_field_type').val(),
           params = { options: _getOptionsValues(), label: label};
-
         $('.js-field-preview').html(CustomFieldTemplates.renderByType(fieldType, params));
       },
 
@@ -81,6 +84,7 @@ var CustomFieldHandler;
       hideOptions : _hideOptions,
       showOptions : _showOptions,
       isMultipleChoice : _isMultipleChoice,
+      getLabelValue : _getLabelValue,
       refreshFieldPreview : _refreshFieldPreview,
       getOptionsValues : _getOptionsValues
     };

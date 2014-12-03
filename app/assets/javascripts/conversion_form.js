@@ -1,5 +1,8 @@
 //= require jquery.tmpl.min
 //= require custom_field_templates
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
+//= require jquery.ui.sortable
 var ConversionFormHandler;
 (function ($) {
   'use strict';
@@ -15,6 +18,7 @@ var ConversionFormHandler;
       $('#sortable-fields-form').on('change', '.js-required-input', _toogleRequired);
       $('#js-conversion-form').on('submit', _saveConversionForm);
       _loadFields();
+      _setDragAndDrop();
     },
 
       _loadFields = function () {
@@ -28,6 +32,18 @@ var ConversionFormHandler;
             this.render_required = true;
             _renderTemplate(this);
           });
+        });
+      },
+
+      _setDragAndDrop = function () {
+        $('.js-add-field').draggable({
+          revert: 'invalid',
+          helper: 'clone',
+          start: function (event, ui) { ui.helper.css('z-index', 1500); }
+        });
+        $('#sortable-fields-form').droppable({
+          accept: '.js-add-field',
+          drop: function (event, ui) { _addFieldToPreview.apply(ui.draggable); }
         });
       },
 

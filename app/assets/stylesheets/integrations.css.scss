@@ -1,0 +1,32 @@
+@import "zeroclipboard";
+
+#integrations {
+  section {
+    width: 80%;
+    margin: 0 auto;
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+    figure {
+      margin: 35px 0;
+      text-align: center;
+    }
+    p {
+      color: #848484;
+      text-align: center;
+    }
+    .actions,
+    .alert-warning {
+      margin-top: 33px;
+      text-align: center;
+    }
+  }
+  .panel {
+    text-align: left;
+    margin: 30px 0 0;
+    p { text-align: left; }
+  }
+  .api-tokens p { font-weight: bold; }
+}

@@ -1,0 +1,18 @@
+//= require zeroclipboard
+
+(function ($) {
+  var copyPublicToken = $(".js-copy-public-token"),
+      copyPrivateToken = $(".js-copy-private-token"),
+      clipPublicToken = new ZeroClipboard(copyPublicToken);
+      clipPrivateToken = new ZeroClipboard(copyPrivateToken);
+      clipPublicTokenSuccessText = "<%= I18n.t('integrations.api.alert.clip_public_token') %>"
+      clipPrivateTokenSuccessText = "<%= I18n.t('integrations.api.alert.clip_private_token') %>"
+
+  clipPublicToken.on('aftercopy', function (event) {
+    $.bootstrapGrowl(clipPublicTokenSuccessText, { type: 'success', width: 600 });
+  });
+
+  clipPrivateToken.on('aftercopy', function (event) {
+    $.bootstrapGrowl(clipPrivateTokenSuccessText, { type: 'success', width: 600 });
+  });
+})(jQuery);

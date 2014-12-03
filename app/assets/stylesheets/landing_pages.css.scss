@@ -27,13 +27,11 @@
     padding: 0;
     li {
       padding: 8px;
-      border: 1px solid #FFF;
       position: relative;
       width: 395px;
       @include border-radius(4px);
       margin: 10px 0;
       border: 1px solid $gray-lighter;
-      float: left;
       clear: both;
       a.remove-field-link {
         position: absolute;
@@ -112,12 +110,13 @@
 
 #field-list,
 #field-sugestions-list {
+  display: inline-block;
   list-style: none;
-  overflow: hidden;
   margin: 0;
   li {
-    margin: 0 5px 5px 0;
-    float: left;
+    margin: 0 1px 5px 0;
+    display: inline-block;
+    position: relative;
     a {
       display: block;
       background-color: lighten($link-color, 40%);
@@ -126,6 +125,7 @@
       text-align: center;
       font-weight: normal;
       padding: 6px 8px;
+      width: 100%;
       @include border-radius(4px);
       &:hover {
         background-color: $link-color;
