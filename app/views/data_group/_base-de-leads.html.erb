@@ -2,4 +2,630 @@
   <%= stylesheet_link_tag 'lead' %>
 <% end %>
 
-base de leads
+<div id="leads_crm" class="container">
+      <div class="container-nav-pills">
+  <div class="row">
+    <div class="col-xs-8">
+      <ul class="nav nav-pills">
+        <li class="active"><a href="/leads">Leads</a></li>
+        <li><a href="/empresas">Empresas</a></li>
+        <li><a href="/leads/importacoes">Importações</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <div class="btn-group pull-right">
+        <a href="/leads/importacoes/nova" class="btn btn-primary">Importar Leads</a>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/leads/novo" class="add-link-button">Inserir Lead</a></li>
+          <li><a href="/empresas/nova">Inserir Empresa</a></li>
+          <li><a href="#exportLeadsModal" class="export-leads-modal-link" data-toggle="modal" role="button">Exportar tabela de Leads</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="slats">
+  <h1 class="slats-title base_number">Existem 1015 Leads na sua base</h1>
+
+  <div class="slats-filter">
+    <form accept-charset="UTF-8" action="/leads" id="search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label>Busca</label>
+      <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="form-control tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><input class="form-control tt-query" id="query" name="query" type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"></span></span>
+      <input id="leads_manager" name="leads_manager" type="hidden" value="c7f43a32-f3a2-436d-b0ff-1a4c464a5b24">
+    </div>
+    <div class="col-xs-6" id="filter_leads_lists"><label for="dynamic_list">Listas de segmentação</label>
+<select class="form-control" id="dynamic_list" name="dynamic_list"><option value="7196">Clientes (estágio no funil)</option>
+<option value="20031">leads com cargo</option>
+<option value="7194">Leads (estágio no funil)</option>
+<option value="2268">Leads importados - tabela_de_leads.csv</option>
+<option value="7195">Leads Qualificados (estágio no funil)</option>
+<option value="52309">leads sem empresas</option>
+<option value="7197">Oportunidades</option>
+<option value="52540">oxys contact form</option>
+<option value="3009">RD</option>
+<option value="2252">rodrigoquaresma tester</option>
+<option value="19985">sem cargo</option>
+<option value="63355">teste agenda</option>
+<option value="7193" selected="selected">Todos os contatos da base de Leads</option>
+<option value="51666">zzz</option></select>
+</div>
+  </div>
+</form>
+  </div>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="add_tag_to_search_result" tabindex="-1" role="dialog" aria-labelledby="add_tagsLabel" aria-hidden="true">
+    <form accept-charset="UTF-8" action="/leads/tag" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="5v4q+R8Fk7Wu5Wy7eNrAnpY1hl84ic5911/XwB5Rm4s="></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="add_tagsLabel">Adicionar tag</h4>
+          </div>
+          <div class="modal-body">
+            <div id="add-tags-wrapper">
+              <p class="help-block">A tag será inserida somente aos Leads resultantes da busca ou do filtro.</p>
+              <div class="form-group" id="add-tags-form">
+                <label class="sr-only">Tag: </label>
+                <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input name="tags[]" type="text" id="add-tags-input" class="form-control ui-autocomplete-input" autocomplete="off">
+                <input id="tag_multiple_leads_query" name="query" type="hidden" value="">
+                <input id="tag_multiple_leads_dynamic_list" name="dynamic_list" type="hidden">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+            <button class="btn btn-primary" name="button" type="submit">Adicionar</button>
+          </div>
+        </div>
+      </div>
+</form>  </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="remove_tag_from_search_result" tabindex="-1" role="dialog" aria-labelledby="remove_tagsLabel" aria-hidden="true">
+    <form accept-charset="UTF-8" action="/leads/untag" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="5v4q+R8Fk7Wu5Wy7eNrAnpY1hl84ic5911/XwB5Rm4s="></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="remove_tagsLabel">Remover tag</h4>
+          </div>
+          <div class="modal-body">
+            <div id="remove-tags-wrapper">
+              <p class="help-block">A tag será removida somente dos Leads resultantes da busca ou do filtro.</p>
+              <div class="form-group" id="remove-tags-form">
+                <label class="sr-only">Tag: </label>
+                <input name="tags[]" type="text" id="remove-tags-input" class="form-control">
+                <input id="untag_multiple_leads_query" name="query" type="hidden" value="">
+                <input id="untag_multiple_leads_dynamic_list" name="dynamic_list" type="hidden">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+            <button class="btn btn-primary" name="button" type="submit">Remover</button>
+          </div>
+        </div>
+      </div>
+</form>  </div>
+
+
+  <div id="leads" class="slat-group">
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/8362125" title="Clique aqui para editar" class="edit-info-link">
+                  Daniel
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/1906576">RD</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">2</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-09-23T10:16:58-03:00">há 2 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/5100418" title="Clique aqui para editar" class="edit-info-link">
+                  quaresma
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/282902">oxys</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">31</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-06-29T10:07:02-03:00">há 5 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+                <div class="tag-wrapper tags">
+                  <i class="xicon-tags"></i>
+                  	<span id="tag-5100418-10387" class="label label-tag">
+		oxys
+	</span>
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/4375144" title="Clique aqui para editar" class="edit-info-link">
+                  joao@gmail.com
+                </a></span>
+                <span class="job-company-name"></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-06-03T16:02:25-03:00">há 6 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">insercao-manual</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/4191002" title="Clique aqui para editar" class="edit-info-link">
+                  simone
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/613992">rd</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-05-26T14:06:53-03:00">há 6 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+                <div class="tag-wrapper tags">
+                  <i class="xicon-tags"></i>
+                  	<span id="tag-4191002-10387" class="label label-tag">
+		oxys
+	</span>
+	<span id="tag-4191002-10920" class="label label-tag">
+		agenda
+	</span>
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/3341538" title="Clique aqui para editar" class="edit-info-link">
+                  Ricardo Winck
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/358723">Empresa Teste 1</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-04-12T17:35:17-03:00">há 8 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2"></i></span>
+                <span class="lead-name"><a href="/leads/2400836" title="Clique aqui para editar" class="edit-info-link">
+                  Rodrigo Quaresma
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/429442">Oxys Interaction Design</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">8</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-03-27T12:26:09-03:00">há 8 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+                <div class="tag-wrapper tags">
+                  <i class="xicon-tags"></i>
+                  	<span id="tag-2400836-6105" class="label label-tag">
+		resultados digitais
+	</span>
+	<span id="tag-2400836-5915" class="label label-tag">
+		resultados
+	</span>
+	<span id="tag-2400836-21" class="label label-tag">
+		rd
+	</span>
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2"></i></span>
+                <span class="lead-name"><a href="/leads/2400847" title="Clique aqui para editar" class="edit-info-link">
+                  paula pellin
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/429446">escola da fazenda</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-03-10T00:23:04-03:00">há 9 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">contact-page</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/2020318" title="Clique aqui para editar" class="edit-info-link">
+                  Diego
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/358969">Rock Content</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+                <span class="lead-owner" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dono do Lead: oxys.ixd@gmail.com"><i class="xicon-user slat-action"></i></span>
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-02-04T00:10:36-02:00">há 10 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">rockcontent-topic-generator</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/2019012" title="Clique aqui para editar" class="edit-info-link">
+                  Danilo
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/358723">Empresa Teste 1</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">3</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-02-03T17:39:48-02:00">há 10 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">rockcontent-topic-generator</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="slat-group-item">
+        <header class="slat-heading">
+          <div class="row">
+            <div class="col-xs-10">
+              <h1 class="slat-title word-break-word">
+                <span class="info-opportunity"><i class="xicon-star2 disabled"></i></span>
+                <span class="lead-name"><a href="/leads/2019035" title="Clique aqui para editar" class="edit-info-link">
+                  Danilo
+                </a></span>
+                <span class="job-company-name"><a href="/empresas/358736">Empresa Teste 3</a></span>
+              </h1>
+            </div>
+            <div class="col-xs-2 text-right">
+            </div>
+          </div>
+        </header>
+        <div class="slat-body">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Conversões</small>
+                <p class="number conversions">1</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="lg-number">
+                <small>Última conversão</small>
+                <p class="number">
+                  <time class="last_conversion_time timeago" datetime="2014-02-03T17:38:07-02:00">há 10 meses</time>
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-1">
+              <i class="xicon-arrow4-right conversion-icon"></i>
+            </div>
+            <div class="col-xs-3">
+              <small class="word-break-word">rockcontent-topic-generator</small>
+            </div>
+            <div class="col-xs-4">
+            </div>
+          </div>
+        </div>
+      </article>
+  </div>
+
+  <div class="slats-footer">
+      <div class="pagination-content"><ul class="pagination pagination"><li class="prev disabled"><span>«</span></li> <li class="active"><span>1</span></li> <li><a rel="next" href="/leads?pagina=2&amp;per_page=10&amp;query=">2</a></li> <li><a href="/leads?pagina=3&amp;per_page=10&amp;query=">3</a></li> <li><a href="/leads?pagina=4&amp;per_page=10&amp;query=">4</a></li> <li><a href="/leads?pagina=5&amp;per_page=10&amp;query=">5</a></li> <li><a href="/leads?pagina=6&amp;per_page=10&amp;query=">6</a></li> <li><a href="/leads?pagina=7&amp;per_page=10&amp;query=">7</a></li> <li><a href="/leads?pagina=8&amp;per_page=10&amp;query=">8</a></li> <li><a href="/leads?pagina=9&amp;per_page=10&amp;query=">9</a></li> <li class="disabled"><a href="#">…</a></li> <li><a href="/leads?pagina=101&amp;per_page=10&amp;query=">101</a></li> <li><a href="/leads?pagina=102&amp;per_page=10&amp;query=">102</a></li> <li class="next"><a rel="next" href="/leads?pagina=2&amp;per_page=10&amp;query=">»</a></li></ul></div>
+  </div>
+</section>
+
+<div class="modal fade" id="exportLeadsModal" tabindex="-1" role="dialog" aria-labelledby="exportLeadsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="form_export_send">
+  <div class="modal-content">
+		<form accept-charset="UTF-8" action="/leads/exportar" class="export-form" data-remote="true" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		        <h4 class="modal-title" id="exportLeadsModalLabel">Exportar tabela de Leads</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Endereço de email para envio da tabela</label>
+					<input class="form-control" id="email" name="email" type="text" value="rodrigo.quaresma@resultadosdigitais.com.br">
+				</div>
+				<input id="query" name="query" type="hidden" value="">
+				<input id="dynamic_list" name="dynamic_list" type="hidden">
+				<h5>Formato do arquivo</h5>
+				<div class="radio">
+					<label>
+						<input checked="checked" id="excel_true" name="excel" type="radio" value="true"> Excel
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input id="excel_false" name="excel" type="radio" value="false"> CSV (Valores Separados por Vírgula)
+					</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+				<input class="btn btn-primary" data-loading-text="Enviando..." name="commit" type="submit" value="Exportar">
+			</div>
+</form>	</div>
+</div>
+
+</div>
+
+</div>

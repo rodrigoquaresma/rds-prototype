@@ -2,4 +2,828 @@
   <%#= stylesheet_link_tag 'campaigns' %>
 <% end %>
 
-campanhas
+<div id="campaigns" class="container">
+  <div class="container-nav-pills">
+    <div class="row">
+      <div class="col-xs-8">
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#index_sent_campaigns" data-toggle="pill">Finalizadas</a></li>
+          <li class=""><a href="#index_scheduled_campaigns" data-toggle="pill">Agendadas</a></li>
+          <li class=""><a href="#index_saved_campaigns" data-toggle="pill">Salvas</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4">
+        <a href="/campanhas/nova" class="btn btn-primary pull-right" data-loading-text="Aguarde">Criar campanha</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 lists">
+      <div class="tab-content">
+        <div class="tab-pane active" id="index_sent_campaigns">
+
+          <section id="table-campaigns-sent sent" class="slats">
+  <div id="leads" class="slat-group">
+    <article class="slat-group-item">
+      <header class="slat-heading">
+        <div class="row">
+          <div class="col-xs-11">
+            <h1 class="slat-title word-break-word">
+              <a href="/campanhas/25752/estatisticas">teste agenda</a>
+              <time class="text-muted">Enviada em 14/07/2014</time>
+            </h1>
+          </div>
+          <div class="col-xs-1 text-right">
+            <div class="dropdown pull-right">
+              <a class="slat-action" id="actions-sent-campaign" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                <i class="xicon-cog"></i><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" aria-labelledby="actions-sent-campaign">
+                <li><a href="/campanhas/25752/estatisticas" class="stat" title="Estatísticas">Estatísticas</a></li>
+                <li><a href="/campanhas/25752/eventos/busca" title="Eventos">Eventos</a></li>
+                <li><a href="/campanhas/25752/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="slat-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Selecionados</small>
+              <p class="number">1</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Abertura</small>
+              <p class="number">100,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Cliques</small>
+              <p class="number">0,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Descadastros</small>
+              <p class="number">0</p>
+            </div>
+          </div>
+
+      </div>
+    </div></article>
+    <article class="slat-group-item">
+      <header class="slat-heading">
+        <div class="row">
+          <div class="col-xs-11">
+            <h1 class="slat-title word-break-word">
+              <a href="/campanhas/4831/estatisticas">production teste seg rodrigoquaresma</a>
+              <time class="text-muted">Enviada em 29/10/2013</time>
+            </h1>
+          </div>
+          <div class="col-xs-1 text-right">
+            <div class="dropdown pull-right">
+              <a class="slat-action" id="actions-sent-campaign" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                <i class="xicon-cog"></i><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" aria-labelledby="actions-sent-campaign">
+                <li><a href="/campanhas/4831/estatisticas" class="stat" title="Estatísticas">Estatísticas</a></li>
+                <li><a href="/campanhas/4831/eventos/busca" title="Eventos">Eventos</a></li>
+                <li><a href="/campanhas/4831/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="slat-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Selecionados</small>
+              <p class="number">1</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Abertura</small>
+              <p class="number">100,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Cliques</small>
+              <p class="number">0,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Descadastros</small>
+              <p class="number">0</p>
+            </div>
+          </div>
+
+      </div>
+    </div></article>
+    <article class="slat-group-item">
+      <header class="slat-heading">
+        <div class="row">
+          <div class="col-xs-11">
+            <h1 class="slat-title word-break-word">
+              <a href="/campanhas/2940/estatisticas">campanha teste sofit</a>
+              <time class="text-muted">Enviada em 11/09/2013</time>
+            </h1>
+          </div>
+          <div class="col-xs-1 text-right">
+            <div class="dropdown pull-right">
+              <a class="slat-action" id="actions-sent-campaign" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                <i class="xicon-cog"></i><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right text-left" role="menu" aria-labelledby="actions-sent-campaign">
+                <li><a href="/campanhas/2940/estatisticas" class="stat" title="Estatísticas">Estatísticas</a></li>
+                <li><a href="/campanhas/2940/eventos/busca" title="Eventos">Eventos</a></li>
+                <li><a href="/campanhas/2940/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="slat-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Selecionados</small>
+              <p class="number">1</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Abertura</small>
+              <p class="number">100,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Cliques</small>
+              <p class="number">0,00%</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="lg-number">
+              <small>Descadastros</small>
+              <p class="number">0</p>
+            </div>
+          </div>
+
+      </div>
+    </div></article>
+  </div>
+</section>
+
+<div class="pagination-content"></div>
+
+
+        </div>
+        <div class="tab-pane" id="index_scheduled_campaigns">
+            <table id="table-campaigns-scheduled" class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width:20%">Agendamento</th>
+        <th style="width:63%">Nome</th>
+        <th style="width:17%"></th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr id="6592" class="">
+            <td>
+              <time class="text-muted">13/06/2022 (16:02)</time>
+            </td>
+              <td>
+                <a href="/campanhas/6592/edit" class="clickable" title="Editar">campanha teste sofit - Duplicado - Duplicado</a>
+              </td>
+              <td>
+                <div class="btn-group pull-right">
+                  <a href="/campanhas/6592/edit" class="btn btn-default" title="Editar">Editar</a>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/campanhas/6592/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                    <li><a href="/campanhas/6592" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta página? Todos dados serão perdidos." data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+                  </ul>
+                </div>
+              </td>
+          </tr>
+          <tr id="10165" class="">
+            <td>
+              <time class="text-muted">26/02/2019 (14:21)</time>
+            </td>
+              <td>
+                <a href="/campanhas/10165/edit" class="clickable" title="Editar">agradecimento</a>
+              </td>
+              <td>
+                <div class="btn-group pull-right">
+                  <a href="/campanhas/10165/edit" class="btn btn-default" title="Editar">Editar</a>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/campanhas/10165/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                    <li><a href="/campanhas/10165" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta página? Todos dados serão perdidos." data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+                  </ul>
+                </div>
+              </td>
+          </tr>
+          <tr id="6925" class="">
+            <td>
+              <time class="text-muted">23/12/2018 (17:06)</time>
+            </td>
+              <td>
+                <a href="/campanhas/6925/edit" class="clickable" title="Editar">campanha teste sofit - Duplicado - Duplicado</a>
+              </td>
+              <td>
+                <div class="btn-group pull-right">
+                  <a href="/campanhas/6925/edit" class="btn btn-default" title="Editar">Editar</a>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/campanhas/6925/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                    <li><a href="/campanhas/6925" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta página? Todos dados serão perdidos." data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+                  </ul>
+                </div>
+              </td>
+          </tr>
+          <tr id="39979" class="">
+            <td>
+              <time class="text-muted">18/12/2015 (09:48)</time>
+            </td>
+              <td>
+                <a href="/campanhas/39979/edit" class="clickable" title="Editar">vbvbvb</a>
+              </td>
+              <td>
+                <div class="btn-group pull-right">
+                  <a href="/campanhas/39979/edit" class="btn btn-default" title="Editar">Editar</a>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/campanhas/39979/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                    <li><a href="/campanhas/39979" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta página? Todos dados serão perdidos." data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+                  </ul>
+                </div>
+              </td>
+          </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="tab-pane" id="index_saved_campaigns">
+          <table id="table-campaigns-saved" class="table table-hover">
+  <thead>
+    <tr>
+      <th style="width:82%">Nome</th>
+      <th style="width:18%"></th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr id="41656">
+          <td>
+            <a href="/campanhas/41656/edit" class="clickable" title="Editar">asd</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/41656/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/41656/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/41656" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="28673">
+          <td>
+            <a href="/campanhas/28673/edit" class="clickable" title="Editar">production teste seg rodrigoquaresma - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/28673/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/28673/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/28673" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="28674">
+          <td>
+            <a href="/campanhas/28674/edit" class="clickable" title="Editar">production teste seg rodrigoquaresma - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/28674/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/28674/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/28674" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="40513">
+          <td>
+            <a href="/campanhas/40513/edit" class="clickable" title="Editar">teste agenda - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/40513/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/40513/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/40513" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="41105">
+          <td>
+            <a href="/campanhas/41105/edit" class="clickable" title="Editar">teste agenda - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/41105/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/41105/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/41105" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="41106">
+          <td>
+            <a href="/campanhas/41106/edit" class="clickable" title="Editar">teste agenda - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/41106/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/41106/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/41106" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="28678">
+          <td>
+            <a href="/campanhas/28678/edit" class="clickable" title="Editar">dsgdrs</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/28678/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/28678/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/28678" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25890">
+          <td>
+            <a href="/campanhas/25890/edit" class="clickable" title="Editar">sfaasf</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25890/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25890/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25890" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25868">
+          <td>
+            <a href="/campanhas/25868/edit" class="clickable" title="Editar">sdgsdg</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25868/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25868/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25868" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25847">
+          <td>
+            <a href="/campanhas/25847/edit" class="clickable" title="Editar">fddsfds</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25847/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25847/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25847" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25775">
+          <td>
+            <a href="/campanhas/25775/edit" class="clickable" title="Editar">dsafas</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25775/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25775/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25775" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25773">
+          <td>
+            <a href="/campanhas/25773/edit" class="clickable" title="Editar">31</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25773/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25773/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25773" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25390">
+          <td>
+            <a href="/campanhas/25390/edit" class="clickable" title="Editar">fas</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25390/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25390/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25390" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25359">
+          <td>
+            <a href="/campanhas/25359/edit" class="clickable" title="Editar">faAS</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25359/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25359/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25359" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="25047">
+          <td>
+            <a href="/campanhas/25047/edit" class="clickable" title="Editar">email te s te</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/25047/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/25047/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/25047" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="24469">
+          <td>
+            <a href="/campanhas/24469/edit" class="clickable" title="Editar">adidas - brazuca final rio - copa 2014</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/24469/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/24469/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/24469" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="24387">
+          <td>
+            <a href="/campanhas/24387/edit" class="clickable" title="Editar">uhuu</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/24387/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/24387/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/24387" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="24348">
+          <td>
+            <a href="/campanhas/24348/edit" class="clickable" title="Editar">FHDSHGDSHG;A</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/24348/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/24348/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/24348" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="24347">
+          <td>
+            <a href="/campanhas/24347/edit" class="clickable" title="Editar">sdfhksafjh</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/24347/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/24347/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/24347" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="24249">
+          <td>
+            <a href="/campanhas/24249/edit" class="clickable" title="Editar">Newsletter Julho para Links SGB</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/24249/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/24249/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/24249" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="23640">
+          <td>
+            <a href="/campanhas/23640/edit" class="clickable" title="Editar">hrhare</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/23640/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/23640/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/23640" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="23365">
+          <td>
+            <a href="/campanhas/23365/edit" class="clickable" title="Editar">Dvds</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/23365/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/23365/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/23365" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="21029">
+          <td>
+            <a href="/campanhas/21029/edit" class="clickable" title="Editar">fsdf</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/21029/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/21029/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/21029" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="16419">
+          <td>
+            <a href="/campanhas/16419/edit" class="clickable" title="Editar">dfs</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/16419/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/16419/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/16419" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="15428">
+          <td>
+            <a href="/campanhas/15428/edit" class="clickable" title="Editar">cxv</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/15428/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/15428/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/15428" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="15426">
+          <td>
+            <a href="/campanhas/15426/edit" class="clickable" title="Editar">fffff</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/15426/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/15426/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/15426" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="11132">
+          <td>
+            <a href="/campanhas/11132/edit" class="clickable" title="Editar">ddd</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/11132/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/11132/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/11132" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr id="5645">
+          <td>
+            <a href="/campanhas/5645/edit" class="clickable" title="Editar">campanha teste sofit - Duplicado</a>
+          </td>
+          <td>
+            <div class="btn-group pull-right">
+              <a href="/campanhas/5645/edit" class="btn btn-default" data-loading-text="Aguarde">Editar</a>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/campanhas/5645/duplicar" class="action-link duplicate" title="Duplicar">Duplicar</a></li>
+                <li><a href="/campanhas/5645" class="action-link delete" data-confirm="Tem certeza que deseja excluir esta campanha?" data-method="delete" data-remote="true" id="action-link delete" rel="nofollow" title="Excluir">Excluir</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+  </tbody>
+</table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3 hide">
+      <p class="text-muted">Em quatro simples passos você escolhe a template de email, edita o conteúdo (em HTML e texto simples), segmenta os seus Leads e agenda a data de envio.</p>
+<ul class="list-unstyled list-actions">
+	<li>
+		<a href="/emails">
+		<i class="xicon-envelope"></i>Ver modelos de email
+</a>		<p>Lista de emails disponíveis para inserção nas campanhas.</p>
+	</li>
+	<li>
+		<a href="/emails/new">
+		<i class="xicon-envelope"></i>Criar email
+</a>		<p>Crie os emails que serão utilizados nas campanhas.</p>
+	</li>
+	<li>
+		<a href="/leads/importacoes">
+		<i class="xicon-upload"></i>Importar Leads
+</a>		<p>Importe seus contatos para disparar uma campanha.</p>
+	</li>
+</ul>
+
+    </div>
+  </div>
+</div>
