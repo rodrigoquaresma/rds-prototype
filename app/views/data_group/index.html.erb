@@ -1,0 +1,328 @@
+<% content_for :header do %>
+  <%= stylesheet_link_tag 'components/data-group' %>
+<% end %>
+
+<% content_for :pagetitle do %>
+  DataGroup CSS Component
+<% end %>
+
+<% content_for :pagesubtitle do %>
+  <div class="row">
+    <div class="col-xs-9">
+      <h2><span class="text-muted">Exemplo</span> detalhe de landing page</h2>
+    </div>
+    <div class="col-xs-3 action-header">
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          detalhe de landing page <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">base de lead</a></li>
+          <li><a href="#">lista de campanhas</a></li>
+          <li><a href="#">painel de palavras chave</a></li>
+          <li><a href="#">marketing BI - negócios/resultados</a></li>
+          <li><a href="#">marketing BI - negócios/planejamento</a></li>
+          <li><a href="#">marketing BI - canais de aquisição</a></li>
+          <li><a href="#">marketing BI - campanhas</a></li>
+          <li><a href="#">automação de marketing</a></li>
+          <li><a href="#">lead scoring</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+  <span id="js-lp-link"><span class="text-muted" id="js-lp-link">http://pages.rdstation.com.br/68a869e27bc651ade405</span></span>
+  <div id="data-wrapper" class="resume"><hr> <div class="row"> 	<div class="col-xs-3"> 		<div class="data-group"> 			<div class="data-group-value size-a">0</div> 			<div class="data-group-label">Visitantes</div> 		</div> 	</div> 	<div class="col-xs-1">     <i class="data-arrow-right"></i>   </div> 	<div class="col-xs-3"> 		<div class="data-group"> 			<div class="data-group-value size-a">0%</div> 			<div class="data-group-label">Taxa de conversão</div> 		</div> 	</div> 	<div class="col-xs-1"> 		<i class="data-arrow-right"></i> 	</div> 	<div class="col-xs-4"> 		<div class="data-group"> 			<div class="data-group-value size-a"> 				<a href="/leads?query=evento%3A%2268a869e27bc651ade405%22" title="Clique aqui para ver sua Base de Leads (CRM)"> 					0 				</a> 			</div> 			<div class="data-group-label">Leads</div> 		</div> 	</div> </div> <hr> </div>
+  <div class="row promove">
+    <div class="col-xs-6">
+      <h4>Promover em Mídias Sociais</h4>
+      <a href="/agendamento/novo?content=094+-+Duplicado%3A+http%3A%2F%2Fpages.rdstation.com.br%2F68a869e27bc651ade405" class="btn btn-default" data-remote="true" id="new_post_link" title="Criar nova publicação">Criar nova publicação</a>
+    </div>
+    <div class="col-xs-6">
+      <h4>Promover por email</h4>
+      <a href="/campanhas/nova" class="btn btn-default" data-loading-text="Aguarde">Criar nova campanha</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+      <div class="container-nav-pills">
+  <ul class="nav nav-pills">
+    <li class="active">
+      <a href="/marketing-bi/negocios/resultados">Resultados</a>
+    </li>
+    <li class="">
+      <a href="/marketing-bi/negocios/tendencias">Tendências</a>
+    </li>
+    <li class="">
+      <a href="/marketing-bi/negocios/safras">Safras</a>
+    </li>
+    <li class="">
+      <a href="/marketing-bi/negocios/ciclo-de-venda">Ciclo de Venda</a>
+    </li>
+    <li class="">
+      <a href="/marketing-bi/negocios/planejamento">Planejamento</a>
+    </li>
+  </ul>
+</div>
+
+      <iframe data-src="" width="0" height="0" frameborder="0" src=""></iframe>
+      <div class="panel panel-default business-results">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-9">
+        <h3 class="panel-title">Funil de Vendas</h3>
+      </div>
+      <div class="col-xs-3 text-right">
+        <a href="#goals" class="panel-heading-btn action-config" data-redirect-to="/marketing-bi/negocios/resultados" data-toggle="modal"></a>
+      </div>
+    </div>
+  </div>
+  <div class="panel-filter">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="business_funnel_date_picker">Período: </label>
+            <input type="text" class="form-control input-sm funnel-date-picker" data-path="/marketing-bi/negocios/resultados" id="business_funnel_date_picker" value="11/2014" data-start-date="8/2011">
+          </div>
+        </div>
+      </div>
+      <div class="selected_date text-center"><div class="col-xs-4">
+  <span class="help-inline">Nov 2014</span>
+</div>
+<div class="col-xs-2">
+  <span class="help-inline">metas Nov 2014</span>
+</div>
+<div class="col-xs-2">
+  <span class="help-inline">Out 2014</span>
+</div>
+</div>
+    </div>
+  </div>
+  <div class="panel-body panel-funnel-group funnel-business">      <div class="funnel-group-step">
+        <div class="row">
+          <div class="col-xs-4"><div class="funnel-step-label"><a href="/marketing-bi/negocios/tendencias?stages=Visitantes">Visitantes</a></div></div>
+          <div class="col-xs-4">
+            <div class="funnel-convertion-rate"><i class="xicon-arrow2-down"></i>100,00<small>%</small></div>
+            <div class="funnel-step-value-bar">
+              <div class="funnel-step-bar"><span class="funnel-step-current">65.792</span></div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-goal"><span class="funnel-step-variation text-success">100,0%<i class="xicon-arrow1-up"></i></span><span class="funnel-step-value">0</span></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-last"><span class="funnel-step-variation text-danger">9,8%<i class="xicon-arrow1-down"></i></span><span class="funnel-step-value">72.950</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-group-step">
+        <div class="row">
+          <div class="col-xs-4"><div class="funnel-step-label"><a href="/marketing-bi/negocios/tendencias?stages=Leads">Leads</a></div></div>
+          <div class="col-xs-4">
+            <div class="funnel-convertion-rate"><i class="xicon-arrow2-down"></i>25,19<small>%</small></div>
+            <div class="funnel-step-value-bar">
+              <div class="funnel-step-bar"><span class="funnel-step-current">16.573</span></div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-goal"><span class="funnel-step-variation text-danger">19,2%<i class="xicon-arrow1-down"></i></span><span class="funnel-step-value">20.521</span></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-last"><span class="funnel-step-variation text-success">4,7%<i class="xicon-arrow1-up"></i></span><span class="funnel-step-value">15.835</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-group-step">
+        <div class="row">
+          <div class="col-xs-4"><div class="funnel-step-label"><a href="/marketing-bi/negocios/tendencias?stages=Oportunidades">Oportunidades</a></div></div>
+          <div class="col-xs-4">
+            <div class="funnel-convertion-rate"><i class="xicon-arrow2-down"></i>8,70<small>%</small></div>
+            <div class="funnel-step-value-bar">
+              <div class="funnel-step-bar"><span class="funnel-step-current">1.442</span></div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-goal"><span class="funnel-step-variation text-success">100,0%<i class="xicon-arrow1-up"></i></span><span class="funnel-step-value">0</span></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-last"><span class="funnel-step-variation text-danger">17,3%<i class="xicon-arrow1-down"></i></span><span class="funnel-step-value">1.743</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-group-step">
+        <div class="row">
+          <div class="col-xs-4"><div class="funnel-step-label"><a href="/marketing-bi/negocios/tendencias?stages=Vendas">Vendas</a></div></div>
+          <div class="col-xs-4">
+            <div class="funnel-convertion-rate"><i class="xicon-arrow2-down"></i>11,37<small>%</small></div>
+            <div class="funnel-step-value-bar">
+              <div class="funnel-step-bar"><span class="funnel-step-current">164</span></div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-goal"><span class="funnel-step-variation text-danger">30,5%<i class="xicon-arrow1-down"></i></span><span class="funnel-step-value">236</span></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="funnel-step-last"><span class="funnel-step-variation text-success">50,5%<i class="xicon-arrow1-up"></i></span><span class="funnel-step-value">109</span></div>
+          </div>
+        </div>
+      </div>
+
+</div>
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-9">
+        <h3 class="panel-title">Indicadores</h3>
+      </div>
+      <div class="col-xs-3 text-right">
+        <a href="#funnelHelp" class="panel-heading-btn modal-info" data-toggle="modal"></a>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body funnel-indicators"><div class="row">
+
+  <div class="col-xs-3">
+    <h4 class="funnel-step-label">Ciclo de Venda</h4>
+    <div class="data-group">
+      <hr class="spacer-sm">
+      <div class="data-group-label">Lead <i class="xicon-arrow2-right"></i>Venda</div>
+      <div class="data-group-value">136 <small>dias</small></div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Oportunidade <i class="xicon-arrow2-right"></i>Venda</div>
+      <div class="data-group-value">35 <small>dias</small></div>
+    </div>
+    <hr class="spacer-sm">
+    <small><a href="/marketing-bi/negocios/ciclo-de-venda">Veja mais</a></small>
+  </div>
+
+  <div class="col-xs-3">
+    <h4 class="funnel-step-label">Custo de Venda</h4>
+    <div class="data-group">
+      <hr class="spacer-sm">
+      <div class="data-group-label">Custo por Lead</div>
+      <div class="data-group-value"><small>R$</small>  -</div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Custo por Oportunidade</div>
+      <div class="data-group-value"><small>R$</small>  -</div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Custo por Aquisição</div>
+      <div class="data-group-value"><small>R$</small>  -</div>
+    </div>
+    <hr class="spacer-sm">
+    <small><a href="/marketing-bi/negocios/planejamento">Configurar valores</a></small>
+  </div>
+
+  <div class="col-xs-3">
+    <h4 class="funnel-step-label">Vendas</h4>
+    <div class="data-group">
+      <hr class="spacer-sm">
+      <div class="data-group-label">Valor por Lead</div>
+      <div class="data-group-value"><small>R$</small>  4,12</div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Valor por Oportunidade</div>
+      <div class="data-group-value"><small>R$</small>  48,49</div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Valor por Venda</div>
+      <div class="data-group-value"><small>R$</small>  423,80</div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Valor total das Vendas</div>
+      <div class="data-group-value"><small>R$</small>  69.927,59</div>
+    </div>
+    <hr class="spacer-sm">
+    <small><a href="/marketing-bi/negocios/planejamento">Configurar valores</a></small>
+  </div>
+
+  <div class="col-xs-3">
+    <h4 class="funnel-step-label">Conversões <small class="data-group-info">/ mercado</small></h4>
+    <div class="data-group">
+            <hr class="spacer-sm">
+      <div class="data-group-label">Lead <i class="xicon-arrow2-right"></i>Venda</div>
+      <div class="data-group-value">0,99<small>%</small> <small class="data-group-info">/ 0,09<small>%</small></small></div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Visitantes <i class="xicon-arrow2-right"></i>Leads</div>
+      <div class="data-group-value">25,19<small>%</small> <small class="data-group-info">/ 11,11<small>%</small></small></div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Leads <i class="xicon-arrow2-right"></i>Oportunidades</div>
+      <div class="data-group-value">8,70<small>%</small> <small class="data-group-info">/ 0,80<small>%</small></small></div>
+      <hr class="spacer-sm">
+      <div class="data-group-label">Oportunidades <i class="xicon-arrow2-right"></i>Venda</div>
+      <div class="data-group-value">11,37<small>%</small> <small class="data-group-info">/ 10,70<small>%</small></small></div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="funnelHelp" tabindex="-1" role="dialog" aria-labelledby="funnelHelpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 class="modal-title">Indicadores</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Ciclo de Vendas</h4>
+        <dl>
+          <dt>Lead <i class="xicon-arrow2-right"></i>Venda</dt>
+          <dd>Média do tempo que os Leads demoram até fechar venda.</dd>
+          <dt>Oportunidade <i class="xicon-arrow2-right"></i>Venda</dt>
+          <dd>Média do tempo que as Oportunidades demoram até fechar venda.</dd>
+        </dl>
+        <hr class="spacer-sm">
+        <h4>Custo de Vendas</h4>
+        <dl>
+          <dt>Custo por Lead</dt>
+          <dd>Referente ao "Custo de Venda" dividido pelo "número de Leads".</dd>
+          <dt>Custo por Oportunidade</dt>
+          <dd>Referente ao "Custo de Venda" dividido pelo "número de Oportunidades".</dd>
+          <dt>Custo por Aquisição</dt>
+          <dd>Referente ao "Custo de Venda" dividido pelo "número de Vendas".</dd>
+        </dl>
+        <hr class="spacer-sm">
+        <h4>Vendas</h4>
+        <dl>
+          <dt>Valor por Lead:</dt>
+          <dd>Referente ao "Valor total das Vendas" dividido pelo "número de Leads".</dd>
+          <dt>Valor por Oportunidade:</dt>
+          <dd>Referente ao "Valor total das Vendas" dividido pelo "número de Oportunidades".</dd>
+          <dt>Valor por Venda:</dt>
+          <dd>Referente ao "Valor total das Vendas" dividido pelo número de "Vendas".</dd>
+        </dl>
+        <hr class="spacer-sm">
+        <h4>Conversões / mercado</h4>
+        <p>Taxas de conversão entre os estágios do seu funil e a média das taxas relativas ao mercado nacional.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="goals" tabindex="-1" role="dialog" aria-labelledby="goalsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="goalsLabel">Metas do funil de vendas</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center"><img alt="Loading" src="//d3ndvx6e67vt0s.cloudfront.net/assets/loading-757dc79286c22979894b03e3ed0a1514.gif"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+          <button type="submit" id="save-funnel-setup" class="btn btn-primary" data-loading-text="Aguarde">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<% content_for :footer do %>
+<% end %>

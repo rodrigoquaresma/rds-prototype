@@ -1,6 +1,8 @@
 RdsPrototype::Application.routes.draw do
 
 
+  get "/data-group", :to => 'data_group#index', :as => :data_group_index
+
   scope '/lead-scoring', :as => :lead_scoring do
     get "/", :to => 'lead_scoring#index', :as => :index
     get "/analisar", :to => 'lead_scoring#show', :as => :show
